@@ -211,8 +211,8 @@ export const Header: React.FC<HeaderProps> = ({ locale }) => {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-accbcf-blue/95 backdrop-blur-md shadow-lg border-b border-white/10 py-3'
-            : 'bg-gradient-to-b from-accbcf-blue-deep/95 via-accbcf-blue/85 to-transparent backdrop-blur-sm py-4'
+            ? 'bg-[#004B87] shadow-xl border-b border-white/15 py-3'
+            : 'bg-gradient-to-b from-[#001D3D]/95 via-[#003366]/80 to-transparent backdrop-blur-sm py-4'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -311,7 +311,7 @@ export const Header: React.FC<HeaderProps> = ({ locale }) => {
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: 8, scale: 0.97 }}
                           transition={{ duration: 0.16, ease: 'easeOut' }}
-                          className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-80 sm:w-96 rounded-2xl bg-accbcf-blue-deep/98 backdrop-blur-xl border border-white/15 border-t-2 border-t-accbcf-gold shadow-2xl p-2 z-50 ring-1 ring-black/30"
+                          className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-80 sm:w-96 rounded-2xl bg-[#001D3D] border border-white/20 border-t-2 border-t-accbcf-gold shadow-[0_25px_60px_rgba(0,0,0,0.65)] p-2.5 z-50 ring-1 ring-black/40"
                         >
                           <div className="space-y-1">
                             {item.items.map((sub) => {
@@ -324,8 +324,8 @@ export const Header: React.FC<HeaderProps> = ({ locale }) => {
                                   onClick={() => setActiveDropdown(null)}
                                   className={`group flex items-start gap-3.5 p-3 rounded-xl transition-all ${
                                     isSubActive
-                                      ? 'bg-white/15 text-white ring-1 ring-accbcf-gold/40'
-                                      : 'hover:bg-white/10 text-white/90 hover:text-white'
+                                      ? 'bg-[#003366] text-white ring-1 ring-accbcf-gold/60 shadow-sm'
+                                      : 'hover:bg-white/10 text-white hover:text-white'
                                   }`}
                                 >
                                   <div
@@ -338,11 +338,11 @@ export const Header: React.FC<HeaderProps> = ({ locale }) => {
                                     <SubIcon className="w-4 h-4" />
                                   </div>
                                   <div className="flex-1 min-w-0">
-                                    <div className="flex items-center justify-between text-sm font-semibold tracking-tight text-white group-hover:text-accbcf-gold transition-colors">
+                                    <div className="flex items-center justify-between text-sm font-bold tracking-tight text-white group-hover:text-accbcf-gold transition-colors">
                                       <span>{sub.label}</span>
                                       <ArrowRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-accbcf-gold" />
                                     </div>
-                                    <p className="text-xs text-white/70 leading-snug mt-0.5 line-clamp-2">
+                                    <p className="text-xs text-white/80 leading-snug mt-0.5 line-clamp-2">
                                       {sub.description}
                                     </p>
                                   </div>
@@ -394,7 +394,7 @@ export const Header: React.FC<HeaderProps> = ({ locale }) => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.25 }}
-              className="lg:hidden bg-accbcf-blue-deep/98 border-b border-accbcf-gold/30 backdrop-blur-xl px-4 pt-3 pb-6 space-y-1.5 max-h-[85vh] overflow-y-auto"
+              className="lg:hidden bg-[#001D3D] border-b border-accbcf-gold/40 px-4 pt-3 pb-6 space-y-1.5 max-h-[85vh] overflow-y-auto shadow-2xl"
             >
               {navigation.map((item) => {
                 if (item.type === 'link') {

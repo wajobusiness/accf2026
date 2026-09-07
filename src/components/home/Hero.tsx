@@ -163,122 +163,96 @@ export const Hero: React.FC<HeroProps> = ({ locale }) => {
           </motion.div>
         </AnimatePresence>
 
-        {/* 2. Multi-tier High-Contrast Gradient Balancing Overlays */}
-        {/* Tint 1: Deep Navy base tint allowing vibrant colors to show while subduing raw glare */}
-        <div className="absolute inset-0 bg-[#001733]/65" />
-
-        {/* Tint 2: Atmospheric vertical gradient, dark at top and bottom for header & controls, rich contrast in center */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#001226]/95 via-[#00264d]/80 to-[#001226]/95" />
-
-        {/* Tint 3: Radial focus vignette highlighting center typography */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,25,55,0.7)_0%,rgba(0,12,28,0.95)_100%)]" />
-
-        {/* Tint 4: Subtle Gold & Red Ambient Warmth */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[450px] rounded-full bg-gradient-to-tr from-accbcf-gold/15 via-accbcf-red/10 to-transparent filter blur-3xl pointer-events-none" />
-
-        {/* Faint African Continent Contour */}
-        <div
-          className="absolute inset-0 pointer-events-none hidden lg:flex items-center justify-end pr-16 opacity-15"
-          aria-hidden="true"
-        >
-          <svg
-            viewBox="0 0 600 700"
-            className="w-[480px] max-h-[75vh] object-contain"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M 280,45 C 310,40 370,50 410,75 C 435,90 450,115 440,140 C 430,165 410,180 435,210 C 460,240 500,260 520,300 C 535,330 520,360 485,380 C 455,400 440,430 430,470 C 420,510 405,560 380,600 C 350,650 320,680 290,680 C 275,680 260,650 250,610 C 240,560 215,500 200,440 C 185,380 150,350 110,335 C 70,320 40,300 45,260 C 50,220 90,195 130,180 C 170,165 190,150 210,110 C 230,70 250,50 280,45 Z"
-              stroke="#F0B428"
-              strokeWidth="2.5"
-            />
-          </svg>
-        </div>
+        {/* 2. Light Cinematic Contrast Overlay - Lets the DSLR photography shine vibrantly */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#001026]/75 via-transparent to-[#001026]/85" />
+        <div className="absolute inset-0 bg-black/25" />
       </div>
 
-      {/* 3. Foreground Content: Bold, Authoritative, Institutional Typography */}
-      <div className="relative max-w-5xl mx-auto text-center z-10 space-y-6 sm:space-y-8">
-        {/* Emblem & Tag */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex flex-col items-center justify-center"
-        >
-          <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden bg-white p-1 shadow-[0_0_35px_rgba(0,0,0,0.8)] ring-4 ring-accbcf-gold mb-3 group hover:scale-105 transition-transform duration-200">
-            <Image
-              src="/images/accbcf-emblem.jpg"
-              alt="ACCBCF Official Emblem"
-              fill
-              className="object-contain p-0.5"
-              priority
-            />
-          </div>
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/60 border border-accbcf-gold/60 backdrop-blur-md text-xs sm:text-sm font-bold text-accbcf-gold tracking-wider shadow-xl">
-            <Shield className="w-3.5 h-3.5 text-accbcf-gold" />
-            <span>{t.tag}</span>
-          </div>
-        </motion.div>
-
-        {/* BOLD Authoritative Headline */}
-        <div className="space-y-2">
-          <h1 className="font-serif font-extrabold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.12] drop-shadow-[0_4px_20px_rgba(0,0,0,0.95)]">
-            {words.map((word, idx) => (
-              <span key={idx} className="inline-block mr-2 sm:mr-3">
-                {word}
-              </span>
-            ))}
-          </h1>
-          {locale === 'en' ? (
-            <p className="text-base sm:text-lg font-sans font-extrabold text-accbcf-gold tracking-[0.25em] uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]">
-              {t.chineseTitle}
-            </p>
-          ) : (
-            <p className="text-sm sm:text-base font-sans font-bold text-accbcf-gold tracking-widest uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]">
-              Africa China Chairmen of Business Forum
-            </p>
-          )}
-        </div>
-
-        {/* BOLD Slogan with Frosted Card Accent */}
-        <div className="max-w-3xl mx-auto">
-          <p className="text-base sm:text-xl lg:text-2xl font-bold text-white leading-relaxed drop-shadow-[0_3px_12px_rgba(0,0,0,0.95)] px-4 py-2">
-            {t.slogan}
-          </p>
-        </div>
-
-        {/* Action CTAs: High Contrast & High Visibility */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-1">
-          <Link
-            href={`/${locale}/contact`}
-            className="sheen-sweep w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-9 py-4 rounded-full text-sm sm:text-base font-extrabold uppercase tracking-wider bg-accbcf-gold text-accbcf-charcoal hover:bg-accbcf-gold-light hover:shadow-[0_0_30px_rgba(240,180,40,0.7)] transition-all duration-300 transform hover:-translate-y-0.5 shadow-2xl"
+      {/* 3. Foreground Content: Bold, Authoritative, Institutional Typography with Elegant Frosted Diplomatic Card */}
+      <div className="relative max-w-4xl mx-auto text-center z-10 w-full px-2 sm:px-4">
+        <div className="bg-[#001226]/65 backdrop-blur-md border border-white/20 rounded-3xl p-6 sm:p-8 md:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.65)] space-y-6">
+          {/* Emblem & Tag */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex flex-col items-center justify-center"
           >
-            <span>{t.ctaPrimary}</span>
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+            <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden bg-white p-1 shadow-[0_0_35px_rgba(0,0,0,0.8)] ring-4 ring-accbcf-gold mb-3 group hover:scale-105 transition-transform duration-200">
+              <Image
+                src="/images/accbcf-emblem.jpg"
+                alt="ACCBCF Official Emblem"
+                fill
+                className="object-contain p-0.5"
+                priority
+              />
+            </div>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/70 border border-accbcf-gold/70 backdrop-blur-md text-xs sm:text-sm font-bold text-accbcf-gold tracking-wider shadow-xl">
+              <Shield className="w-3.5 h-3.5 text-accbcf-gold" />
+              <span>{t.tag}</span>
+            </div>
+          </motion.div>
 
-          <Link
-            href={`#strategic-positioning`}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-sm sm:text-base font-bold tracking-wide bg-black/40 hover:bg-black/60 text-white hover:text-accbcf-gold border-2 border-white/40 hover:border-accbcf-gold backdrop-blur-md transition-all duration-200 shadow-2xl"
-          >
-            <Globe2 className="w-4 h-4 text-accbcf-gold" />
-            <span>{t.ctaSecondary}</span>
-          </Link>
-        </div>
+          {/* BOLD Authoritative Headline */}
+          <div className="space-y-2">
+            <h1 className="font-serif font-extrabold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.12] drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
+              {words.map((word, idx) => (
+                <span key={idx} className="inline-block mr-2 sm:mr-3">
+                  {word}
+                </span>
+              ))}
+            </h1>
+            {locale === 'en' ? (
+              <p className="text-base sm:text-lg font-sans font-extrabold text-accbcf-gold tracking-[0.25em] uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]">
+                {t.chineseTitle}
+              </p>
+            ) : (
+              <p className="text-sm sm:text-base font-sans font-bold text-accbcf-gold tracking-widest uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]">
+                Africa China Chairmen of Business Forum
+              </p>
+            )}
+          </div>
 
-        {/* Credibility Micro-Strip */}
-        <div className="pt-4 flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs font-semibold">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/55 border border-white/20 backdrop-blur-md text-white/90 shadow-md">
-            <span className="w-2 h-2 rounded-full bg-accbcf-gold" />
-            <span>{SITE_INFO.established}</span>
+          {/* BOLD Slogan */}
+          <div className="max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg lg:text-xl font-bold text-white/95 leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
+              {t.slogan}
+            </p>
           </div>
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/55 border border-white/20 backdrop-blur-md text-white/90 shadow-md">
-            <Building2 className="w-3.5 h-3.5 text-accbcf-gold" />
-            <span>{SITE_INFO.hqCity[locale]}</span>
+
+          {/* Action CTAs: High Contrast & High Visibility */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-1">
+            <Link
+              href={`/${locale}/contact`}
+              className="sheen-sweep w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-9 py-4 rounded-full text-sm sm:text-base font-extrabold uppercase tracking-wider bg-accbcf-gold text-accbcf-charcoal hover:bg-accbcf-gold-light hover:shadow-[0_0_30px_rgba(240,180,40,0.7)] transition-all duration-300 transform hover:-translate-y-0.5 shadow-2xl"
+            >
+              <span>{t.ctaPrimary}</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+
+            <Link
+              href={`#strategic-positioning`}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-sm sm:text-base font-bold tracking-wide bg-black/50 hover:bg-black/70 text-white hover:text-accbcf-gold border-2 border-white/40 hover:border-accbcf-gold backdrop-blur-md transition-all duration-200 shadow-2xl"
+            >
+              <Globe2 className="w-4 h-4 text-accbcf-gold" />
+              <span>{t.ctaSecondary}</span>
+            </Link>
           </div>
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/55 border border-white/20 backdrop-blur-md text-white/90 shadow-md">
-            <span className="w-2 h-2 rounded-full bg-emerald-400" />
-            <span>G2G · G2B · B2B · B2C</span>
+
+          {/* Credibility Micro-Strip */}
+          <div className="pt-2 flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs font-semibold">
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/60 border border-white/20 backdrop-blur-md text-white/90 shadow-md">
+              <span className="w-2 h-2 rounded-full bg-accbcf-gold" />
+              <span>{SITE_INFO.established}</span>
+            </div>
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/60 border border-white/20 backdrop-blur-md text-white/90 shadow-md">
+              <Building2 className="w-3.5 h-3.5 text-accbcf-gold" />
+              <span>{SITE_INFO.hqCity[locale]}</span>
+            </div>
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/60 border border-white/20 backdrop-blur-md text-white/90 shadow-md">
+              <span className="w-2 h-2 rounded-full bg-emerald-400" />
+              <span>G2G · G2B · B2B · B2C</span>
+            </div>
           </div>
         </div>
       </div>
