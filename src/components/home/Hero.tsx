@@ -24,58 +24,76 @@ interface HeroProps {
 
 const HERO_SLIDES = [
   {
-    id: 'slide-1',
+    id: 'slide-fmiti',
+    image: '/images/forum/fmiti-headquarters-handshake.jpg',
+    alt: 'Federal Ministry of Industry, Trade and Investment Abuja - Bilateral Handshake under President Tinubu Portrait',
+    tagEn: 'Federal Ministerial Headquarters',
+    tagZh: '联邦部委总部会谈',
+    captionEn: 'Bilateral Engagement at Federal Ministry of Industry, Trade & Investment, Abuja HQ',
+    captionZh: '阿布贾联邦工贸投部大院：官方双边会谈与产业对接',
+  },
+  {
+    id: 'slide-council',
+    image: '/images/forum/leadership-council-assembly.jpg',
+    alt: 'ACCBCF Executive Leadership Council Assembly with High Chief Zhang Xiaopeng and Bilateral State Portraits',
+    tagEn: 'Executive Leadership Assembly',
+    tagZh: '执行理事会官方会谈',
+    captionEn: 'High Chief Zhang Xiaopeng & Leadership Council with Bilateral State Portraits',
+    captionZh: '论坛全国主席张晓鹏高级酋长与理事会高层官方会晤',
+  },
+  {
+    id: 'slide-diplomatic',
+    image: '/images/forum/diplomatic-assembly-abuja.jpg',
+    alt: 'Plenary Assembly of International Ambassadors, Envoys and Continental Leaders in Abuja',
+    tagEn: 'Diplomatic Plenary Assembly',
+    tagZh: '国际外交使团与理事大会',
+    captionEn: 'Plenary Reception of Ambassadors, Continental Envoys & Institutional Leaders',
+    captionZh: '汇聚各国驻阿布贾外交使团、特使与多边机构领袖',
+  },
+  {
+    id: 'slide-ooni',
     image: '/images/forum/02.jpeg',
     alt: 'His Imperial Majesty The Ooni of Ife and ACCBCF Leadership in Traditional Regalia',
     tagEn: 'Sovereign & Royal Patronage',
     tagZh: '主权王室级高级顾问',
-    captionEn: 'Royal & Sovereign Traditional Leadership of Africa',
-    captionZh: '非洲传统王室领袖与高级顾问委员会',
+    captionEn: 'His Imperial Majesty The Ooni of Ife & Sovereign Traditional Councils',
+    captionZh: '非洲传统王室领袖与高级顾问委员会协同',
   },
   {
-    id: 'slide-2',
+    id: 'slide-obasanjo',
     image: '/images/forum/12-presidential.jpeg',
     alt: 'Former President Olusegun Obasanjo and ACCBCF Leadership',
     tagEn: 'Bilateral Statesmanship',
     tagZh: '元首级双边战略对话',
-    captionEn: 'Presidential Diplomatic Engagement & Strategic Vision',
+    captionEn: 'Presidential Diplomatic Engagement & Continental Strategic Vision',
     captionZh: '前国家元首会晤与高水平战略对话',
   },
   {
-    id: 'slide-3',
-    image: '/images/forum/05.jpeg',
-    alt: 'Governor Chukwuma Soludo and ACCBCF Leadership',
-    tagEn: 'Sub-National Economic Engines',
-    tagZh: '省级地方政府产业对接',
-    captionEn: 'State Governors & Strategic Industrialization Alliances',
-    captionZh: '州长高层对话与跨国产业基地协同',
+    id: 'slide-ambassador',
+    image: '/images/forum/ambassadorial-dialogue.jpg',
+    alt: 'Bilateral Handshake with International Ambassador in Abuja',
+    tagEn: 'Ambassadorial Bilateral Dialogue',
+    tagZh: '驻地大使双边战略对话',
+    captionEn: 'Deepening South-South Diplomatic & Investment Synergies',
+    captionZh: '深化南南合作外交协同与跨境战略投资互联',
   },
   {
-    id: 'slide-4',
-    image: '/images/forum/07.jpeg',
-    alt: 'Northern Traditional Emirs and ACCBCF Forum Leadership',
-    tagEn: 'Regional Consensual Governance',
-    tagZh: '区域传统王室与经贸共识',
-    captionEn: 'Prominent Traditional Councils & Regional Stakeholders',
-    captionZh: '区域传统领袖与社会投资环境保障',
+    id: 'slide-boardroom',
+    image: '/images/forum/executive-boardroom-session.jpg',
+    alt: 'Executive Boardroom Bilateral Working Session with National Flags',
+    tagEn: 'Bilateral Working Session',
+    tagZh: '双边闭门工作会议',
+    captionEn: 'Strategic Trade Alignment, Investment Pipelines & Policy Coordination',
+    captionZh: '双边产业对接、重点项目管道与跨国合资布局',
   },
   {
-    id: 'slide-5',
-    image: '/images/forum/01.jpeg',
-    alt: 'Africa China Bilateral Leadership Assembly',
-    tagEn: 'Bilateral Business Assembly',
-    tagZh: '非中经贸领袖闭门盛会',
-    captionEn: 'Connecting Sovereigns, Strategic Capital & Enterprise Champions',
-    captionZh: '贯通主权政府、战略资本与领军企业',
-  },
-  {
-    id: 'slide-6',
-    image: '/images/forum/06.jpeg',
-    alt: 'Official Bilateral Dignitary Handshake and Partnership',
-    tagEn: 'Institutional Partnership',
-    tagZh: '部委与机构高层协同',
-    captionEn: 'Cross-Border Investment Facilitation & Market Access',
-    captionZh: '跨境投资促进与重大合作项目落地',
+    id: 'slide-gala',
+    image: '/images/forum/bilateral-gala-reception.jpg',
+    alt: 'Bilateral Gala Reception and Enterprise Partnership Handshake',
+    tagEn: 'Bilateral Forum Gala',
+    tagZh: '双边经贸领袖盛宴',
+    captionEn: 'Uniting Sovereign Capital and African-Chinese Enterprise Champions',
+    captionZh: '凝聚战略资本与非中领军企业代表',
   },
 ];
 
@@ -286,32 +304,37 @@ export const Hero: React.FC<HeroProps> = ({ locale }) => {
 
       {/* Bottom Bar: Slide Progress Bars & Photo Context Pill */}
       <div className="absolute bottom-4 sm:bottom-6 left-0 right-0 z-20 px-4 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 max-w-7xl mx-auto">
-        {/* Clickable Progress Bars */}
-        <div className="flex items-center gap-2">
-          {HERO_SLIDES.map((slide, idx) => {
-            const isActive = idx === currentSlide;
-            return (
-              <button
-                key={slide.id}
-                type="button"
-                onClick={() => setCurrentSlide(idx)}
-                className={`group relative h-2 transition-all rounded-full overflow-hidden ${
-                  isActive ? 'w-10 sm:w-14 bg-white/20' : 'w-4 sm:w-6 bg-white/25 hover:bg-white/40'
-                }`}
-                aria-label={`Go to slide ${idx + 1}`}
-              >
-                {isActive && (
-                  <motion.div
-                    key={currentSlide}
-                    initial={{ width: '0%' }}
-                    animate={{ width: isPaused ? '100%' : '100%' }}
-                    transition={{ duration: isPaused ? 0 : 6, ease: 'linear' }}
-                    className="absolute inset-0 bg-accbcf-gold rounded-full"
-                  />
-                )}
-              </button>
-            );
-          })}
+        {/* Clickable Progress Bars & Slide Counter */}
+        <div className="flex items-center gap-3">
+          <span className="font-mono text-xs font-extrabold text-accbcf-gold bg-black/60 px-2.5 py-1 rounded-full border border-accbcf-gold/30 backdrop-blur-sm">
+            0{currentSlide + 1} <span className="text-white/40">/</span> 0{HERO_SLIDES.length}
+          </span>
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            {HERO_SLIDES.map((slide, idx) => {
+              const isActive = idx === currentSlide;
+              return (
+                <button
+                  key={slide.id}
+                  type="button"
+                  onClick={() => setCurrentSlide(idx)}
+                  className={`group relative h-2 transition-all rounded-full overflow-hidden ${
+                    isActive ? 'w-8 sm:w-12 bg-white/20' : 'w-3 sm:w-5 bg-white/25 hover:bg-white/40'
+                  }`}
+                  aria-label={`Go to slide ${idx + 1}`}
+                >
+                  {isActive && (
+                    <motion.div
+                      key={currentSlide}
+                      initial={{ width: '0%' }}
+                      animate={{ width: isPaused ? '100%' : '100%' }}
+                      transition={{ duration: isPaused ? 0 : 6, ease: 'linear' }}
+                      className="absolute inset-0 bg-accbcf-gold rounded-full"
+                    />
+                  )}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* Current Photo Context Tag Pill */}

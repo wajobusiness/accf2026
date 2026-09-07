@@ -627,7 +627,7 @@ export const SAMPLE_NEWS = [
     date: '2026-03-30',
     author: 'ACCBCF Secretariat',
     readTime: { en: '4 min read', zh: '阅读约 4 分钟' },
-    image: 'https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?q=80&w=1200&auto=format&fit=crop',
+    image: '/images/forum/fmiti-headquarters-handshake.jpg',
     excerpt: {
       en: 'On 30 March 2026, ministerial leaders, African business chairmen, and Chinese conglomerate representatives gathered at the Federal Secretariat in Abuja to formally inaugurate the Africa China Chairmen of Business Forum.',
       zh: '2026年3月30日，来自非洲多国的主权部长、著名商业领袖与中资骨干企业负责人齐聚尼日利亚联邦首都区阿布贾联邦秘书处，共同见证非中企业领袖论坛正式启幕。',
@@ -648,7 +648,7 @@ export const SAMPLE_NEWS = [
     date: '2026-04-18',
     author: 'International Cooperation Dept',
     readTime: { en: '5 min read', zh: '阅读约 5 分钟' },
-    image: 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?q=80&w=1200&auto=format&fit=crop',
+    image: '/images/forum/executive-boardroom-session.jpg',
     excerpt: {
       en: 'High-level delegations engaged in closed-door sessions to structure concessionary frameworks, Special Economic Zone tax exemptions, and streamlined customs clearance.',
       zh: '高级别政企代表团举行闭门专题会，就经济特区税收减免政策、绿色清关通道与工业园特许经营权转让展开深入研讨。',
@@ -669,7 +669,7 @@ export const SAMPLE_NEWS = [
     date: '2026-05-12',
     author: 'Mining Committee',
     readTime: { en: '6 min read', zh: '阅读约 6 分钟' },
-    image: 'https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?q=80&w=1200&auto=format&fit=crop',
+    image: '/images/forum/diplomatic-assembly-abuja.jpg',
     excerpt: {
       en: 'The Forum Mining Committee convened major mining chairmen and metallurgy technology providers to address domestic beneficiation of lithium, copper, and rare earths.',
       zh: '论坛矿业专业委员会召集非洲重要矿业企业负责人与中方冶金重工领军团队，全力推动锂、铜及稀有金属就地深加工。',

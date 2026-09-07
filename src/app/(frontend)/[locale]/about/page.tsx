@@ -124,6 +124,181 @@ export default async function AboutPage({
           </div>
         </div>
 
+        {/* Official Bilateral Engagements & Photographic Archives */}
+        <div className="space-y-8">
+          <div className="text-center max-w-2xl mx-auto space-y-2">
+            <span className="text-xs font-bold uppercase tracking-widest text-accbcf-blue">
+              {isZh ? '官方纪实' : 'Official Photo Archives'}
+            </span>
+            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-accbcf-charcoal">
+              {isZh ? '部委协同、双边会见与外交理事大会' : 'Ministerial Synergy, Bilateral Audiences & Diplomatic Envoys'}
+            </h3>
+            <p className="text-accbcf-gray text-xs sm:text-sm">
+              {isZh
+                ? '常设机构真实工作场景与高层战略对接实景记录'
+                : 'Photographic documentation of official ACCBCF leadership engagements in Abuja and across the continent.'}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="group rounded-2xl overflow-hidden bg-white border border-gray-200/90 shadow-sm hover:shadow-md transition-all">
+              <div className="relative h-56 w-full overflow-hidden bg-gray-100">
+                <Image
+                  src="/images/forum/fmiti-headquarters-handshake.jpg"
+                  alt="Federal Ministry of Industry, Trade and Investment Abuja HQ"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute top-3 left-3">
+                  <span className="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider bg-accbcf-blue/90 text-white backdrop-blur-sm">
+                    {isZh ? '联邦部委总部' : 'Federal Ministry HQ'}
+                  </span>
+                </div>
+              </div>
+              <div className="p-5 space-y-1.5">
+                <h4 className="font-serif font-bold text-sm text-accbcf-charcoal">
+                  {isZh ? '联邦工贸投部高层对接' : 'Federal Ministry of Industry, Trade & Investment'}
+                </h4>
+                <p className="text-accbcf-gray text-xs leading-relaxed">
+                  {isZh
+                    ? '在尼日利亚总统博拉·提努布官方肖像下举行双边正式握手与会谈'
+                    : 'Bilateral audience and protocol handshake directly inside the Federal Ministry HQ in Abuja.'}
+                </p>
+              </div>
+            </div>
+
+            <div className="group rounded-2xl overflow-hidden bg-white border border-gray-200/90 shadow-sm hover:shadow-md transition-all">
+              <div className="relative h-56 w-full overflow-hidden bg-gray-100">
+                <Image
+                  src="/images/forum/leadership-council-assembly.jpg"
+                  alt="Executive Leadership Council Assembly"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute top-3 left-3">
+                  <span className="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider bg-accbcf-blue/90 text-white backdrop-blur-sm">
+                    {isZh ? '理事会高层合影' : 'Leadership Council'}
+                  </span>
+                </div>
+              </div>
+              <div className="p-5 space-y-1.5">
+                <h4 className="font-serif font-bold text-sm text-accbcf-charcoal">
+                  {isZh ? '全国主席张晓鹏与高层理事会' : 'High Chief Zhang Xiaopeng & Leadership Council'}
+                </h4>
+                <p className="text-accbcf-gray text-xs leading-relaxed">
+                  {isZh
+                    ? '论坛执行委员会在官方肖像墙前举行战略决议合影'
+                    : 'Executive Council assembly convened before official portraits of bilateral heads of state.'}
+                </p>
+              </div>
+            </div>
+
+            <div className="group rounded-2xl overflow-hidden bg-white border border-gray-200/90 shadow-sm hover:shadow-md transition-all">
+              <div className="relative h-56 w-full overflow-hidden bg-gray-100">
+                <Image
+                  src="/images/forum/diplomatic-assembly-abuja.jpg"
+                  alt="Plenary Assembly of International Ambassadors and Envoys in Abuja"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute top-3 left-3">
+                  <span className="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider bg-accbcf-blue/90 text-white backdrop-blur-sm">
+                    {isZh ? '外交使团大会' : 'Diplomatic Plenary'}
+                  </span>
+                </div>
+              </div>
+              <div className="p-5 space-y-1.5">
+                <h4 className="font-serif font-bold text-sm text-accbcf-charcoal">
+                  {isZh ? '国际外交使团与理事盛会' : 'Plenary Reception of Ambassadors & Envoys'}
+                </h4>
+                <p className="text-accbcf-gray text-xs leading-relaxed">
+                  {isZh
+                    ? '各国驻阿布贾外交使节、商务参赞与多边机构领袖全体合影'
+                    : 'Continental ambassadors, commercial attachés, and enterprise leaders convened in Abuja.'}
+                </p>
+              </div>
+            </div>
+
+            <div className="group rounded-2xl overflow-hidden bg-white border border-gray-200/90 shadow-sm hover:shadow-md transition-all">
+              <div className="relative h-56 w-full overflow-hidden bg-gray-100">
+                <Image
+                  src="/images/forum/02.jpeg"
+                  alt="His Imperial Majesty The Ooni of Ife and ACCBCF Leadership"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute top-3 left-3">
+                  <span className="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider bg-accbcf-blue/90 text-white backdrop-blur-sm">
+                    {isZh ? '王室最高顾问' : 'Royal Patronage'}
+                  </span>
+                </div>
+              </div>
+              <div className="p-5 space-y-1.5">
+                <h4 className="font-serif font-bold text-sm text-accbcf-charcoal">
+                  {isZh ? '伊费国王陛下与论坛理事长' : 'His Imperial Majesty The Ooni of Ife'}
+                </h4>
+                <p className="text-accbcf-gray text-xs leading-relaxed">
+                  {isZh
+                    ? '非洲著名传统领袖与论坛高级顾问委员会协同'
+                    : 'Traditional royal patronage underpinning social consensus and long-term security for investments.'}
+                </p>
+              </div>
+            </div>
+
+            <div className="group rounded-2xl overflow-hidden bg-white border border-gray-200/90 shadow-sm hover:shadow-md transition-all">
+              <div className="relative h-56 w-full overflow-hidden bg-gray-100">
+                <Image
+                  src="/images/forum/12-presidential.jpeg"
+                  alt="Former President Olusegun Obasanjo and ACCBCF Leadership"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute top-3 left-3">
+                  <span className="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider bg-accbcf-blue/90 text-white backdrop-blur-sm">
+                    {isZh ? '元首级对话' : 'Statesmanship'}
+                  </span>
+                </div>
+              </div>
+              <div className="p-5 space-y-1.5">
+                <h4 className="font-serif font-bold text-sm text-accbcf-charcoal">
+                  {isZh ? '前总统奥巴桑乔战略会晤' : 'Presidential Statesman Dialogue'}
+                </h4>
+                <p className="text-accbcf-gray text-xs leading-relaxed">
+                  {isZh
+                    ? '围绕非洲大陆工业化战略与双边产业对接开展高水平交流'
+                    : 'Strategic engagement on continental industrial corridors and high-level bilateral trade channels.'}
+                </p>
+              </div>
+            </div>
+
+            <div className="group rounded-2xl overflow-hidden bg-white border border-gray-200/90 shadow-sm hover:shadow-md transition-all">
+              <div className="relative h-56 w-full overflow-hidden bg-gray-100">
+                <Image
+                  src="/images/forum/ambassadorial-dialogue.jpg"
+                  alt="Ambassadorial Bilateral Dialogue in Abuja"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute top-3 left-3">
+                  <span className="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider bg-accbcf-blue/90 text-white backdrop-blur-sm">
+                    {isZh ? '使团高层对话' : 'Ambassadorial Accord'}
+                  </span>
+                </div>
+              </div>
+              <div className="p-5 space-y-1.5">
+                <h4 className="font-serif font-bold text-sm text-accbcf-charcoal">
+                  {isZh ? '双边大使战略合作握手' : 'Diplomatic Envoy Bilateral Handshake'}
+                </h4>
+                <p className="text-accbcf-gray text-xs leading-relaxed">
+                  {isZh
+                    ? '深化双边外交协同、南南合作与跨国重大投资落地'
+                    : 'Strengthening South-South diplomatic alignment and sovereign-backed trade partnerships.'}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="p-8 sm:p-10 rounded-3xl bg-accbcf-light border border-gray-200 space-y-4">
           <span className="text-xs font-bold uppercase tracking-widest text-accbcf-blue">
             {isZh ? '未来展望' : 'Future Strategic Outlook'}
