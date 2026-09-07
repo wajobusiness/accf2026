@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --accbcf-blue: #0064B4;
+  --accbcf-blue-dark: #004B87;
+  --accbcf-blue-deep: #002E54;
+  --accbcf-gold: #F0B428;
+  --accbcf-gold-light: #FCEFC7;
+  --accbcf-gold-dark: #C99115;
+  --accbcf-red: #DC0000;
+  --accbcf-orange: #F07828;
+  --accbcf-yellow: #F0DC50;
+  --accbcf-charcoal: #1A1A1A;
+  --accbcf-gray: #6B7280;
+  --accbcf-light: #F7F8FA;
+  --white: #FFFFFF;
+
+  --font-playfair: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-noto-sc: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--accbcf-charcoal);
+  background-color: #FFFFFF;
+  font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Institutional Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair), Georgia, 'Times New Roman', serif;
+  letter-spacing: -0.015em;
+  color: var(--accbcf-charcoal);
+}
+
+/* Chinese Text Optimization */
+[lang="zh"] body,
+[lang="zh"] p,
+[lang="zh"] span,
+[lang="zh"] a,
+[lang="zh"] button {
+  font-family: var(--font-noto-sc), system-ui, -apple-system, sans-serif;
+}
+
+/* Gold Sheen Sweep Animation */
+.sheen-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.sheen-sweep::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 25%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(30deg);
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.sheen-sweep:hover::after {
+  left: 140%;
+}
+
+/* Ambient Dragon Glow */
+@keyframes dragonGlow {
+  0%, 100% {
+    opacity: 0.28;
+    transform: scale(1);
+    filter: blur(48px);
+  }
+  50% {
+    opacity: 0.48;
+    transform: scale(1.12);
+    filter: blur(64px);
+  }
+}
+
+.animate-dragon-glow {
+  animation: dragonGlow 7s ease-in-out infinite;
+}
+
+/* African Continent SVG Tracing */
+@keyframes traceContour {
+  from {
+    stroke-dashoffset: 2400;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-trace-continent {
+  stroke-dasharray: 2400;
+  stroke-dashoffset: 0;
+  animation: traceContour 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 60" fill="none">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F0B428" />
+      <stop offset="100%" stop-color="#DC9600" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0064B4" />
+      <stop offset="100%" stop-color="#004B87" />
+    </linearGradient>
+  </defs>
+  <!-- Seal Icon -->
+  <g transform="translate(10, 5)">
+    <circle cx="25" cy="25" r="23" fill="url(#blueGrad)" stroke="url(#goldGrad)" stroke-width="2.5"/>
+    <!-- Wheat wreath accents -->
+    <path d="M12 25 C12 17 18 11 25 11 C32 11 38 17 38 25" stroke="#F0B428" stroke-width="1.5" stroke-dasharray="2 2" fill="none"/>
+    <path d="M12 25 C12 33 18 39 25 39 C32 39 38 33 38 25" stroke="#F0B428" stroke-width="1.5" stroke-dasharray="2 2" fill="none"/>
+    <!-- Central Monogram -->
+    <text x="25" y="29" font-family="serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">ACC</text>
+    <text x="25" y="38" font-family="sans-serif" font-size="7" font-weight="bold" fill="#F0B428" text-anchor="middle" letter-spacing="1.5">BCF</text>
+    <circle cx="25" cy="25" r="21" stroke="#FFFFFF" stroke-width="0.7" stroke-opacity="0.4" fill="none"/>
+  </g>
+  <!-- Text Wordmark -->
+  <text x="72" y="27" font-family="serif" font-size="20" font-weight="bold" fill="#0064B4" letter-spacing="1.5">ACCBCF</text>
+  <text x="72" y="42" font-family="sans-serif" font-size="9.5" font-weight="600" fill="#F0B428" letter-spacing="1.2">AFRICA CHINA CHAIRMEN FORUM</text>
+  <text x="72" y="52" font-family="sans-serif" font-size="8" font-weight="400" fill="#6B7280" letter-spacing="0.5">非中企业领袖论坛 · ABUJA</text>
+</svg>

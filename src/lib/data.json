@@ -1,0 +1,26 @@
+{
+  "site": {
+    "name": {
+      "en": "Africa China Chairmen of Business Forum",
+      "zh": "非中企业领袖论坛"
+    },
+    "shortName": "ACCBCF",
+    "established": "30 March 2026",
+    "hqCity": {
+      "en": "Abuja, Nigeria",
+      "zh": "尼日利亚·阿布贾"
+    },
+    "hqAddress": {
+      "en": "Block D, Federal Ministry of Industry, Trade and Investment, Old Federal Secretariat, Area 1, Garki, Abuja, Nigeria",
+      "zh": "尼日利亚阿布贾加尔基第一区旧联邦秘书处联邦工业、贸易和投资部D座"
+    },
+    "email": "africachinachairmenforum@gmail.com",
+    "phone": "+234 916 016 6906",
+    "whatsapp": "+2349160166906",
+    "whatsappUrl": "https://wa.me/2349160166906",
+    "slogan": {
+      "en": "Connecting Governments · Empowering Business · Creating Shared Prosperity",
+      "zh": "链接政府 · 赋能企业 · 共创繁荣"
+    }
+  }
+}

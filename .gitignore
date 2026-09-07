@@ -1,0 +1,40 @@
+# Dependencies
+node_modules
+/.pnp
+.pnp.js
+
+# Testing
+/coverage
+
+# Next.js
+/.next/
+/out/
+
+# Production
+/build
+
+# Misc
+.DS_Store
+*.pem
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local Env Files
+.env*.local
+.env
+
+# SQLite local database
+*.db
+*.db-journal
+
+# Temporary script files
+write_*.py
+build_*.py
+create_*.py
+update_*.py
+product_bible_text.txt
+extracted_media/
+*.tsbuildinfo
