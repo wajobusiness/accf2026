@@ -232,21 +232,9 @@ export const Header: React.FC<HeaderProps> = ({ locale }) => {
                   priority
                 />
               </div>
-              <div className="flex flex-col">
-                <div className="flex items-center gap-1.5">
-                  <span className="font-serif font-bold text-lg sm:text-xl text-white tracking-wider">
-                    ACCBCF
-                  </span>
-                  <span className="hidden sm:inline-block px-1.5 py-0.2 text-[9px] font-bold uppercase tracking-widest bg-accbcf-gold/20 text-accbcf-gold border border-accbcf-gold/40 rounded">
-                    Abuja HQ
-                  </span>
-                </div>
-                <span className="text-[10px] sm:text-[11px] font-medium text-white/80 tracking-tight leading-tight line-clamp-1">
-                  {locale === 'zh'
-                    ? '非中企业领袖论坛 · 官方平台'
-                    : 'Africa China Chairmen of Business Forum'}
-                </span>
-              </div>
+              <span className="font-serif font-bold text-xl sm:text-2xl text-white tracking-wider group-hover:text-accbcf-gold transition-colors">
+                ACCBCF
+              </span>
             </Link>
 
             {/* Desktop Navigation with Dropdowns */}
