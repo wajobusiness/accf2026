@@ -35,10 +35,12 @@ export default async function EventsPage({
             <Shield className="w-3.5 h-3.5" />
             <span>{isZh ? '活动日程' : 'Forum Calendar'}</span>
           </span>
-          <h1 className="font-serif text-3xl sm:text-5xl font-bold">
-            {isZh ? '重要活动与双边峰会' : 'Events & Bilateral Summits'}
+          <h1 className="text-3xl sm:text-5xl font-bold">
+            <span className="inline-block bg-accbcf-gold text-accbcf-charcoal px-5 py-1.5 sm:px-7 sm:py-2 font-serif font-bold shadow-md">
+              {isZh ? '重要活动与双边峰会' : 'Events & Bilateral Summits'}
+            </span>
           </h1>
-          <p className="text-white/80 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+          <p className="text-white/90 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
             {isZh
               ? '双边部长级圆桌会、中非经贸投资博览推介会与行业考察团日程'
               : 'Ministerial roundtables, bilateral trade delegations, and sectoral symposiums organized by ACCBCF.'}

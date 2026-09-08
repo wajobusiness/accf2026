@@ -34,10 +34,12 @@ export default async function ContactPage({
             <Shield className="w-3.5 h-3.5" />
             <span>{isZh ? '官方联络' : 'Official Engagement'}</span>
           </span>
-          <h1 className="font-serif text-3xl sm:text-5xl font-bold">
-            {isZh ? '联系非中企业领袖论坛' : 'Contact ACCBCF Secretariat'}
+          <h1 className="text-3xl sm:text-5xl font-bold">
+            <span className="inline-block bg-accbcf-gold text-accbcf-charcoal px-5 py-1.5 sm:px-7 sm:py-2 font-serif font-bold shadow-md">
+              {isZh ? '联系非中企业领袖论坛' : 'Contact ACCBCF Secretariat'}
+            </span>
           </h1>
-          <p className="text-white/80 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+          <p className="text-white/90 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
             {isZh
               ? '尼日利亚阿布贾联邦工业、贸易和投资部驻地 · 开启中非经贸高层战略协作'
               : 'Federal Ministry of Industry, Trade and Investment, Abuja, Nigeria · Connecting Governments, Business, and Capital.'}

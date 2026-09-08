@@ -37,10 +37,12 @@ export default async function AboutPage({
             <Shield className="w-3.5 h-3.5" />
             <span>{isZh ? '官方概述' : 'Institutional Profile'}</span>
           </span>
-          <h1 className="font-serif text-3xl sm:text-5xl font-bold">
-            {isZh ? '关于非中企业领袖论坛' : 'About ACCBCF'}
+          <h1 className="text-3xl sm:text-5xl font-bold">
+            <span className="inline-block bg-accbcf-gold text-accbcf-charcoal px-5 py-1.5 sm:px-7 sm:py-2 font-serif font-bold shadow-md">
+              {isZh ? '关于非中企业领袖论坛' : 'About ACCBCF'}
+            </span>
           </h1>
-          <p className="text-white/80 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+          <p className="text-white/90 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
             {SITE_INFO.slogan[locale]}
           </p>
         </div>

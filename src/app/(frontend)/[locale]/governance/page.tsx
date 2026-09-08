@@ -34,10 +34,12 @@ export default async function GovernancePage({
             <Shield className="w-3.5 h-3.5" />
             <span>{isZh ? '治理体系' : 'Governance Framework'}</span>
           </span>
-          <h1 className="font-serif text-3xl sm:text-5xl font-bold">
-            {isZh ? '组织领导集体与治理架构' : 'Leadership & Governance Structure'}
+          <h1 className="text-3xl sm:text-5xl font-bold">
+            <span className="inline-block bg-accbcf-gold text-accbcf-charcoal px-5 py-1.5 sm:px-7 sm:py-2 font-serif font-bold shadow-md">
+              {isZh ? '组织领导集体与治理架构' : 'Leadership & Governance Structure'}
+            </span>
           </h1>
-          <p className="text-white/80 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+          <p className="text-white/90 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
             {isZh
               ? '严密的顶层制度设计，统筹推进中非高层对话与跨国产业落地'
               : 'Rigorous institutional structure ensuring sovereign alignment, high-level policy dialogue, and flawless execution.'}

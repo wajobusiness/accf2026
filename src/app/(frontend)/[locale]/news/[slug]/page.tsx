@@ -67,7 +67,7 @@ export default async function SingleNewsPage({
             <span className="inline-block px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-accbcf-blue text-white border border-white/20">
               {post.category[locale]}
             </span>
-            <h1 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-bold leading-tight">
+            <h1 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white">
               {post.title[locale]}
             </h1>
           </div>

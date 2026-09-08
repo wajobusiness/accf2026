@@ -42,7 +42,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-playfair), Georgia, 'Times New Roman', serif;
   letter-spacing: -0.015em;
-  color: var(--accbcf-charcoal);
+  color: inherit;
 }
 
 /* Chinese Text Optimization */
