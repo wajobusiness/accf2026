@@ -208,10 +208,21 @@ export const Footer: React.FC<FooterProps> = ({ locale }) => {
           </div>
         </div>
 
-        {/* Bottom Bar: Copyright & Confidentiality Notice */}
-        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/60">
+        {/* Bottom Bar: Copyright, Credit & Confidentiality Notice */}
+        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/60 text-center md:text-left">
           <div>
             © {new Date().getFullYear()} {SITE_INFO.name[locale]}. {t.rights}
+          </div>
+          <div className="flex items-center gap-1.5 text-white/60">
+            <span>Powered by</span>
+            <a
+              href="https://finxhost.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accbcf-gold hover:text-accbcf-gold-light hover:underline font-medium transition-colors"
+            >
+              FinxHost Limited
+            </a>
           </div>
           <div className="flex items-center gap-4 text-[11px]">
             <span className="text-white/40">{t.confidentiality}</span>
