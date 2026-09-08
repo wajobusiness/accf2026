@@ -34,6 +34,12 @@ export interface SectorItem {
   description: BilingualText;
   details: BilingualText;
   icon: string;
+  strategicFocus?: BilingualText[];
+  keyOpportunities?: BilingualText[];
+  valueAdditionStrategy?: BilingualText;
+  bilateralMechanisms?: BilingualText;
+  policyAlignment?: BilingualText;
+  actionCommittee?: BilingualText;
 }
 
 export interface ServiceItem {
@@ -438,6 +444,34 @@ const RAW_PRIORITY_SECTORS = [
       zh: '非洲拥有全球60%未开垦可耕地。论坛聚焦现代农机本地组装、杂交水稻与耐旱农作物试验田、木薯与棕榈油深加工厂，以及产地冷链仓储网络建设，切实助力非洲筑牢粮食安全根基并拓展对外农贸出口。',
     },
     icon: 'Sprout',
+    strategicFocus: [
+      { en: 'Industrial-scale grain and staple crop farming with modern seed technologies', zh: '主粮规模化机械化种植与耐旱杂交优良种苗推广' },
+      { en: 'Cassava, palm oil, cocoa, and cashew in-country processing and packaging', zh: '木薯淀粉、棕榈油精炼、可可与腰果属地化精深加工' },
+      { en: 'Temperature-controlled cold chain logistics and post-harvest storage hubs', zh: '产地温控冷链仓储网络与粮食减损保鲜基础设施' },
+      { en: 'Assembly and servicing of agricultural tractors and automated irrigation tools', zh: '中小型农业拖拉机本地组装基地与智能节水灌溉技术' },
+    ],
+    keyOpportunities: [
+      { en: 'Cassava Starch & Bio-Industrial Processing Hub in Ogun State, Nigeria', zh: '尼日利亚奥贡州木薯深加工与工业变性淀粉产业基地' },
+      { en: 'Commercial Rice Seed Multiplication & Processing Mill (50,000 MT/year)', zh: '年产5万吨商业杂交水稻繁育基地与现代化成套碾米厂' },
+      { en: 'Export-Oriented Cashew Nut Cracking & Refining Facilities', zh: '面向中非贸易的出口级腰果脱壳与脱脂精炼深加工厂' },
+      { en: 'Agricultural Mechanization Assembly Plant for African Smallholders', zh: '面向非洲中小农户的普及型中轻型农机CKD组装产线' },
+    ],
+    valueAdditionStrategy: {
+      en: 'Shifting African agriculture from raw subsistence output to high-margin processed food exports, preventing 40% post-harvest losses and capturing continental retail value.',
+      zh: '推动非洲农业从粗放原料初级输出向高附加值预包装食品制造跃迁，减少40%产后损耗，全面占领非洲大陆零售市场终端价值。',
+    },
+    bilateralMechanisms: {
+      en: 'G2B agro-allied concession agreements, B2B farming cooperatives joint ventures, and Chinese agricultural technology demonstration parks.',
+      zh: '政府对企业（G2B）农业特许经营权、中非企业对企业（B2B）农场联合体与中国农业技术试验示范园区。',
+    },
+    policyAlignment: {
+      en: 'Aligned with AfCFTA Continental Agricultural Transformation Agenda, Nigerian Agricultural Promotion Policy (APP), and FOCAC Green Agriculture Initiative.',
+      zh: '紧密衔接非洲大陆自贸区农业转型倡议、尼日利亚农业振兴法案以及中非合作论坛“绿色农业伙伴行动”。',
+    },
+    actionCommittee: {
+      en: 'ACCBCF Agriculture & Food Security Committee',
+      zh: '非中企业领袖论坛农业与粮食安全专业委员会',
+    },
   },
   {
     id: 'mining',
@@ -452,6 +486,34 @@ const RAW_PRIORITY_SECTORS = [
       zh: '推动非洲矿产开发从单纯原矿出口向属地高附加值加工战略跃升。论坛促成新能源关键矿产综合精炼厂、环保型智能选矿产线及矿区生态修复工程，保障中非战略资源供应链稳定共赢。',
     },
     icon: 'Gem',
+    strategicFocus: [
+      { en: 'Domestic refining and smelting of critical energy transition minerals (lithium, copper, cobalt, rare earths)', zh: '新能源关键矿产（锂、铜、钴、稀土）属地化精炼与冶炼' },
+      { en: 'Local manufacturing of battery precursors and refined alloy billets', zh: '电池级前驱体、碳酸锂及高纯合金圆坯属地制造' },
+      { en: 'Eco-friendly closed-circuit flotation and green tailings reprocessing', zh: '环保型闭路循环选矿产线与尾矿固废资源化二次回收' },
+      { en: 'Stringent ESG standards, mine worker skilling, and ecological restoration', zh: '执行高标准ESG规范、本地矿业技术工人培训与矿山生态修复' },
+    ],
+    keyOpportunities: [
+      { en: 'Integrated Lithium Sulfate & Hydroxide Smelting Complex (10,000 MT/year)', zh: '年产1万吨电池级硫酸锂及氢氧化锂综合精炼冶炼厂' },
+      { en: 'Electrolytic Copper Smelting & Wire Rod Continuous Casting Facility', zh: '高纯电解铜冶炼厂及连续拉丝铜杆制造基地' },
+      { en: 'Industrial-Scale Tailing Retreatment & Solar-Powered Mine Electrification', zh: '万吨级绿色环保尾矿资源综合回收与矿山光伏自备微电网' },
+      { en: 'Geo-Surveying & Certified Assay Laboratory Infrastructure', zh: '国际认可的矿产地质勘查、储量核定与第三方化验认证实验室' },
+    ],
+    valueAdditionStrategy: {
+      en: 'Mandating that raw unrefined ores be retained in Africa for local processing, generating sovereign royalties, high-skilled industrial jobs, and guaranteed supply of cathode materials.',
+      zh: '坚定终结毛矿直接出口旧模式，推动非洲就地提炼高纯金属中间体与正极原料，沉淀丰厚矿产税收并创造高技术就业。',
+    },
+    bilateralMechanisms: {
+      en: 'Sovereign mineral concession pacts, off-take agreement financing, and joint mining investment sub-funds.',
+      zh: '主权矿权开采许可（G2B）、长期包销预付融资（Off-take）及中非联合矿业产业基金。',
+    },
+    policyAlignment: {
+      en: 'Aligned with African Minerals Development Centre (AMDC) Africa Mining Vision and bilateral Critical Raw Material Strategic Accords.',
+      zh: '严格对接《非洲矿业愿景》（AMV）与中非关键矿产供应链保障双边互惠协定。',
+    },
+    actionCommittee: {
+      en: 'ACCBCF Mining & Metallurgy Committee',
+      zh: '非中企业领袖论坛矿业与冶金重工专业委员会',
+    },
   },
   {
     id: 'energy',
@@ -466,6 +528,34 @@ const RAW_PRIORITY_SECTORS = [
       zh: '充足电力是非洲工业腾飞的核心引擎。ACCBCF重点协调中非资本布局工业园区配套分布式光伏、区域特高压输变电线路及天然气发电项目，有效破解工业制造用电瓶颈。',
     },
     icon: 'Zap',
+    strategicFocus: [
+      { en: 'Utility-scale photovoltaic (PV) solar farms with Battery Energy Storage Systems (BESS)', zh: '百兆瓦级集中式光伏电站与储能系统（BESS）一体化建设' },
+      { en: 'High-voltage regional transmission grids and sub-station automation', zh: '跨区域特高压骨干输电网扩容、智能变电站与防窃电计量改造' },
+      { en: 'Industrial cluster microgrids and dedicated captive gas-fired power plants', zh: '重点自贸工业园区专属微电网与天然气分布式自备电厂' },
+      { en: 'Hydroelectric turbine refurbishments and clean run-of-river cascades', zh: '老旧水电站水轮发电机组现代化技改与低落差径流式水电' },
+    ],
+    keyOpportunities: [
+      { en: '150MW Utility-Scale Solar PV & 60MWh Storage Independent Power Producer (IPP)', zh: '150MW集中式光伏+60MWh大型储能独立发电商（IPP）特许经营' },
+      { en: 'Industrial Free Zone 50MW Captive Natural Gas Turbine Power Plant', zh: '自贸工业园区配套50MW高效天然气轮机分布式供电工程' },
+      { en: 'Rural & Agricultural Productive-Use Mini-Grid Rollout (100 Sites)', zh: '覆盖100个农业生产重镇的离网型光储充智慧微电网集群' },
+      { en: 'Smart Meter Manufacturing & Grid Automation Assembly Joint Venture', zh: '智能电表属地化组装厂及配电网自动化调度监控系统集成' },
+    ],
+    valueAdditionStrategy: {
+      en: 'Eliminating the chronic electricity deficit across African industrial corridors to slash manufacturing operating expenses by up to 50%.',
+      zh: '彻底破解非洲工业制造电荒瓶颈，以可负担的稳定绿电将制造业用能成本大幅压降40%-50%。',
+    },
+    bilateralMechanisms: {
+      en: 'IPP Concessions, Power Purchase Agreements (PPAs) backed by sovereign or multilateral credit wraps, and Chinese green energy EPC+F delivery.',
+      zh: '独立发电商特许经营（IPP）、主权及多边担保购电协议（PPA）与中企“工程总承包+融资”（EPC+F）联合出海。',
+    },
+    policyAlignment: {
+      en: 'Aligned with Agenda 2063 Program for Infrastructure Development in Africa (PIDA) and China-Africa Clean Energy Partnership.',
+      zh: '紧扣非盟《2063年议程》非洲基础设施发展规划（PIDA）及中非绿色能源伙伴行动倡议。',
+    },
+    actionCommittee: {
+      en: 'ACCBCF Energy & Power Committee',
+      zh: '非中企业领袖论坛能源与电力基础设施专业委员会',
+    },
   },
   {
     id: 'manufacturing',
@@ -480,6 +570,34 @@ const RAW_PRIORITY_SECTORS = [
       zh: '加速“非洲制造”战略突破。论坛积极引进中国成熟制造产能，推动汽车整车及零部件组装、高端陶瓷建材、特种钢材及轻工日用品属地化生产线落地，降低对昂贵进口货物的依赖。',
     },
     icon: 'Cpu',
+    strategicFocus: [
+      { en: 'Automotive and electric two-wheeler / three-wheeler SKD & CKD assembly', zh: '商用车、乘用车及电动两轮/三轮车SKD/CKD属地组装基地' },
+      { en: 'Heavy structural steel, rebars, and architectural aluminum extrusion', zh: '建筑重型结构钢、特种螺纹钢与工业铝型材挤压加工' },
+      { en: 'Ceramic tiles, sanitary ware, and float glass production factories', zh: '高档陶瓷墙地砖、节水卫浴洁具与浮法建筑玻璃制造厂' },
+      { en: 'Household consumables, plastic molding, and light machinery fabrication', zh: '日用轻工消费品、高精度注塑模具与通用机电配套设备' },
+    ],
+    keyOpportunities: [
+      { en: 'Commercial Truck & Bus Assembly Plant with Local Stamping & Welding Corridors', zh: '轻重型卡车与客车属地化冲焊涂总装总集成汽车产业园' },
+      { en: 'Float Glass & Architectural Hardware Manufacturing Complex', zh: '大型优质浮法玻璃制造厂及高端门窗五金配件合资工厂' },
+      { en: 'Specialty Steel Rolling Mill for Continental Infrastructure Demands', zh: '年产30万吨高强度基建专用特种盘条与螺纹钢连续轧钢厂' },
+      { en: 'Industrial Plastic Packaging & Injection Molding Hub', zh: '食品医药级高阻隔塑料包装与精密注塑注拉吹成型生产基地' },
+    ],
+    valueAdditionStrategy: {
+      en: 'Replacing high-cost imports with local African assembly, establishing supplier ecosystems, and skilling thousands of domestic technicians.',
+      zh: '以本土化总装替代高成本外汇进口，培育非洲属地零部件配套产业链，造就大批高素质技术工人。',
+    },
+    bilateralMechanisms: {
+      en: 'Joint ventures between Chinese manufacturing conglomerates and African industrialists, tariff-protected domestic assembly quotas.',
+      zh: '中国制造业龙头与非洲实力工商业领袖合资合作，享受自贸区原产地关税保护与装备进口免税。',
+    },
+    policyAlignment: {
+      en: 'Aligned with Accelerated Industrial Development for Africa (AIDA) and the National Industrial Revolution Plans of West Africa.',
+      zh: '契合非盟《非洲工业化加速发展倡议》（AIDA）及西非各国国家工业革命总体规划。',
+    },
+    actionCommittee: {
+      en: 'ACCBCF Advanced Manufacturing Committee',
+      zh: '非中企业领袖论坛装备制造与工业产业专业委员会',
+    },
   },
   {
     id: 'infrastructure',
@@ -494,6 +612,33 @@ const RAW_PRIORITY_SECTORS = [
       zh: '畅通非洲大陆内部循环与全球海上丝绸之路。论坛协助大型基建工程集团联合金融机构，承揽国际航运集装箱码头、铁路干线集疏运系统及AfCFTA跨国贸易通道建设。',
     },
     icon: 'TrainTrack',
+    strategicFocus: [
+      { en: 'Deep-sea container port automation, berths, and breakwater expansion', zh: '深水自动化集装箱码头、专用散货泊位与外防波堤扩建工程' },
+      { en: 'Standard-gauge heavy-haul railways and dry-port intermodal links', zh: '标准轨重载铁路干线、集装箱无水内陆港与多式联运转运场站' },
+      { en: 'Cross-border highway trade corridors and toll bridge concessions', zh: '跨国高等级贸易互联公路走廊、特大跨江桥梁与收费公路特许权' },
+      { en: 'Regional cargo airport hubs, apron expansions, and cold storage facilities', zh: '区域性航空货运枢纽机场扩建、宽体货机停机坪与机坪恒温库' },
+    ],
+    keyOpportunities: [
+      { en: 'Deep-Sea Port Phase-II Container Terminal Expansion & Automated Crane Fleet', zh: '枢纽深水港二期集装箱泊位扩建与自动化岸桥机队成套工程' },
+      { en: '120km Industrial Mineral Railway Line Connecting Mines to Coastal Export Port', zh: '120公里关键矿区直达沿海出海口重载专用铁路线特许建设运营' },
+      { en: 'Cross-Border AfCFTA Dry Port Hub & Customs Inspection Modernization', zh: '跨国自贸区无水港内陆集散中心与智慧海关查验通关走廊' },
+      { en: 'Air Cargo Logistics Base & Aircraft Maintenance, Repair, and Overhaul (MRO)', zh: '国际货运航空冷链枢纽中心与支线客货机MRO维保定检基地' },
+    ],
+    valueAdditionStrategy: {
+      en: 'Unblocking continental logistical bottlenecks to lower inter-African transport transit times by 60% and support AfCFTA market velocity.',
+      zh: '彻底畅通非洲大陆海铁联运物流瓶颈，将跨境物流在途时间大幅压缩60%，激活非洲自贸区大市场流通活力。',
+    },
+    bilateralMechanisms: {
+      en: 'Public-Private Partnerships (PPP), Built-Operate-Transfer (BOT) concessions, and sovereign credit facility syndication.',
+      zh: 'PPP公私合营架构、BOT特许建设运营移交模式及主权信用商业联合银团贷款。',
+    },
+    policyAlignment: {
+      en: 'Aligned with AU Agenda 2063 Flagship Projects (Integrated High Speed Train Network, Single African Air Transport Market).',
+      zh: '全面契合非盟《2063议程》旗舰工程：非洲一体化干线铁路网与非洲单一航空运输市场（SAATM）。' },
+    actionCommittee: {
+      en: 'ACCBCF Engineering & Infrastructure Committee',
+      zh: '非中企业领袖论坛工程建设与基建专业委员会',
+    },
   },
   {
     id: 'healthcare',
@@ -508,6 +653,34 @@ const RAW_PRIORITY_SECTORS = [
       zh: '筑牢非洲公共卫生安全防线。论坛主推本土化输液与基础药品制剂工厂、一次性医疗耗材生产基地、现代中医院及远程AI辅助诊断网络，全面改善基层就医可及性。',
     },
     icon: 'HeartPulse',
+    strategicFocus: [
+      { en: 'Local formulation of WHO-prequalified generic medications and antibiotics', zh: '通过WHO预认证的广谱抗生素与基础口服固体制剂本地化制药厂' },
+      { en: 'Large-volume intravenous (IV) infusion fluids and disposable consumables', zh: '大容量注射剂（IV输液袋）与高分子一次性医疗耗材无菌车间' },
+      { en: 'Specialty cancer centers, cardiology suites, and multi-disciplinary hospitals', zh: '现代化综合专科诊疗中心、心血管及肿瘤微创手术室医疗联合体' },
+      { en: 'Telemedicine, AI-assisted radiology screening, and cold-chain vaccine delivery', zh: '数字远程诊疗平台、AI医学影像辅助筛查与医用冷链疫苗储运' },
+    ],
+    keyOpportunities: [
+      { en: 'Intravenous (IV) Infusion Fluid Production Plant (30 Million Bottles/Year)', zh: '年产3000万瓶非PVC软袋无菌医用大输液现代化生产基地' },
+      { en: 'Essential Oral Solid Dosage Generic Drug Manufacturing Facility', zh: '年产10亿片/粒国家基本药物口服固体制剂GMP标准药厂' },
+      { en: 'Tertiary Medical Diagnostics Imaging Center with MRI & CT Suites', zh: '高等级医学影像中心（配备1.5T MRI、超高端CT与数字化DR）' },
+      { en: 'Digital Telehealth & Rural Diagnostics Clinic Distribution Network', zh: '覆盖广大农村与边远城镇的便携式智慧化远程会诊与急救诊疗方舱' },
+    ],
+    valueAdditionStrategy: {
+      en: 'Overcoming Africa 90% dependence on imported pharmaceuticals, anchoring continental health sovereignty and emergency self-reliance.',
+      zh: '扭转非洲90%药品依赖海外昂贵进口的不利局面，筑牢主权卫生安全底线，实现基础用药自给自足。',
+    },
+    bilateralMechanisms: {
+      en: 'Bilateral healthcare partnerships, Chinese pharmaceutical technology licensing, and sovereign public health procurement pacts.',
+      zh: '政府间卫生健康合作协议、中国品牌药企技术转移许可与主权医疗集中采购长协。',
+    },
+    policyAlignment: {
+      en: 'Aligned with African Union Pharmaceutical Manufacturing Plan for Africa (PMPA) and Africa CDC Continental Health Security framework.',
+      zh: '严格对齐非盟《非洲药品制造计划》（PMPA）与非洲疾控中心公共卫生韧性纲要。',
+    },
+    actionCommittee: {
+      en: 'ACCBCF Medical & Healthcare Committee',
+      zh: '非中企业领袖论坛医药健康与生命科学专业委员会',
+    },
   },
   {
     id: 'financial',
@@ -522,6 +695,34 @@ const RAW_PRIORITY_SECTORS = [
       zh: '搭建非中经贸金融基础设施。论坛致力于推动商业银行代理行关系建立、大宗贸易人民币直接计价结算、海外投资政治与主权风险联合承保，打造投融资闭环生态。',
     },
     icon: 'Landmark',
+    strategicFocus: [
+      { en: 'Cross-border bilateral Renminbi (RMB) settlement and local currency swaps', zh: '跨境人民币（RMB）直接结算试点与央行间双边本币互换应用' },
+      { en: 'Letters of Credit (LC), structured trade finance, and factoring facilities', zh: '跨境信用证保兑、大宗进出口贸易融资与应收账款国际保理' },
+      { en: 'Private equity co-investment funds focused on African industrial projects', zh: '专注非洲实体工业与能源基建的中非联合产业股权直投基金' },
+      { en: 'Export credit insurance, political risk guarantees, and sovereign credit wrapping', zh: '海外投资政治风险联合再保险、国家信用担保与项目去风险工具' },
+    ],
+    keyOpportunities: [
+      { en: 'China-Africa Cross-Border Trade RMB/Naira Clearing & Liquidity Window', zh: '中非大宗商品双向结算人民币/本币清算直通窗口与流动性支持' },
+      { en: 'Bilateral Industrial Development Fund for SEZ Infrastructure Financing', zh: '首期规模3亿美元的中非自贸特区工业园区建设专项母基金' },
+      { en: 'Export-Import Equipment Leasing & Supplier Credit Consortium', zh: '重大工程装备直租与跨境分期采购中非联合供应链租赁公司' },
+      { en: 'Digital Trade Finance & Smart LC Blockchain Settlement Gateway', zh: '基于智能合约的跨国大宗贸易区块链信用证与供应链金融平台' },
+    ],
+    valueAdditionStrategy: {
+      en: 'De-dollarizing bilateral commerce to lower exchange fees by 5-8%, insulating African enterprises from FX volatility, and mobilizing patient capital.',
+      zh: '降低双边贸易对第三方货币依赖，规避汇率剧烈波动损耗5%-8%，为优质工业项目提供低成本耐心资本。',
+    },
+    bilateralMechanisms: {
+      en: 'Central bank bilateral swap implementation, commercial bank correspondent networks, and development finance syndication.',
+      zh: '央行双边本币互换落地细化、骨干商业银行代理行网络搭建及多边开发金融机构联合授信。',
+    },
+    policyAlignment: {
+      en: 'Aligned with AfCFTA Pan-African Payment and Settlement System (PAPSS) and FOCAC Financial Connectivity Priority.',
+      zh: '紧密契合泛非支付结算系统（PAPSS）及中非合作论坛“金融互联互通”重点支持清单。',
+    },
+    actionCommittee: {
+      en: 'ACCBCF Banking, Finance & Investment Committee',
+      zh: '非中企业领袖论坛金融投资与资本市场专业委员会',
+    },
   },
   {
     id: 'digital',
@@ -536,6 +737,34 @@ const RAW_PRIORITY_SECTORS = [
       zh: '赋能非洲数字化跨越式发展。对接中方前沿5G通信方案、模块化云计算中心建设方案及成熟移动支付系统，赋能非洲各行业实现无缝数字化升级。',
     },
     icon: 'Radio',
+    strategicFocus: [
+      { en: 'National fiber backbone rollout, metropolitan FTTH, and 4G/5G mobile towers', zh: '国家级骨干光缆网、都市千兆光纤入户与4G/5G通信基站规模覆盖' },
+      { en: 'Tier-3 and Tier-4 green modular data centers and hyperscale cloud facilities', zh: '符合国际Tier-3标准的模块化绿色节能数据中心与超算云平台' },
+      { en: 'Fintech mobile payment switches, cross-border digital wallets, and QR clearing', zh: '移动微支付核心交换网关、跨国数字钱包与商户聚合扫码清算' },
+      { en: 'E-government digital public services, smart customs, and enterprise SaaS solutions', zh: '数字化智慧政务云底座、智慧口岸电子通关系统与企业级SaaS' },
+    ],
+    keyOpportunities: [
+      { en: 'Tier-3 Certified Hyperscale Green Data Center (1,500 Racks) in Abuja', zh: '位于尼日利亚阿布贾的高可用国际Tier-3标准绿色数据中心（1500机柜）' },
+      { en: 'Cross-Border Mobile Money Interoperability & Remittance Gateway', zh: '中非跨境小额即时汇款与移动电子钱包互联互通网关' },
+      { en: 'National E-Government Integrated Service Cloud & Biometric Citizen ID', zh: '国家级电子政务统一集约化数字政务云平台与生物识别数字身份' },
+      { en: 'Smart Customs Electronic Single Window for Port & Border Terminals', zh: '港口及陆路口岸国际贸易“单一窗口”智能验放与集装箱追踪系统' },
+    ],
+    valueAdditionStrategy: {
+      en: 'Enabling African economies to leapfrog legacy infrastructure, cutting administrative costs by 40% and creating digital jobs for young demographics.',
+      zh: '赋能非洲经济实现跨越式数字化跃升，大幅压降40%行政与商业交易成本，释放青年人口数字红利。',
+    },
+    bilateralMechanisms: {
+      en: 'Government digital concessions, technology licensing and transfer, and enterprise joint ventures.',
+      zh: '政府数字化特许运营（BOT/BOO）、前沿科技知识产权授权及中非科技独角兽联合孵化。',
+    },
+    policyAlignment: {
+      en: 'Aligned with African Union Digital Transformation Strategy for Africa (2020-2030) and FOCAC Digital Innovation Partnership.',
+      zh: '全面对接非盟《非洲数字化转型战略（2020-2030）》及中非“数字创新伙伴行动”。',
+    },
+    actionCommittee: {
+      en: 'ACCBCF Digital Economy & Telecommunications Committee',
+      zh: '非中企业领袖论坛数字经济与前沿科技专业委员会',
+    },
   },
   {
     id: 'logistics',
@@ -550,6 +779,34 @@ const RAW_PRIORITY_SECTORS = [
       zh: '打通非中跨境货运大动脉。推进高标准恒温保税库、自动化分拣中转仓及港口集装箱智慧调度网络，显著压降非洲内陆各节点综合物流成本。',
     },
     icon: 'Truck',
+    strategicFocus: [
+      { en: 'Bonded logistics zones, automated sorting hubs, and export consolidation yards', zh: '海关保税物流园区、自动化智慧分拣分拨中心与出口拼箱集散场' },
+      { en: 'Temperature-controlled reefer storage chains for pharmaceuticals and perishables', zh: '覆盖医药制剂与鲜活农产品的多温区恒温冷库与冷藏运输车队' },
+      { en: 'Intermodal freight scheduling linking sea ports to landlocked hinterlands', zh: '连通沿海深水海港与内陆腹地各国的公铁水多式联运智能调度' },
+      { en: 'Direct air cargo charters and ocean carrier slot-sharing agreements', zh: '中非直达全货机定期货运包机与远洋航运骨干船队舱位共享' },
+    ],
+    keyOpportunities: [
+      { en: 'Cold Chain Agro-Logistics Center (20,000 MT Capacity) at Lagos Gateway', zh: '拉各斯出海口枢纽2万吨级现代化农产品国际多温区温控储运中心' },
+      { en: 'Inland Bonded Dry Port Logistics Terminal with Direct Rail Siding', zh: '连通货运铁路专用线的国家级内陆海关保税分拨无水港枢纽' },
+      { en: 'Dedicated Air Cargo Corridor with Scheduled Freight Charters (China-Nigeria)', zh: '中国（广州/郑州/义乌）至西非（阿布贾/拉各斯）定期货运直航航线' },
+      { en: 'Automated Container Depot & Real-Time GPS Fleet Tracking Network', zh: '港区自动化空箱周转堆场与跨国运输车队北斗/GPS全天候追踪指挥网络' },
+    ],
+    valueAdditionStrategy: {
+      en: 'Halving cargo dwell times from 18 days to 5 days, compressing supply chain turnaround, and ensuring zero perishable spoilage across transport legs.',
+      zh: '将港口与转运节点货物平均滞留时间从18天缩短至5天内，消除鲜活物资在途损耗，加速贸易周转。',
+    },
+    bilateralMechanisms: {
+      en: 'Bonded zone concessions, logistics joint ventures between Chinese freight forwarders and African transporters.',
+      zh: '海关保税仓储特许经营、中资国际货代航运巨头与非洲属地物流运输车队联合运营。',
+    },
+    policyAlignment: {
+      en: 'Aligned with AfCFTA Trade Facilitation Agreement and Belt and Road Maritime Logistics Network.',
+      zh: '紧密衔接非洲自贸区贸易便利化协定与共建“一带一路”跨国海上物流网络。',
+    },
+    actionCommittee: {
+      en: 'ACCBCF Logistics & Supply Chain Committee',
+      zh: '非中企业领袖论坛现代物流与智能供应链专业委员会',
+    },
   },
   {
     id: 'parks',
@@ -564,6 +821,34 @@ const RAW_PRIORITY_SECTORS = [
       zh: '为出海工业企业打造高标准安全生产家园。论坛与多国投资促进局联手规划开发轻纺、汽配、医药等特色工业园，实现“拎包入驻”、政策直达与产业集聚集群效应。',
     },
     icon: 'Building',
+    strategicFocus: [
+      { en: 'Integrated Special Economic Zone (SEZ) master-planning and modern infrastructure', zh: '大型综合性特别经济区（SEZ）顶层规划与高品质“九通一平”基建' },
+      { en: 'One-stop governmental approvals (customs, immigration, tax, business registry)', zh: '园区“一站式”政务服务中心（海关免税查验、工作签、商事登记）' },
+      { en: 'Dedicated uninterrupted utilities (gas-to-power, clean water, optical fiber)', zh: '工业园自备不间断独立电站、工业高压自来水厂与双回路千兆光纤' },
+      { en: 'Targeted tenant recruitment of Chinese export manufacturing consortiums', zh: '瞄准中国成熟出海产业带的组团招商、轻纺机电特色园群招商' },
+    ],
+    keyOpportunities: [
+      { en: 'Federal Free Trade Zone Light Manufacturing Phase-I (500 Hectares)', zh: '500公顷国家级自贸区轻工业示范先导园（厂房标准化建设+定制开发）' },
+      { en: 'Automotive & Heavy Equipment Industrial Cluster Zone', zh: '整车总装、工程机械及底盘零配件制造特色免税产业园区' },
+      { en: 'Agro-Allied Export Processing Zone with On-Site Quality Labs', zh: '现代农产品精深加工出口自贸区（配备原产地动植物检疫国家级实验室）' },
+      { en: 'Plug-and-Play Standard Factory Units for Small & Medium Enterprises', zh: '面向中小制造企业的“拎包入驻”标准化工业厂房及员工生活配套社区' },
+    ],
+    valueAdditionStrategy: {
+      en: 'Providing a ring-fenced, safe, and policy-stable sanctuary where manufacturers operate with zero grid downtime and duty-free raw material imports.',
+      zh: '打造封闭式、安全稳定与法治可预期的特区绿洲，实现零停电自备用能与原料设备免税进出。',
+    },
+    bilateralMechanisms: {
+      en: 'G2G bilateral park cooperation, master developer concessions, and joint government steering committees.',
+      zh: '政府对政府（G2G）双边共建园区协议、园区一级土地综合开发特许权与部长级指导委员会。',
+    },
+    policyAlignment: {
+      en: 'Aligned with national NEPZA (Nigeria Export Processing Zones Authority) statutes, AfCFTA Rules of Origin, and FOCAC Capacity Cooperation Parks.',
+      zh: '依托尼日利亚国家出口加工区管理局（NEPZA）免税政策、自贸区原产地规则及中非产能合作示范区。',
+    },
+    actionCommittee: {
+      en: 'ACCBCF Industrial Parks & Free Trade Zones Committee',
+      zh: '非中企业领袖论坛产业园区与自贸特区专业委员会',
+    },
   },
   {
     id: 'green',
@@ -578,6 +863,34 @@ const RAW_PRIORITY_SECTORS = [
       zh: '引领绿色可持续工业化潮流。积极对接全球绿色气候基金，推进非洲林业碳汇开发、城市新能源两轮/四轮电动交通替代工程及工业废渣废水绿色闭环利用。',
     },
     icon: 'Leaf',
+    strategicFocus: [
+      { en: 'Internationally certified carbon credit (VER/CER) generation and trading', zh: '国际认可的高质量自愿碳减排指标（VER）核查认证与跨境碳汇交易' },
+      { en: 'Electric two-wheeler and electric public bus ecosystem deployment', zh: '城市轻型电动两轮车、电动三轮车与纯电动公交车充换电生态布局' },
+      { en: 'Industrial solid waste recycling, e-waste recovery, and circular plastics', zh: '工业冶炼固废无害化综合利用、电子废弃物金属提纯与废塑料再生循环' },
+      { en: 'Reforestation, desertification control, and watershed ecological protection', zh: '跨国“绿色长城”荒漠化生态屏障工程、水源地保护与水土涵养林建设' },
+    ],
+    keyOpportunities: [
+      { en: 'Continental Mangrove & Forestry Carbon Offset Development (500,000 Hectares)', zh: '50万公顷沿海红树林与热带森林高价值碳汇联合开发与国际变现' },
+      { en: 'Urban Electric Two-Wheeler Assembly & Battery Swapping Station Grid (1,000 Stations)', zh: '城市轻型电动摩托车总装线及1000座智能锂电换电柜网络运营' },
+      { en: 'Industrial Wastewater Closed-Loop Treatment & Sludge Recovery Facility', zh: '重工业集聚区高浓度工业废水零排放闭环处理与中水回用示范工程' },
+      { en: 'E-Waste Metallurgical Recovery & Certified Hazardous Material Disposal', zh: '年处理5万吨报废电子产品贵金属湿法提炼与无害化危废处置合资企业' },
+    ],
+    valueAdditionStrategy: {
+      en: 'Transforming environmental stewardship into a major source of hard currency through international carbon monetization and clean-tech manufacturing.',
+      zh: '将生态环境保护转化为实打实的硬通货收入，通过碳汇资产化与本土新能源制造实现绿水青山变金山银山。',
+    },
+    bilateralMechanisms: {
+      en: 'Article 6 carbon credit bilateral agreements, sovereign green bond syndication, and clean-tech joint ventures.',
+      zh: '巴黎协定第六条框架下主权碳信用双边转让、绿色主权债券联合发行与中非环保合资公司。',
+    },
+    policyAlignment: {
+      en: 'Aligned with African Great Green Wall Initiative, Nationally Determined Contributions (NDCs), and FOCAC Green Development Action.',
+      zh: '对接非洲“绿色长城”宏大倡议、各国应对气候变化自主贡献目标（NDC）与中非绿色发展行动计划。',
+    },
+    actionCommittee: {
+      en: 'ACCBCF Green Economy & Climate Action Committee',
+      zh: '非中企业领袖论坛绿色低碳与气候应对专业委员会',
+    },
   },
   {
     id: 'smart-cities',
@@ -592,6 +905,34 @@ const RAW_PRIORITY_SECTORS = [
       zh: '提升非洲主要城市治理现代化水平。协助阿布贾、拉各斯、内罗毕等核心都市引入智能信号灯控制、公共安全应急联动指挥平台及生态低碳商业新城区整体建设规划。',
     },
     icon: 'Compass',
+    strategicFocus: [
+      { en: 'Adaptive intelligent traffic signal surveillance and metropolitan congestion alleviation', zh: '自适应智能交通信号联动监控、潮汐车道调度与大都市拥堵治理' },
+      { en: 'Automated smart water and municipal electric metering networks', zh: '市政智能超声波水表、远传电表物联网采集与供水管网防漏测绘' },
+      { en: 'Urban Geographic Information Systems (GIS) and 3D digital-twin master planning', zh: '城市综合高精地理信息系统（GIS）、数字孪生三维实景与新型新城总规' },
+      { en: 'Integrated emergency response command centers and municipal public safety', zh: '城市应急联动指挥综合调度中心、市政公共安全网格化智慧感知平台' },
+    ],
+    keyOpportunities: [
+      { en: 'Metropolitan Intelligent Traffic Management System (ITMS) Concession in Abuja', zh: '尼日利亚联邦首都区阿布贾大都市区智能交通指挥控制系统特许运营' },
+      { en: 'City-Wide Smart Water Metering AMR/AMI Network Rollout (200,000 Units)', zh: '20万户全覆盖的城市供水管网智能抄表系统与远程产销差管理' },
+      { en: 'Digital-Twin Urban GIS Cadastral Mapping & Municipal Asset Registry', zh: '核心城市三维数字孪生地籍空间测绘与市政不动产精准数字化建档' },
+      { en: 'Integrated Public Safety Emergency Response Center & Video Surveillance', zh: '多部门一体化公共安全应急协同指挥中心大厅与高清智能感知网' },
+    ],
+    valueAdditionStrategy: {
+      en: 'Modernizing metropolitan administration to prevent urban decay, saving hundreds of millions in transit delays, and ensuring safety for global investors.',
+      zh: '全面推进非洲超大城市治理能力现代化，每年为社会节约数亿美元通行拥堵成本，为外资安居乐业保驾护航。',
+    },
+    bilateralMechanisms: {
+      en: 'Municipal G2B concession agreements, sovereign concessional IT loans, and technology co-development with Chinese smart city giants.',
+      zh: '市政公用基础设施特许经营（G2B）、主权优贷支持与中国领军智慧城市方案商联合开发落地。',
+    },
+    policyAlignment: {
+      en: 'Aligned with UN Sustainable Development Goal 11 (Sustainable Cities and Communities) and AU New Urban Agenda.',
+      zh: '紧扣联合国可持续发展目标11（可持续城市与社区）及非盟《新城市议程》战略行动方案。',
+    },
+    actionCommittee: {
+      en: 'ACCBCF Smart Cities & Urban Modernization Committee',
+      zh: '非中企业领袖论坛智慧城市与城镇化建设专业委员会',
+    },
   },
 ];
 

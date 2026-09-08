@@ -103,25 +103,30 @@ export const SectorsGrid: React.FC<SectorsGridProps> = ({ locale }) => {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: (idx % 4) * 0.08 }}
               whileHover={{ scale: 1.03 }}
-              className="bg-[#F8FAFC] p-6 rounded-2xl border border-gray-200/80 shadow-sm hover:bg-white hover:border-accbcf-gold hover:shadow-xl transition-all duration-200 group cursor-pointer flex flex-col justify-between"
+              className="bg-[#F8FAFC] rounded-2xl border border-gray-200/80 shadow-sm hover:bg-white hover:border-accbcf-gold hover:shadow-xl transition-all duration-200 group"
             >
-              <div>
-                {/* Icon shifts from gold to orange on hover */}
-                <div className="w-12 h-12 rounded-xl bg-white group-hover:bg-accbcf-orange/10 flex items-center justify-center text-accbcf-gold group-hover:text-accbcf-orange mb-4 transition-colors duration-150 shadow-sm border border-gray-100">
-                  {renderIcon(sector.icon)}
+              <Link
+                href={`/${locale}/sectors/${sector.slug}`}
+                className="p-6 flex flex-col justify-between h-full cursor-pointer"
+              >
+                <div>
+                  {/* Icon shifts from gold to orange on hover */}
+                  <div className="w-12 h-12 rounded-xl bg-white group-hover:bg-accbcf-orange/10 flex items-center justify-center text-accbcf-gold group-hover:text-accbcf-orange mb-4 transition-colors duration-150 shadow-sm border border-gray-100">
+                    {renderIcon(sector.icon)}
+                  </div>
+                  <h3 className="font-serif text-base font-bold text-accbcf-charcoal group-hover:text-accbcf-blue transition-colors duration-150 mb-2">
+                    {sector.name[locale]}
+                  </h3>
+                  <p className="text-accbcf-gray text-xs leading-relaxed line-clamp-3">
+                    {sector.description[locale]}
+                  </p>
                 </div>
-                <h3 className="font-serif text-base font-bold text-accbcf-charcoal group-hover:text-accbcf-blue transition-colors duration-150 mb-2">
-                  {sector.name[locale]}
-                </h3>
-                <p className="text-accbcf-gray text-xs leading-relaxed line-clamp-3">
-                  {sector.description[locale]}
-                </p>
-              </div>
 
-              <div className="pt-4 mt-4 border-t border-gray-100 flex items-center justify-between text-xs font-semibold text-accbcf-blue group-hover:text-accbcf-orange transition-colors">
-                <span>{t.learnMore}</span>
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-              </div>
+                <div className="pt-4 mt-4 border-t border-gray-100 flex items-center justify-between text-xs font-semibold text-accbcf-blue group-hover:text-accbcf-orange transition-colors">
+                  <span>{t.learnMore}</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </Link>
             </motion.div>
           ))}
         </div>

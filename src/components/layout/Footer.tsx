@@ -147,7 +147,7 @@ export const Footer: React.FC<FooterProps> = ({ locale }) => {
               {PRIORITY_SECTORS.slice(0, 6).map((sec) => (
                 <li key={sec.id}>
                   <Link
-                    href={`/${locale}/sectors#${sec.slug}`}
+                    href={`/${locale}/sectors/${sec.slug}`}
                     className="hover:text-accbcf-gold transition-colors line-clamp-1"
                   >
                     {sec.name[locale]}

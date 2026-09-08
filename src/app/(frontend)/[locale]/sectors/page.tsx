@@ -121,7 +121,9 @@ export default async function SectorsPage({
                 </div>
 
                 <h3 className="font-serif text-xl font-bold text-accbcf-charcoal group-hover:text-accbcf-blue transition-colors">
-                  {sec.name[locale]}
+                  <Link href={`/${locale}/sectors/${sec.slug}`} className="hover:underline">
+                    {sec.name[locale]}
+                  </Link>
                 </h3>
 
                 <p className="text-accbcf-charcoal text-xs sm:text-sm font-medium leading-relaxed">
@@ -133,13 +135,19 @@ export default async function SectorsPage({
                 </p>
               </div>
 
-              <div className="pt-6 mt-6 border-t border-gray-100">
+              <div className="pt-6 mt-6 border-t border-gray-100 flex flex-col sm:flex-row items-center gap-2">
+                <Link
+                  href={`/${locale}/sectors/${sec.slug}`}
+                  className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-bold uppercase tracking-wider bg-accbcf-blue text-white hover:bg-accbcf-blue-dark transition-colors shadow-sm"
+                >
+                  <span>{locale === 'zh' ? '查看战略简报' : locale === 'fr' ? 'Dossier d’Action' : locale === 'ar' ? 'الملف الاستراتيجي' : locale === 'pt' ? 'Dossiê do Setor' : 'Sector Briefing'}</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
                 <Link
                   href={`/${locale}/contact?sector=${sec.slug}`}
-                  className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-bold uppercase tracking-wider bg-accbcf-light group-hover:bg-accbcf-blue text-accbcf-blue group-hover:text-white transition-colors"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-bold uppercase tracking-wider bg-accbcf-light hover:bg-accbcf-gold hover:text-accbcf-charcoal text-accbcf-charcoal transition-colors border border-gray-200"
                 >
-                  <span>{isZh ? '申请产业对接' : 'Inquire on Sector Matching'}</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <span>{locale === 'zh' ? '对接' : locale === 'fr' ? 'Contact' : locale === 'ar' ? 'طلب' : locale === 'pt' ? 'Contato' : 'Inquire'}</span>
                 </Link>
               </div>
             </div>
