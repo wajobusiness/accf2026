@@ -172,9 +172,9 @@ export const Hero: React.FC<HeroProps> = ({ locale }) => {
       <div className="relative max-w-5xl mx-auto text-center z-10 w-full px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-7">
         {/* Emblem & Tag */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, scale: 0.88, y: -16 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="inline-flex flex-col items-center justify-center"
         >
           <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden bg-white p-1 shadow-[0_0_35px_rgba(0,0,0,0.8)] ring-4 ring-accbcf-gold mb-3 group hover:scale-105 transition-transform duration-200">
@@ -192,35 +192,82 @@ export const Hero: React.FC<HeroProps> = ({ locale }) => {
           </div>
         </motion.div>
 
-        {/* BOLD Authoritative Headline */}
+        {/* BOLD Authoritative Headline with Staggered Word Reveal */}
         <div className="space-y-2">
-          <h1 className="font-serif font-extrabold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.12] drop-shadow-[0_4px_24px_rgba(0,0,0,0.98)] [text-shadow:_0_2px_14px_rgb(0_0_0_/_90%),_0_6px_30px_rgb(0_0_0_/_95%)]">
+          <motion.h1
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.1,
+                  delayChildren: 0.25,
+                },
+              },
+            }}
+            className="font-serif font-extrabold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.12] drop-shadow-[0_4px_24px_rgba(0,0,0,0.98)] [text-shadow:_0_2px_14px_rgb(0_0_0_/_90%),_0_6px_30px_rgb(0_0_0_/_95%)]"
+          >
             {words.map((word, idx) => (
-              <span key={idx} className="inline-block mr-2 sm:mr-3">
+              <motion.span
+                key={idx}
+                variants={{
+                  hidden: { opacity: 0, y: 28, filter: 'blur(8px)' },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    filter: 'blur(0px)',
+                    transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] },
+                  },
+                }}
+                className="inline-block mr-2 sm:mr-3"
+              >
                 {word}
-              </span>
+              </motion.span>
             ))}
-          </h1>
+          </motion.h1>
+
           {locale === 'en' ? (
-            <p className="text-base sm:text-lg font-sans font-extrabold text-accbcf-gold tracking-[0.25em] uppercase drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)] [text-shadow:_0_2px_10px_rgb(0_0_0_/_90%)]">
+            <motion.p
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.85, ease: 'easeOut' }}
+              className="text-base sm:text-lg font-sans font-extrabold text-accbcf-gold tracking-[0.25em] uppercase drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)] [text-shadow:_0_2px_10px_rgb(0_0_0_/_90%)]"
+            >
               {t.chineseTitle}
-            </p>
+            </motion.p>
           ) : (
-            <p className="text-sm sm:text-base font-sans font-bold text-accbcf-gold tracking-widest uppercase drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]">
+            <motion.p
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.85, ease: 'easeOut' }}
+              className="text-sm sm:text-base font-sans font-bold text-accbcf-gold tracking-widest uppercase drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]"
+            >
               Africa China Chairmen of Business Forum
-            </p>
+            </motion.p>
           )}
         </div>
 
-        {/* BOLD Slogan */}
-        <div className="max-w-3xl mx-auto">
+        {/* BOLD Slogan with Gentle Upward Entrance */}
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.0, ease: 'easeOut' }}
+          className="max-w-3xl mx-auto"
+        >
           <p className="text-base sm:text-xl lg:text-2xl font-bold text-white leading-relaxed drop-shadow-[0_3px_14px_rgba(0,0,0,0.95)] [text-shadow:_0_2px_12px_rgb(0_0_0_/_90%)] px-2">
             {t.slogan}
           </p>
-        </div>
+        </motion.div>
 
         {/* Action CTAs: High Contrast & High Visibility */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-1">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 1.15, ease: 'easeOut' }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-1"
+        >
           <Link
             href={`/${locale}/contact`}
             className="sheen-sweep w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-9 py-4 rounded-full text-sm sm:text-base font-extrabold uppercase tracking-wider bg-accbcf-gold text-accbcf-charcoal hover:bg-accbcf-gold-light hover:shadow-[0_0_30px_rgba(240,180,40,0.7)] transition-all duration-300 transform hover:-translate-y-0.5 shadow-2xl"
@@ -236,10 +283,15 @@ export const Hero: React.FC<HeroProps> = ({ locale }) => {
             <Globe2 className="w-4 h-4 text-accbcf-gold" />
             <span>{t.ctaSecondary}</span>
           </Link>
-        </div>
+        </motion.div>
 
         {/* Credibility Micro-Strip */}
-        <div className="pt-2 flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs font-semibold">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.3, ease: 'easeOut' }}
+          className="pt-2 flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs font-semibold"
+        >
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/60 border border-white/20 backdrop-blur-md text-white/90 shadow-md">
             <span className="w-2 h-2 rounded-full bg-accbcf-gold" />
             <span>{SITE_INFO.established}</span>
@@ -252,7 +304,7 @@ export const Hero: React.FC<HeroProps> = ({ locale }) => {
             <span className="w-2 h-2 rounded-full bg-emerald-400" />
             <span>G2G · G2B · B2B · B2C</span>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* 4. Interactive Slider Controls */}
@@ -296,9 +348,9 @@ export const Hero: React.FC<HeroProps> = ({ locale }) => {
                 >
                   {isActive && (
                     <motion.div
-                      key={currentSlide}
+                      key={`${currentSlide}-${isPaused}`}
                       initial={{ width: '0%' }}
-                      animate={{ width: isPaused ? '100%' : '100%' }}
+                      animate={{ width: isPaused ? '0%' : '100%' }}
                       transition={{ duration: isPaused ? 0 : 6, ease: 'linear' }}
                       className="absolute inset-0 bg-accbcf-gold rounded-full"
                     />
@@ -310,15 +362,26 @@ export const Hero: React.FC<HeroProps> = ({ locale }) => {
         </div>
 
         {/* Current Photo Context Tag Pill */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/60 border border-white/20 backdrop-blur-md text-[11px] sm:text-xs text-white/90 shadow-lg">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/60 border border-white/20 backdrop-blur-md text-[11px] sm:text-xs text-white/90 shadow-lg overflow-hidden">
           <Camera className="w-3.5 h-3.5 text-accbcf-gold flex-shrink-0" />
-          <span className="font-bold text-accbcf-gold">
-            {isZh ? HERO_SLIDES[currentSlide].tagZh : HERO_SLIDES[currentSlide].tagEn}
-          </span>
-          <span className="hidden md:inline text-white/40">|</span>
-          <span className="hidden md:inline text-white/80 line-clamp-1">
-            {isZh ? HERO_SLIDES[currentSlide].captionZh : HERO_SLIDES[currentSlide].captionEn}
-          </span>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentSlide}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.3 }}
+              className="inline-flex items-center gap-2"
+            >
+              <span className="font-bold text-accbcf-gold">
+                {isZh ? HERO_SLIDES[currentSlide].tagZh : HERO_SLIDES[currentSlide].tagEn}
+              </span>
+              <span className="hidden md:inline text-white/40">|</span>
+              <span className="hidden md:inline text-white/80 line-clamp-1">
+                {isZh ? HERO_SLIDES[currentSlide].captionZh : HERO_SLIDES[currentSlide].captionEn}
+              </span>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
 
