@@ -14,6 +14,7 @@ import {
 import { CORE_SERVICES } from '@/lib/content';
 import { UI_STRINGS } from '@/lib/translations';
 import type { Locale } from '@/lib/content';
+import { normalizeLocale } from '@/lib/content';
 
 export async function generateMetadata({
   params,
@@ -21,9 +22,16 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale: rawLocale } = await params;
-  const locale: Locale = rawLocale === 'zh' ? 'zh' : 'en';
+  const locale: Locale = normalizeLocale(rawLocale);
+  const titles: Record<Locale, string> = {
+    en: 'Programs & Core Services',
+    zh: '核心服务与项目',
+    fr: 'Programmes et services clés',
+    ar: 'البرامج والخدمات الأساسية',
+    pt: 'Programas e Serviços Centrais',
+  };
   return {
-    title: locale === 'zh' ? '核心服务与项目' : 'Programs & Core Services',
+    title: titles[locale] || titles.en,
     description: 'ACCBCF institutional services covering Government Cooperation, Investment Promotion, Financial Services, Legal Compliance, and Business Matching.',
   };
 }
@@ -34,7 +42,7 @@ export default async function ProgramsPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale: rawLocale } = await params;
-  const locale: Locale = rawLocale === 'zh' ? 'zh' : 'en';
+  const locale: Locale = normalizeLocale(rawLocale);
   const t = UI_STRINGS[locale].programsPage;
 
   const renderIcon = (iconName: string) => {

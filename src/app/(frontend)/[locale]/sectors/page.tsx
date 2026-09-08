@@ -17,7 +17,7 @@ import {
   ArrowRight,
   Shield,
 } from 'lucide-react';
-import { PRIORITY_SECTORS } from '@/lib/content';
+import { PRIORITY_SECTORS, normalizeLocale } from '@/lib/content';
 import { UI_STRINGS } from '@/lib/translations';
 import type { Locale } from '@/lib/content';
 
@@ -27,9 +27,16 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale: rawLocale } = await params;
-  const locale: Locale = rawLocale === 'zh' ? 'zh' : 'en';
+  const locale: Locale = normalizeLocale(rawLocale);
+  const titles: Record<Locale, string> = {
+    en: '12 Priority Sectors',
+    zh: '十二大重点产业',
+    fr: '12 Secteurs prioritaires',
+    ar: '12 قطاعاً ذو أولوية استراتيجية',
+    pt: '12 Setores Prioritários',
+  };
   return {
-    title: locale === 'zh' ? '十二大重点产业' : '12 Priority Sectors',
+    title: titles[locale] || titles.en,
     description: 'ACCBCF Priority Sectors for China-Africa economic cooperation and industrial development.',
   };
 }
@@ -40,7 +47,7 @@ export default async function SectorsPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale: rawLocale } = await params;
-  const locale: Locale = rawLocale === 'zh' ? 'zh' : 'en';
+  const locale: Locale = normalizeLocale(rawLocale);
   const isZh = locale === 'zh';
   const t = UI_STRINGS[locale].sectorsPage;
 

@@ -9,13 +9,15 @@ import { AdvantagesGrid } from '@/components/home/AdvantagesGrid';
 import { LatestNews } from '@/components/home/LatestNews';
 import { ContactCtaBand } from '@/components/home/ContactCtaBand';
 
+import { normalizeLocale } from '@/lib/content';
+
 export default async function HomePage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
   const { locale: rawLocale } = await params;
-  const locale: Locale = rawLocale === 'zh' ? 'zh' : 'en';
+  const locale: Locale = normalizeLocale(rawLocale);
 
   return (
     <>

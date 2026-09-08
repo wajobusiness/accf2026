@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Shield } from 'lucide-react';
 import { ContactForm } from '@/components/contact/ContactForm';
 import type { Locale } from '@/lib/content';
+import { normalizeLocale } from '@/lib/content';
 
 export async function generateMetadata({
   params,
@@ -10,9 +11,16 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale: rawLocale } = await params;
-  const locale: Locale = rawLocale === 'zh' ? 'zh' : 'en';
+  const locale: Locale = normalizeLocale(rawLocale);
+  const titles: Record<Locale, string> = {
+    en: 'Contact Us',
+    zh: '联系我们',
+    fr: 'Contactez-nous',
+    ar: 'اتصل بنا',
+    pt: 'Fale Conosco',
+  };
   return {
-    title: locale === 'zh' ? '联系我们' : 'Contact Us',
+    title: titles[locale] || titles.en,
     description: 'Contact the ACCBCF Secretariat headquartered in Abuja, Nigeria. Official diplomatic and business cooperation inquiries.',
   };
 }
@@ -23,7 +31,7 @@ export default async function ContactPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale: rawLocale } = await params;
-  const locale: Locale = rawLocale === 'zh' ? 'zh' : 'en';
+  const locale: Locale = normalizeLocale(rawLocale);
   const isZh = locale === 'zh';
 
   return (

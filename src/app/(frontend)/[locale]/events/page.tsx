@@ -2,7 +2,7 @@ import React from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Calendar, MapPin, Shield, ArrowRight, Clock } from 'lucide-react';
-import { SITE_INFO } from '@/lib/content';
+import { SITE_INFO, normalizeLocale } from '@/lib/content';
 import type { Locale } from '@/lib/content';
 
 export async function generateMetadata({
@@ -11,9 +11,16 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale: rawLocale } = await params;
-  const locale: Locale = rawLocale === 'zh' ? 'zh' : 'en';
+  const locale: Locale = normalizeLocale(rawLocale);
+  const titles: Record<Locale, string> = {
+    en: 'Events & Bilateral Summits',
+    zh: '重要活动',
+    fr: 'Événements et sommets bilatéraux',
+    ar: 'الفعاليات والقمم الثنائية',
+    pt: 'Eventos e Cúpulas Bilaterais',
+  };
   return {
-    title: locale === 'zh' ? '重要活动' : 'Events & Bilateral Summits',
+    title: titles[locale] || titles.en,
     description: 'ACCBCF official events, bilateral summits, trade delegations, and ministerial roundtables.',
   };
 }
@@ -24,7 +31,7 @@ export default async function EventsPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale: rawLocale } = await params;
-  const locale: Locale = rawLocale === 'zh' ? 'zh' : 'en';
+  const locale: Locale = normalizeLocale(rawLocale);
   const isZh = locale === 'zh';
 
   return (

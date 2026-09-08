@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Shield, Eye, Compass, CheckCircle2, ArrowRight, MapPin } from 'lucide-react';
-import { SITE_INFO } from '@/lib/content';
+import { SITE_INFO, normalizeLocale } from '@/lib/content';
 import type { Locale } from '@/lib/content';
 
 export async function generateMetadata({
@@ -12,9 +12,16 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale: rawLocale } = await params;
-  const locale: Locale = rawLocale === 'zh' ? 'zh' : 'en';
+  const locale: Locale = normalizeLocale(rawLocale);
+  const titles: Record<Locale, string> = {
+    en: 'About ACCBCF',
+    zh: '关于论坛',
+    fr: 'À propos de l’ACCBCF',
+    ar: 'عن المنتدى',
+    pt: 'Sobre o ACCBCF',
+  };
   return {
-    title: locale === 'zh' ? '关于论坛' : 'About ACCBCF',
+    title: titles[locale] || titles.en,
     description: SITE_INFO.about[locale],
   };
 }
@@ -25,7 +32,7 @@ export default async function AboutPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale: rawLocale } = await params;
-  const locale: Locale = rawLocale === 'zh' ? 'zh' : 'en';
+  const locale: Locale = normalizeLocale(rawLocale);
   const isZh = locale === 'zh';
 
   return (

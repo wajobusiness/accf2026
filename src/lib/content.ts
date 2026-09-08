@@ -1,12 +1,31 @@
-// ACCBCF Master Content & Bilingual Data Model
+// ACCBCF Master Content & Multilingual Data Model
 // Extracted from ACCBCF Product Bible & Build Prompt
 
-export type Locale = 'en' | 'zh';
+export type Locale = 'en' | 'zh' | 'fr' | 'ar' | 'pt';
 
-export interface BilingualText {
-  en: string;
-  zh: string;
+export interface LocaleConfig {
+  code: Locale;
+  label: string;
+  nativeName: string;
+  flag: string;
+  dir: 'ltr' | 'rtl';
 }
+
+export const SUPPORTED_LOCALES: LocaleConfig[] = [
+  { code: 'en', label: 'English', nativeName: 'English', flag: '🇬🇧', dir: 'ltr' },
+  { code: 'zh', label: 'Chinese', nativeName: '中文 (简体)', flag: '🇨🇳', dir: 'ltr' },
+  { code: 'fr', label: 'French', nativeName: 'Français', flag: '🇫🇷', dir: 'ltr' },
+  { code: 'ar', label: 'Arabic', nativeName: 'العربية', flag: '🇸🇦', dir: 'rtl' },
+  { code: 'pt', label: 'Portuguese', nativeName: 'Português', flag: '🇵🇹', dir: 'ltr' },
+];
+
+export function normalizeLocale(raw?: string): Locale {
+  const validLocales: Locale[] = ['en', 'zh', 'fr', 'ar', 'pt'];
+  return validLocales.includes(raw as Locale) ? (raw as Locale) : 'en';
+}
+
+export type MultilingualText = Record<Locale, string>;
+export type BilingualText = MultilingualText;
 
 export interface SectorItem {
   id: string;
@@ -38,20 +57,64 @@ export interface GovernanceTier {
   }[];
 }
 
-export const SITE_INFO = {
+export type Localized<T> = T extends { en: string }
+  ? Record<Locale, string>
+  : T extends Array<infer U>
+  ? Array<Localized<U>>
+  : T extends object
+  ? { [K in keyof T]: Localized<T[K]> }
+  : T;
+
+function localized<T>(data: T): Localized<T> {
+  if (Array.isArray(data)) {
+    return data.map((item) => localized(item)) as unknown as Localized<T>;
+  }
+  if (data !== null && typeof data === 'object') {
+    if ('en' in data && typeof (data as any).en === 'string') {
+      const enVal = (data as any).en;
+      const zhVal = (data as any).zh || enVal;
+      return {
+        en: enVal,
+        zh: zhVal,
+        fr: (data as any).fr || enVal,
+        ar: (data as any).ar || enVal,
+        pt: (data as any).pt || enVal,
+      } as unknown as Localized<T>;
+    }
+    const result: any = {};
+    for (const [key, val] of Object.entries(data)) {
+      result[key] = localized(val);
+    }
+    return result as Localized<T>;
+  }
+  return data as unknown as Localized<T>;
+}
+
+
+
+const RAW_SITE_INFO = {
   name: {
     en: 'Africa China Chairmen of Business Forum',
     zh: '非中企业领袖论坛',
+    fr: 'Forum des Présidents d’Entreprises Afrique–Chine',
+    ar: 'منتدى رؤساء مجالس إدارات الأعمال الإفريقية الصينية',
+    pt: 'Fórum de Presidentes de Negócios África–China',
   },
   shortName: 'ACCBCF',
   established: '30 March 2026',
   hqCity: {
     en: 'Abuja, Nigeria',
     zh: '尼日利亚·阿布贾',
+    fr: 'Abuja, Nigeria',
+    ar: 'أبوجا، نيجيريا',
+    pt: 'Abuja, Nigéria',
   },
   hqAddress: {
     en: 'Block D, Federal Ministry of Industry, Trade and Investment, Old Federal Secretariat, Area 1, Garki, Abuja, Nigeria',
     zh: '尼日利亚阿布贾加尔基第一区旧联邦秘书处联邦工业、贸易和投资部D座',
+    fr: 'Bloc D, Ministère Fédéral de l’Industrie, du Commerce et des Investissements, Ancien Secrétariat Fédéral, Zone 1, Garki, Abuja, Nigeria',
+    ar: 'المبنى D، وزارة الصناعة والتجارة والاستثمار الفيدرالية، الأمانة الفيدرالية القديمة، المنطقة 1، غاركي، أبوجا، نيجيريا',
+    pt: 'Bloco D, Ministério Federal de Indústria, Comércio e Investimentos, Antigo Secretariado Federal, Área 1, Garki, Abuja, Nigéria',
   },
   email: 'africachinachairmenforum@gmail.com',
   phone: '+234 916 016 6906',
@@ -60,18 +123,30 @@ export const SITE_INFO = {
   slogan: {
     en: 'Connecting Governments · Empowering Business · Creating Shared Prosperity',
     zh: '链接政府 · 赋能企业 · 共创繁荣',
+    fr: 'Connecter les Gouvernements · Autonomiser les Entreprises · Créer une Prospérité Partagée',
+    ar: 'ربط الحكومات · تمكين الأعمال · صناعة الازدهار المشترك',
+    pt: 'Conectando Governos · Fortalecendo Empresas · Criando Prosperidade Compartilhada',
   },
   about: {
     en: 'The Africa China Chairmen of Business Forum (ACCBCF) is an international business cooperation platform headquartered in Abuja, Nigeria — serving West Africa, covering the African continent, connecting China, and engaging with the global business community. Established on 30 March 2026 in Abuja, ACCBCF represents a new milestone in institutionalized, professional, and international China–Africa business cooperation.',
     zh: '非中企业领袖论坛（ACCBCF）是一个总部位于尼日利亚阿布贾的国际商业合作平台，立足西非、辐射全非、对接中国、链接全球商界。论坛于2026年3月30日在尼日利亚联邦首都区阿布贾正式成立，标志着中非商业合作迈向制度化、专业化与国际化的全新里程碑。',
+    fr: 'L’Africa China Chairmen of Business Forum (ACCBCF) est une plateforme internationale de coopération commerciale dont le siège est situé à Abuja, au Nigeria — servant l’Afrique de l’Ouest, couvrant le continent africain, connectant la Chine et s’engageant auprès de la communauté des affaires mondiale. Établi le 30 mars 2026 à Abuja, l’ACCBCF représente un nouveau jalon dans la coopération commerciale sino-africaine institutionnalisée.',
+    ar: 'منتدى رؤساء مجالس إدارات الأعمال الإفريقية الصينية (ACCBCF) هو منصة دولية للتعاون التجاري ومقرها في أبوجا، نيجيريا — تخدم غرب إفريقيا، وتغطي القارة الإفريقية، وتربط الصين، وتتفاعل مع مجتمع الأعمال العالمي. تأسس المنتدى في 30 مارس 2026 في أبوجا ليمثل مرحلة جديدة في مأسسة التعاون التجاري بين إفريقيا والصين.',
+    pt: 'O Africa China Chairmen of Business Forum (ACCBCF) é uma plataforma internacional de cooperação empresarial sediada em Abuja, Nigéria — servindo a África Ocidental, cobrindo o continente africano, conectando a China e engajando-se com o ambiente empresarial global. Estabelecido em 30 de março de 2026 em Abuja, o ACCBCF representa um novo marco na cooperação empresarial institucionalizada.',
   },
   vision: {
     en: 'To become a leading Africa–China business cooperation platform connecting governments, business communities, financial institutions, and international organizations — with global influence, credibility, and strong project implementation capability.',
     zh: '成为连接政府、商界、金融机构和国际组织的领先非中商业合作平台，具备全球影响力、崇高信誉与强大的项目落地实施能力。',
+    fr: 'Devenir une plateforme de coopération commerciale de premier plan reliant gouvernements, entreprises, institutions financières et organisations internationales avec une solide capacité de mise en œuvre de projets.',
+    ar: 'أن نكون منصة رائدة للتعاون التجاري بين إفريقيا والصين تربط الحكومات ومجتمعات الأعمال والمؤسسات المالية والمنظمات الدولية مع تأثير عالمي ومصداقية عالية وقدرة تنفيذية فائقة.',
+    pt: 'Tornar-se uma plataforma líder de cooperação empresarial África–China conectando governos, setor privado, instituições financeiras e organizações internacionais com credibilidade e capacidade de execução.',
   },
   mission: {
     en: 'To promote practical cooperation between Africa and China in policy dialogue, trade and investment, industrial cooperation, innovation, financial connectivity, cultural exchange, and sustainable development — contributing to a closer China–Africa community with a shared future.',
     zh: '推动非中在政策对话、经贸投资、产业合作、科技创新、金融互联、人文交流及可持续发展等领域的务实合作，助力构建更加紧密的中非命运共同体。',
+    fr: 'Promouvoir une coopération concrète entre l’Afrique et la Chine dans le dialogue politique, le commerce et l’investissement, l’industrie, l’innovation, la connectivité financière et le développement durable.',
+    ar: 'تعزيز التعاون العملي بين إفريقيا والصين في الحوار السياسي، التجارة والاستثمار، التعاون الصناعي، الابتكار، والترابط المالي والتنمية المستدامة.',
+    pt: 'Promover cooperação prática entre África e China no diálogo de políticas, comércio e investimentos, indústria, inovação e desenvolvimento sustentável.',
   },
   guidingPrinciples: [
     { en: 'Government Guidance', zh: '政府引导' },
@@ -130,7 +205,9 @@ export const SITE_INFO = {
   },
 };
 
-export const STRATEGIC_MODELS = [
+export const SITE_INFO = localized(RAW_SITE_INFO);
+
+const RAW_STRATEGIC_MODELS = [
   {
     code: 'G2G',
     title: { en: 'Government to Government', zh: '政府对政府' },
@@ -185,7 +262,9 @@ export const STRATEGIC_MODELS = [
   },
 ];
 
-export const PLATFORM_ADVANTAGES = [
+export const STRATEGIC_MODELS = localized(RAW_STRATEGIC_MODELS);
+
+const RAW_PLATFORM_ADVANTAGES = [
   {
     id: 'gov-conn',
     title: { en: 'Government Connectivity', zh: '政府战略对接' },
@@ -254,7 +333,9 @@ export const PLATFORM_ADVANTAGES = [
   },
 ];
 
-export const CORE_SERVICES: ServiceItem[] = [
+export const PLATFORM_ADVANTAGES = localized(RAW_PLATFORM_ADVANTAGES);
+
+const RAW_CORE_SERVICES = [
   {
     id: 'gov-coop',
     slug: 'government-cooperation',
@@ -341,7 +422,9 @@ export const CORE_SERVICES: ServiceItem[] = [
   },
 ];
 
-export const PRIORITY_SECTORS: SectorItem[] = [
+export const CORE_SERVICES: ServiceItem[] = localized(RAW_CORE_SERVICES) as unknown as ServiceItem[];
+
+const RAW_PRIORITY_SECTORS = [
   {
     id: 'agri',
     slug: 'agriculture',
@@ -512,7 +595,9 @@ export const PRIORITY_SECTORS: SectorItem[] = [
   },
 ];
 
-export const GOVERNANCE_TIERS: GovernanceTier[] = [
+export const PRIORITY_SECTORS: SectorItem[] = localized(RAW_PRIORITY_SECTORS) as unknown as SectorItem[];
+
+const RAW_GOVERNANCE_TIERS = [
   {
     id: 'board',
     name: { en: 'Board of Directors', zh: '董事会' },
@@ -615,7 +700,9 @@ export const GOVERNANCE_TIERS: GovernanceTier[] = [
   },
 ];
 
-export const SAMPLE_NEWS = [
+export const GOVERNANCE_TIERS: GovernanceTier[] = localized(RAW_GOVERNANCE_TIERS) as unknown as GovernanceTier[];
+
+const RAW_SAMPLE_NEWS = [
   {
     id: 'inauguration-abuja-2026',
     slug: 'inauguration-of-accbcf-in-abuja',
@@ -680,3 +767,6 @@ export const SAMPLE_NEWS = [
     },
   },
 ];
+
+export const SAMPLE_NEWS = localized(RAW_SAMPLE_NEWS);
+

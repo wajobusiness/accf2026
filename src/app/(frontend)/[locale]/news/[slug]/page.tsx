@@ -7,11 +7,37 @@ import { Calendar, Clock, ArrowLeft, Shield, User } from 'lucide-react';
 import { SAMPLE_NEWS } from '@/lib/content';
 import type { Locale } from '@/lib/content';
 
+const BACK_LABELS: Record<Locale, string> = {
+  en: 'Back to All Dispatches',
+  zh: '返回全部要闻',
+  fr: 'Retour à toutes les dépêches',
+  ar: 'العودة إلى جميع البيانات',
+  pt: 'Voltar a todas as notícias',
+};
+
+const CERT_TITLES: Record<Locale, string> = {
+  en: 'Official Secretariat Diplomatic Dispatch',
+  zh: '官方涉外经贸通讯认证',
+  fr: 'Dépêche diplomatique officielle du secrétariat',
+  ar: 'بيان دبلوماسي رسمي من الأمانة العامة',
+  pt: 'Despacho diplomático oficial da secretaria',
+};
+
+const CERT_DESCS: Record<Locale, string> = {
+  en: 'Transmitted by the ACCBCF Secretariat Trade & Investment Department and International Media Center at the Federal Ministry of Industry, Trade and Investment, Abuja, Nigeria.',
+  zh: '本动态由非中企业领袖论坛阿布贾常设秘书处经贸投资部与国际传媒中心联合发布，拥有唯一官方解释权。',
+  fr: 'Transmis par le Département du Commerce et des Investissements du Secrétariat de l’ACCBCF et le Centre International des Médias au Ministère Fédéral de l’Industrie, du Commerce et des Investissements, Abuja, Nigeria.',
+  ar: 'صادر عن قسم التجارة والاستثمار بالأمانة العامة لمنتدى ACCBCF والمركز الإعلامي الدولي في وزارة الصناعة والتجارة والاستثمار الفيدرالية، أبوجا، نيجيريا.',
+  pt: 'Transmitido pelo Departamento de Comércio e Investimentos da Secretaria da ACCBCF e Centro Internacional de Mídia no Ministério Federal de Indústria, Comércio e Investimentos, Abuja, Nigéria.',
+};
+
 export function generateStaticParams() {
+  const locales: Locale[] = ['en', 'zh', 'fr', 'ar', 'pt'];
   const params: { locale: string; slug: string }[] = [];
   for (const post of SAMPLE_NEWS) {
-    params.push({ locale: 'en', slug: post.slug });
-    params.push({ locale: 'zh', slug: post.slug });
+    for (const locale of locales) {
+      params.push({ locale, slug: post.slug });
+    }
   }
   return params;
 }
@@ -22,7 +48,8 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale: rawLocale, slug } = await params;
-  const locale: Locale = rawLocale === 'zh' ? 'zh' : 'en';
+  const validLocales: Locale[] = ['en', 'zh', 'fr', 'ar', 'pt'];
+  const locale: Locale = validLocales.includes(rawLocale as Locale) ? (rawLocale as Locale) : 'en';
   const post = SAMPLE_NEWS.find((p) => p.slug === slug);
   if (!post) return { title: 'Dispatch Not Found' };
 
@@ -43,8 +70,8 @@ export default async function SingleNewsPage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale: rawLocale, slug } = await params;
-  const locale: Locale = rawLocale === 'zh' ? 'zh' : 'en';
-  const isZh = locale === 'zh';
+  const validLocales: Locale[] = ['en', 'zh', 'fr', 'ar', 'pt'];
+  const locale: Locale = validLocales.includes(rawLocale as Locale) ? (rawLocale as Locale) : 'en';
   const post = SAMPLE_NEWS.find((p) => p.slug === slug);
 
   if (!post) notFound();
@@ -60,7 +87,7 @@ export default async function SingleNewsPage({
             className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-accbcf-gold hover:underline"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>{isZh ? '返回全部要闻' : 'Back to All Dispatches'}</span>
+            <span>{BACK_LABELS[locale]}</span>
           </Link>
 
           <div className="space-y-4">
@@ -110,12 +137,10 @@ export default async function SingleNewsPage({
           <Shield className="w-6 h-6 text-accbcf-gold flex-shrink-0 mt-1" />
           <div className="text-xs text-accbcf-gray space-y-1">
             <p className="font-bold text-accbcf-charcoal">
-              {isZh ? '官方涉外经贸通讯认证' : 'Official Secretariat Diplomatic Dispatch'}
+              {CERT_TITLES[locale]}
             </p>
             <p>
-              {isZh
-                ? '本动态由非中企业领袖论坛阿布贾常设秘书处经贸投资部与国际传媒中心联合发布，拥有唯一官方解释权。'
-                : 'Transmitted by the ACCBCF Secretariat Trade & Investment Department and International Media Center at the Federal Ministry of Industry, Trade and Investment, Abuja, Nigeria.'}
+              {CERT_DESCS[locale]}
             </p>
           </div>
         </div>

@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Calendar, Clock, ArrowRight, Shield } from 'lucide-react';
-import { SAMPLE_NEWS } from '@/lib/content';
+import { SAMPLE_NEWS, normalizeLocale } from '@/lib/content';
 import { UI_STRINGS } from '@/lib/translations';
 import type { Locale } from '@/lib/content';
 
@@ -13,9 +13,16 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale: rawLocale } = await params;
-  const locale: Locale = rawLocale === 'zh' ? 'zh' : 'en';
+  const locale: Locale = normalizeLocale(rawLocale);
+  const titles: Record<Locale, string> = {
+    en: 'News & Insights',
+    zh: '新闻与洞察',
+    fr: 'Actualités et perspectives',
+    ar: 'الأخبار والرؤى الاستراتيجية',
+    pt: 'Notícias e Perspectivas',
+  };
   return {
-    title: locale === 'zh' ? '新闻与洞察' : 'News & Insights',
+    title: titles[locale] || titles.en,
     description: 'Official announcements, bilateral summit reports, and China-Africa industrial intelligence from ACCBCF.',
   };
 }
@@ -26,7 +33,7 @@ export default async function NewsPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale: rawLocale } = await params;
-  const locale: Locale = rawLocale === 'zh' ? 'zh' : 'en';
+  const locale: Locale = normalizeLocale(rawLocale);
   const isZh = locale === 'zh';
   const t = UI_STRINGS[locale].news;
 

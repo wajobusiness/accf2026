@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Shield } from 'lucide-react';
 import { OrgChart } from '@/components/governance/OrgChart';
 import type { Locale } from '@/lib/content';
+import { normalizeLocale } from '@/lib/content';
 
 export async function generateMetadata({
   params,
@@ -10,9 +11,16 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale: rawLocale } = await params;
-  const locale: Locale = rawLocale === 'zh' ? 'zh' : 'en';
+  const locale: Locale = normalizeLocale(rawLocale);
+  const titles: Record<Locale, string> = {
+    en: 'Governance & Leadership',
+    zh: '治理架构',
+    fr: 'Gouvernance et direction',
+    ar: 'الحوكمة والقيادة',
+    pt: 'Governança e Liderança',
+  };
   return {
-    title: locale === 'zh' ? '治理架构' : 'Governance & Leadership',
+    title: titles[locale] || titles.en,
     description: 'ACCBCF institutional governance structure, Board of Directors, and committees.',
   };
 }
@@ -23,7 +31,7 @@ export default async function GovernancePage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale: rawLocale } = await params;
-  const locale: Locale = rawLocale === 'zh' ? 'zh' : 'en';
+  const locale: Locale = normalizeLocale(rawLocale);
   const isZh = locale === 'zh';
 
   return (
