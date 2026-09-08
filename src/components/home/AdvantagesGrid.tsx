@@ -85,11 +85,11 @@ export const AdvantagesGrid: React.FC<AdvantagesGridProps> = ({ locale }) => {
   };
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white border-t border-gray-100">
+    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#EEF2F6] via-[#F4F7FA] to-[#EEF2F6] border-y border-slate-200/80">
       <div className="max-w-7xl mx-auto space-y-16">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accbcf-blue/10 border border-accbcf-blue/20 text-xs font-bold uppercase tracking-wider text-accbcf-blue">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-accbcf-blue/10 border border-accbcf-blue/20 text-xs font-bold uppercase tracking-wider text-accbcf-blue">
             <span>{t.badge}</span>
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-accbcf-charcoal font-bold">
@@ -109,13 +109,13 @@ export const AdvantagesGrid: React.FC<AdvantagesGridProps> = ({ locale }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.45, delay: idx * 0.1 }}
-              whileHover={{ scale: 1.05 }}
-              className="p-8 rounded-2xl bg-accbcf-light border border-gray-200/80 hover:border-accbcf-gold/50 shadow-sm hover:shadow-lg transition-all duration-150 group flex flex-col justify-between"
+              whileHover={{ scale: 1.03 }}
+              className="p-8 rounded-2xl bg-white border border-gray-200/90 hover:border-accbcf-gold shadow-sm hover:shadow-xl transition-all duration-200 group flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-6">
                   {/* Icon shifts from gold to orange on hover */}
-                  <div className="w-14 h-14 rounded-2xl bg-white group-hover:bg-accbcf-orange/10 flex items-center justify-center text-accbcf-gold group-hover:text-accbcf-orange shadow-sm transition-colors duration-150">
+                  <div className="w-14 h-14 rounded-2xl bg-accbcf-gold/10 group-hover:bg-accbcf-orange/10 flex items-center justify-center text-accbcf-gold-dark group-hover:text-accbcf-orange shadow-sm transition-colors duration-150 border border-accbcf-gold/20">
                     {renderIcon(adv.icon)}
                   </div>
                   {/* Metric Display */}

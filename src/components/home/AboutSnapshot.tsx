@@ -16,7 +16,7 @@ export const AboutSnapshot: React.FC<AboutSnapshotProps> = ({ locale }) => {
   const t = UI_STRINGS[locale].aboutSnapshot;
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-accbcf-light">
+    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[#F4F6F9] border-b border-gray-200/80">
       <div className="max-w-7xl mx-auto space-y-16">
         {/* Header Strip */}
         <motion.div

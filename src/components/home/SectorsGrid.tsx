@@ -62,7 +62,7 @@ export const SectorsGrid: React.FC<SectorsGridProps> = ({ locale }) => {
   };
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-accbcf-light">
+    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100">
       <div className="max-w-7xl mx-auto space-y-16">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -102,12 +102,12 @@ export const SectorsGrid: React.FC<SectorsGridProps> = ({ locale }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: (idx % 4) * 0.08 }}
-              whileHover={{ scale: 1.05 }}
-              className="bg-white p-6 rounded-xl border border-gray-200/80 shadow-sm hover:shadow-lg transition-all duration-150 group cursor-pointer flex flex-col justify-between"
+              whileHover={{ scale: 1.03 }}
+              className="bg-[#F8FAFC] p-6 rounded-2xl border border-gray-200/80 shadow-sm hover:bg-white hover:border-accbcf-gold hover:shadow-xl transition-all duration-200 group cursor-pointer flex flex-col justify-between"
             >
               <div>
                 {/* Icon shifts from gold to orange on hover */}
-                <div className="w-12 h-12 rounded-xl bg-accbcf-light group-hover:bg-accbcf-orange/10 flex items-center justify-center text-accbcf-gold group-hover:text-accbcf-orange mb-4 transition-colors duration-150">
+                <div className="w-12 h-12 rounded-xl bg-white group-hover:bg-accbcf-orange/10 flex items-center justify-center text-accbcf-gold group-hover:text-accbcf-orange mb-4 transition-colors duration-150 shadow-sm border border-gray-100">
                   {renderIcon(sector.icon)}
                 </div>
                 <h3 className="font-serif text-base font-bold text-accbcf-charcoal group-hover:text-accbcf-blue transition-colors duration-150 mb-2">

@@ -33,20 +33,24 @@ export const StrategicPositioning: React.FC<StrategicPositioningProps> = ({ loca
   const activeModel = STRATEGIC_MODELS.find((m) => m.code === activeCode) || STRATEGIC_MODELS[0];
 
   return (
-    <section id="strategic-positioning" className="py-24 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto space-y-16">
+    <section id="strategic-positioning" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-accbcf-blue-deep via-[#001D3D] to-accbcf-blue-deep text-white border-y-2 border-accbcf-gold/30 relative overflow-hidden shadow-2xl">
+      {/* Ambient background glow */}
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-accbcf-gold/5 rounded-full filter blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-accbcf-blue/20 rounded-full filter blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto space-y-16 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accbcf-blue/10 border border-accbcf-blue/20 text-xs font-bold uppercase tracking-wider text-accbcf-blue">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-accbcf-gold/15 border border-accbcf-gold/40 text-xs font-bold uppercase tracking-wider text-accbcf-gold">
             <span>{t.badge}</span>
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-accbcf-charcoal font-bold">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-white font-bold">
             {t.title}
           </h2>
-          <p className="text-accbcf-gray text-base sm:text-lg leading-relaxed">
+          <p className="text-white/80 text-base sm:text-lg leading-relaxed">
             {t.subtitle}
           </p>
-          <p className="text-xs text-accbcf-blue font-semibold tracking-wide">
+          <p className="text-xs text-accbcf-gold font-medium tracking-wide">
             {t.hoverPrompt}
           </p>
         </div>
@@ -62,7 +66,7 @@ export const StrategicPositioning: React.FC<StrategicPositioningProps> = ({ loca
                 y1="20"
                 x2="700"
                 y2="20"
-                stroke="#E5E7EB"
+                stroke="rgba(255, 255, 255, 0.15)"
                 strokeWidth="4"
                 strokeDasharray="6 6"
               />
@@ -72,7 +76,7 @@ export const StrategicPositioning: React.FC<StrategicPositioningProps> = ({ loca
                 y1="20"
                 x2="700"
                 y2="20"
-                stroke="#0064B4"
+                stroke="#F0B428"
                 strokeWidth="4"
                 initial={{ pathLength: 0 }}
                 whileInView={{ pathLength: 1 }}
@@ -97,15 +101,15 @@ export const StrategicPositioning: React.FC<StrategicPositioningProps> = ({ loca
                   onMouseEnter={() => setActiveCode(model.code)}
                   className={`cursor-pointer rounded-2xl p-6 text-center transition-all duration-300 relative border ${
                     isSelected
-                      ? 'bg-accbcf-blue text-white shadow-xl scale-105 border-accbcf-gold ring-2 ring-accbcf-gold/50'
-                      : 'bg-accbcf-light text-accbcf-charcoal hover:bg-white hover:shadow-md border-gray-200'
+                      ? 'bg-gradient-to-br from-accbcf-blue to-accbcf-blue-dark text-white shadow-2xl scale-105 border-accbcf-gold ring-2 ring-accbcf-gold'
+                      : 'bg-white/10 text-white hover:bg-white/15 hover:border-accbcf-gold/50 border-white/15 backdrop-blur-md'
                   }`}
                 >
                   <div
                     className={`w-14 h-14 mx-auto rounded-full flex items-center justify-center mb-4 transition-colors ${
                       isSelected
-                        ? 'bg-accbcf-gold text-accbcf-charcoal shadow-inner font-bold'
-                        : 'bg-white text-accbcf-blue shadow-sm'
+                        ? 'bg-accbcf-gold text-accbcf-charcoal shadow-lg font-bold'
+                        : 'bg-white/15 text-accbcf-gold shadow-sm'
                     }`}
                   >
                     {getIcon(model.code)}
@@ -113,12 +117,12 @@ export const StrategicPositioning: React.FC<StrategicPositioningProps> = ({ loca
                   <div className="space-y-1">
                     <span
                       className={`text-xs font-mono font-bold tracking-wider px-2 py-0.5 rounded-full ${
-                        isSelected ? 'bg-white/20 text-white' : 'bg-accbcf-blue/10 text-accbcf-blue'
+                        isSelected ? 'bg-white/20 text-white' : 'bg-white/10 text-accbcf-gold'
                       }`}
                     >
                       {model.code}
                     </span>
-                    <h3 className="font-serif font-bold text-sm sm:text-base mt-2">
+                    <h3 className="font-serif font-bold text-sm sm:text-base mt-2 text-white">
                       {model.title[locale]}
                     </h3>
                   </div>
@@ -136,22 +140,22 @@ export const StrategicPositioning: React.FC<StrategicPositioningProps> = ({ loca
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.3 }}
-            className="max-w-4xl mx-auto rounded-2xl bg-gradient-to-r from-accbcf-blue/5 via-accbcf-light to-accbcf-blue/5 p-8 border border-accbcf-gold/40 shadow-sm"
+            className="max-w-4xl mx-auto rounded-2xl bg-white/10 backdrop-blur-md p-8 sm:p-10 border border-accbcf-gold/50 shadow-2xl"
           >
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
-                  <span className="text-xl font-bold font-mono px-3 py-1 bg-accbcf-blue text-white rounded-lg">
+                  <span className="text-xl font-bold font-mono px-3.5 py-1.5 bg-accbcf-gold text-accbcf-charcoal rounded-lg shadow-md">
                     {activeModel.code}
                   </span>
-                  <h3 className="font-serif text-2xl font-bold text-accbcf-charcoal">
+                  <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white">
                     {activeModel.title[locale]}
                   </h3>
                 </div>
-                <p className="text-accbcf-charcoal text-sm sm:text-base leading-relaxed font-medium">
+                <p className="text-accbcf-gold text-base sm:text-lg leading-relaxed font-semibold">
                   {activeModel.shortDesc[locale]}
                 </p>
-                <p className="text-accbcf-gray text-xs sm:text-sm leading-relaxed">
+                <p className="text-white/85 text-sm sm:text-base leading-relaxed">
                   {activeModel.detail[locale]}
                 </p>
               </div>

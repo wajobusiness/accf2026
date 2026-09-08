@@ -17,7 +17,7 @@ export const LatestNews: React.FC<LatestNewsProps> = ({ locale }) => {
   const t = UI_STRINGS[locale].news;
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-accbcf-light">
+    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100">
       <div className="max-w-7xl mx-auto space-y-16">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -57,7 +57,7 @@ export const LatestNews: React.FC<LatestNewsProps> = ({ locale }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.45, delay: idx * 0.1 }}
-              className="bg-white rounded-2xl overflow-hidden border border-gray-200/80 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between group"
+              className="bg-[#F8FAFC] rounded-2xl overflow-hidden border border-gray-200/90 shadow-sm hover:bg-white hover:border-accbcf-blue/40 hover:shadow-xl transition-all duration-200 flex flex-col justify-between group"
             >
               <div>
                 {/* Featured Image */}
