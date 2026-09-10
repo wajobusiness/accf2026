@@ -44,7 +44,7 @@ export default async function ContactPage({
           </span>
           <h1 className="text-3xl sm:text-5xl font-bold">
             <span className="inline-block bg-accbcf-gold text-accbcf-charcoal px-5 py-1.5 sm:px-7 sm:py-2 font-serif font-bold shadow-md">
-              {isZh ? '联系非中企业领袖论坛' : 'Contact ACCBCF Secretariat'}
+              {isZh ? '联系非洲中国会长论坛' : 'Contact ACCBCF Secretariat'}
             </span>
           </h1>
           <p className="text-white/90 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">

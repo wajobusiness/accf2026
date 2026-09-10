@@ -132,7 +132,7 @@ export const Hero: React.FC<HeroProps> = ({ locale }) => {
   }, [nextSlide, prevSlide]);
 
   const words = isZh
-    ? ['非中', '企业', '领袖', '论坛']
+    ? ['非洲', '中国', '会长', '论坛']
     : ['Africa', 'China', 'Chairmen', 'of', 'Business', 'Forum'];
 
   return (

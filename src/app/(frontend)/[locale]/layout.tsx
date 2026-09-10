@@ -18,7 +18,7 @@ export function generateStaticParams() {
 
 const TITLES: Record<Locale, string> = {
   en: 'Africa China Chairmen of Business Forum (ACCBCF) · Abuja Headquarters',
-  zh: '非中企业领袖论坛 (ACCBCF) · 链接政府 · 赋能企业 · 共创繁荣',
+  zh: '非洲中国会长论坛 (ACCBCF) · 链接政府 · 赋能企业 · 共创繁荣',
   fr: 'Forum des Présidents d’Entreprises Afrique–Chine (ACCBCF) · Siège d’Abuja',
   ar: 'منتدى رؤساء مجالس إدارات الأعمال الإفريقية الصينية (ACCBCF) · المقر الرئيسي في أبوجا',
   pt: 'Fórum de Presidentes de Negócios África–China (ACCBCF) · Sede de Abuja',
@@ -52,7 +52,7 @@ export async function generateMetadata({
     keywords: [
       'ACCBCF',
       'Africa China Chairmen of Business Forum',
-      '非中企业领袖论坛',
+      '非洲中国会长论坛',
       'Forum des Présidents d’Entreprises Afrique-Chine',
       'Abuja',
       'Nigeria',

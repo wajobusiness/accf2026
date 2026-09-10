@@ -25,7 +25,7 @@ const CERT_TITLES: Record<Locale, string> = {
 
 const CERT_DESCS: Record<Locale, string> = {
   en: 'Transmitted by the ACCBCF Secretariat Trade & Investment Department and International Media Center at the Federal Ministry of Industry, Trade and Investment, Abuja, Nigeria.',
-  zh: '本动态由非中企业领袖论坛阿布贾常设秘书处经贸投资部与国际传媒中心联合发布，拥有唯一官方解释权。',
+  zh: '本动态由非洲中国会长论坛阿布贾常设秘书处经贸投资部与国际传媒中心联合发布，拥有唯一官方解释权。',
   fr: 'Transmis par le Département du Commerce et des Investissements du Secrétariat de l’ACCBCF et le Centre International des Médias au Ministère Fédéral de l’Industrie, du Commerce et des Investissements, Abuja, Nigeria.',
   ar: 'صادر عن قسم التجارة والاستثمار بالأمانة العامة لمنتدى ACCBCF والمركز الإعلامي الدولي في وزارة الصناعة والتجارة والاستثمار الفيدرالية، أبوجا، نيجيريا.',
   pt: 'Transmitido pelo Departamento de Comércio e Investimentos da Secretaria da ACCBCF e Centro Internacional de Mídia no Ministério Federal de Indústria, Comércio e Investimentos, Abuja, Nigéria.',

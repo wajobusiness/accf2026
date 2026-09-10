@@ -110,7 +110,7 @@ const UI_TEXT = {
     investmentOpportunities: '重点投融资与产业配对合作机遇',
     readyToPartner: '准备在该产业推进中非重大项目落地？',
     readySubtitle:
-      '诚邀对接非中企业领袖论坛阿布贾常设秘书处经贸投资部，就特许经营权申请、工业园入驻、战略合资及产能对接开展务实磋商。',
+      '诚邀对接非洲中国会长论坛阿布贾常设秘书处经贸投资部，就特许经营权申请、工业园入驻、战略合资及产能对接开展务实磋商。',
     inquireBtn: '提交该产业合作需求',
     whatsappDesk: '秘书处官方微信/WhatsApp专线',
     otherSectors: '浏览其他重点行动产业',

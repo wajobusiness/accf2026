@@ -147,7 +147,7 @@ function localized<T>(data: T): Localized<T> {
 const RAW_SITE_INFO = {
   name: {
     en: 'Africa China Chairmen of Business Forum',
-    zh: '非中企业领袖论坛',
+    zh: '非洲中国会长论坛',
     fr: 'Forum des Présidents d’Entreprises Afrique–Chine',
     ar: 'منتدى رؤساء مجالس إدارات الأعمال الإفريقية الصينية',
     pt: 'Fórum de Presidentes de Negócios África–China',
@@ -193,7 +193,7 @@ const RAW_SITE_INFO = {
   },
   about: {
     en: 'The Africa China Chairmen of Business Forum (ACCBCF) is an international business cooperation platform headquartered in Abuja, Nigeria — serving West Africa, covering the African continent, connecting China, and engaging with the global business community. Established on 30 March 2026 in Abuja, ACCBCF represents a new milestone in institutionalized, professional, and international China–Africa business cooperation.',
-    zh: '非中企业领袖论坛（ACCBCF）是一个总部位于尼日利亚阿布贾的国际商业合作平台，立足西非、辐射全非、对接中国、链接全球商界。论坛于2026年3月30日在尼日利亚联邦首都区阿布贾正式成立，标志着中非商业合作迈向制度化、专业化与国际化的全新里程碑。',
+    zh: '非洲中国会长论坛（ACCBCF）是一个总部位于尼日利亚阿布贾的国际商业合作平台，立足西非、辐射全非、对接中国、链接全球商界。论坛于2026年3月30日在尼日利亚联邦首都区阿布贾正式成立，标志着中非商业合作迈向制度化、专业化与国际化的全新里程碑。',
     fr: 'L’Africa China Chairmen of Business Forum (ACCBCF) est une plateforme internationale de coopération commerciale dont le siège est situé à Abuja, au Nigeria — servant l’Afrique de l’Ouest, couvrant le continent africain, connectant la Chine et s’engageant auprès de la communauté des affaires mondiale. Établi le 30 mars 2026 à Abuja, l’ACCBCF représente un nouveau jalon dans la coopération commerciale sino-africaine institutionnalisée.',
     ar: 'منتدى رؤساء مجالس إدارات الأعمال الإفريقية الصينية (ACCBCF) هو منصة دولية للتعاون التجاري ومقرها في أبوجا، نيجيريا — تخدم غرب إفريقيا، وتغطي القارة الإفريقية، وتربط الصين، وتتفاعل مع مجتمع الأعمال العالمي. تأسس المنتدى في 30 مارس 2026 في أبوجا ليمثل مرحلة جديدة في مأسسة التعاون التجاري بين إفريقيا والصين.',
     pt: 'O Africa China Chairmen of Business Forum (ACCBCF) é uma plataforma internacional de cooperação empresarial sediada em Abuja, Nigéria — servindo a África Ocidental, cobrindo o continente africano, conectando a China e engajando-se com o ambiente empresarial global. Estabelecido em 30 de março de 2026 em Abuja, o ACCBCF representa um novo marco na cooperação empresarial institucionalizada.',
@@ -528,7 +528,7 @@ const RAW_PRIORITY_SECTORS = [
     },
     actionCommittee: {
       en: 'ACCBCF Agriculture & Food Security Committee',
-      zh: '非中企业领袖论坛农业与粮食安全专业委员会',
+      zh: '非洲中国会长论坛农业与粮食安全专业委员会',
     },
   },
   {
@@ -570,7 +570,7 @@ const RAW_PRIORITY_SECTORS = [
     },
     actionCommittee: {
       en: 'ACCBCF Mining & Metallurgy Committee',
-      zh: '非中企业领袖论坛矿业与冶金重工专业委员会',
+      zh: '非洲中国会长论坛矿业与冶金重工专业委员会',
     },
   },
   {
@@ -612,7 +612,7 @@ const RAW_PRIORITY_SECTORS = [
     },
     actionCommittee: {
       en: 'ACCBCF Energy & Power Committee',
-      zh: '非中企业领袖论坛能源与电力基础设施专业委员会',
+      zh: '非洲中国会长论坛能源与电力基础设施专业委员会',
     },
   },
   {
@@ -654,7 +654,7 @@ const RAW_PRIORITY_SECTORS = [
     },
     actionCommittee: {
       en: 'ACCBCF Advanced Manufacturing Committee',
-      zh: '非中企业领袖论坛装备制造与工业产业专业委员会',
+      zh: '非洲中国会长论坛装备制造与工业产业专业委员会',
     },
   },
   {
@@ -695,7 +695,7 @@ const RAW_PRIORITY_SECTORS = [
       zh: '全面契合非盟《2063议程》旗舰工程：非洲一体化干线铁路网与非洲单一航空运输市场（SAATM）。' },
     actionCommittee: {
       en: 'ACCBCF Engineering & Infrastructure Committee',
-      zh: '非中企业领袖论坛工程建设与基建专业委员会',
+      zh: '非洲中国会长论坛工程建设与基建专业委员会',
     },
   },
   {
@@ -737,7 +737,7 @@ const RAW_PRIORITY_SECTORS = [
     },
     actionCommittee: {
       en: 'ACCBCF Medical & Healthcare Committee',
-      zh: '非中企业领袖论坛医药健康与生命科学专业委员会',
+      zh: '非洲中国会长论坛医药健康与生命科学专业委员会',
     },
   },
   {
@@ -779,7 +779,7 @@ const RAW_PRIORITY_SECTORS = [
     },
     actionCommittee: {
       en: 'ACCBCF Banking, Finance & Investment Committee',
-      zh: '非中企业领袖论坛金融投资与资本市场专业委员会',
+      zh: '非洲中国会长论坛金融投资与资本市场专业委员会',
     },
   },
   {
@@ -821,7 +821,7 @@ const RAW_PRIORITY_SECTORS = [
     },
     actionCommittee: {
       en: 'ACCBCF Digital Economy & Telecommunications Committee',
-      zh: '非中企业领袖论坛数字经济与前沿科技专业委员会',
+      zh: '非洲中国会长论坛数字经济与前沿科技专业委员会',
     },
   },
   {
@@ -863,7 +863,7 @@ const RAW_PRIORITY_SECTORS = [
     },
     actionCommittee: {
       en: 'ACCBCF Logistics & Supply Chain Committee',
-      zh: '非中企业领袖论坛现代物流与智能供应链专业委员会',
+      zh: '非洲中国会长论坛现代物流与智能供应链专业委员会',
     },
   },
   {
@@ -905,7 +905,7 @@ const RAW_PRIORITY_SECTORS = [
     },
     actionCommittee: {
       en: 'ACCBCF Industrial Parks & Free Trade Zones Committee',
-      zh: '非中企业领袖论坛产业园区与自贸特区专业委员会',
+      zh: '非洲中国会长论坛产业园区与自贸特区专业委员会',
     },
   },
   {
@@ -947,7 +947,7 @@ const RAW_PRIORITY_SECTORS = [
     },
     actionCommittee: {
       en: 'ACCBCF Green Economy & Climate Action Committee',
-      zh: '非中企业领袖论坛绿色低碳与气候应对专业委员会',
+      zh: '非洲中国会长论坛绿色低碳与气候应对专业委员会',
     },
   },
   {
@@ -989,7 +989,7 @@ const RAW_PRIORITY_SECTORS = [
     },
     actionCommittee: {
       en: 'ACCBCF Smart Cities & Urban Modernization Committee',
-      zh: '非中企业领袖论坛智慧城市与城镇化建设专业委员会',
+      zh: '非洲中国会长论坛智慧城市与城镇化建设专业委员会',
     },
   },
 ];
@@ -1107,7 +1107,7 @@ const RAW_SAMPLE_NEWS = [
     slug: 'inauguration-of-accbcf-in-abuja',
     title: {
       en: 'Inauguration of Africa China Chairmen of Business Forum (ACCBCF) in Abuja Sets New Milestone in Bilateral Economic Cooperation',
-      zh: '非中企业领袖论坛（ACCBCF）在尼日利亚阿布贾正式成立 开启中非经贸合作崭新篇章',
+      zh: '非洲中国会长论坛（ACCBCF）在尼日利亚阿布贾正式成立 开启中非经贸合作崭新篇章',
     },
     category: { en: 'Institutional News', zh: '论坛动态' },
     date: '2026-03-30',
@@ -1116,11 +1116,11 @@ const RAW_SAMPLE_NEWS = [
     image: '/images/forum/fmiti-headquarters-handshake.jpg',
     excerpt: {
       en: 'On 30 March 2026, ministerial leaders, African business chairmen, and Chinese conglomerate representatives gathered at the Federal Secretariat in Abuja to formally inaugurate the Africa China Chairmen of Business Forum.',
-      zh: '2026年3月30日，来自非洲多国的主权部长、著名商业领袖与中资骨干企业负责人齐聚尼日利亚联邦首都区阿布贾联邦秘书处，共同见证非中企业领袖论坛正式启幕。',
+      zh: '2026年3月30日，来自非洲多国的主权部长、著名商业领袖与中资骨干企业负责人齐聚尼日利亚联邦首都区阿布贾联邦秘书处，共同见证非洲中国会长论坛正式启幕。',
     },
     content: {
       en: 'The Africa China Chairmen of Business Forum (ACCBCF) was formally established on 30 March 2026 in Abuja, the Federal Capital Territory of Nigeria. Headquartered within the Federal Ministry of Industry, Trade and Investment complex, the Forum serves as a strategic institutional bridge linking African and Chinese governments, enterprise leadership, and institutional capital.\n\nDuring the inaugural ceremony, leaders underscored the Forum guiding principles: Government Guidance, Chamber Collaboration, Enterprise Leadership, Market Orientation, and Win-Win Cooperation. The Forum will operationalize four strategic cooperation models: Government to Government (G2G), Government to Business (G2B), Business to Business (B2B), and Business to Capital (B2C).\n\nRepresentatives highlighted key priority sectors for immediate bilateral action, notably modern agro-processing, critical minerals value addition, and distributed renewable energy infrastructure. The newly established Secretariat reaffirmed its commitment to providing institutional-grade project facilitation, legal compliance safeguards, and cross-border financial matchmaking.',
-      zh: '2026年3月30日，非中企业领袖论坛（ACCBCF）在尼日利亚联邦首都区阿布贾宣告正式成立。论坛总部设立于阿布贾旧联邦秘书处联邦工业、贸易和投资部大院内，致力于成为连接非洲与中国各级政府、领军企业与金融资本的高能级制度化桥梁。\n\n成立大会上，与会领导和专家一致强调了论坛恪守的五项基本原则：“政府引导、商会协同、企业主体、市场运作、合作共赢”。论坛确立了以“政府对政府（G2G）、政府对企业（G2B）、企业对企业（B2B）、企业对资本（B2C）”为核心的四大战略合作架构。\n\n论坛将围绕农业与农产品加工、矿业与关键矿产深加工、可再生能源与电力基础设施等十二大核心领域全面发力。常设秘书处重申，将持续为广大会员与合作伙伴提供制度化项目落地保障、中非商事调解合规支持与全生命周期跨境金融服务。',
+      zh: '2026年3月30日，非洲中国会长论坛（ACCBCF）在尼日利亚联邦首都区阿布贾宣告正式成立。论坛总部设立于阿布贾旧联邦秘书处联邦工业、贸易和投资部大院内，致力于成为连接非洲与中国各级政府、领军企业与金融资本的高能级制度化桥梁。\n\n成立大会上，与会领导和专家一致强调了论坛恪守的五项基本原则：“政府引导、商会协同、企业主体、市场运作、合作共赢”。论坛确立了以“政府对政府（G2G）、政府对企业（G2B）、企业对企业（B2B）、企业对资本（B2C）”为核心的四大战略合作架构。\n\n论坛将围绕农业与农产品加工、矿业与关键矿产深加工、可再生能源与电力基础设施等十二大核心领域全面发力。常设秘书处重申，将持续为广大会员与合作伙伴提供制度化项目落地保障、中非商事调解合规支持与全生命周期跨境金融服务。',
     },
   },
   {

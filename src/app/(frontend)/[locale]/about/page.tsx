@@ -46,7 +46,7 @@ export default async function AboutPage({
           </span>
           <h1 className="text-3xl sm:text-5xl font-bold">
             <span className="inline-block bg-accbcf-gold text-accbcf-charcoal px-5 py-1.5 sm:px-7 sm:py-2 font-serif font-bold shadow-md">
-              {isZh ? '关于非中企业领袖论坛' : 'About ACCBCF'}
+              {isZh ? '关于非洲中国会长论坛' : 'About ACCBCF'}
             </span>
           </h1>
           <p className="text-white/90 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">

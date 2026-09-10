@@ -40,7 +40,7 @@ export const UI_STRINGS = {
     hero: {
       tag: 'Abuja Headquarters · West Africa & Global Hub',
       headline: 'Africa China Chairmen of Business Forum',
-      chineseTitle: '非中企业领袖论坛',
+      chineseTitle: '非洲中国会长论坛',
       slogan: 'Connecting Governments · Empowering Business · Creating Shared Prosperity',
       ctaPrimary: 'Partner With Us',
       ctaSecondary: 'Explore Strategic Models',
@@ -180,8 +180,8 @@ export const UI_STRINGS = {
     },
     hero: {
       tag: '阿布贾总部 · 辐射西非 · 链接全球',
-      headline: '非中企业领袖论坛',
-      chineseTitle: '非中企业领袖论坛',
+      headline: '非洲中国会长论坛',
+      chineseTitle: '非洲中国会长论坛',
       slogan: '链接政府 · 赋能企业 · 共创繁荣',
       ctaPrimary: '战略合作对接',
       ctaSecondary: '深入了解合作模式',
@@ -238,7 +238,7 @@ export const UI_STRINGS = {
       sectorsTitle: '重点产业',
       servicesTitle: '核心服务',
       contactTitle: '常设秘书处总部',
-      rights: '版权所有 · 非中企业领袖论坛（ACCBCF）',
+      rights: '版权所有 · 非洲中国会长论坛（ACCBCF）',
       confidentiality: '官方指定涉外政商合作专属平台。',
     },
     contactPage: {
@@ -319,7 +319,7 @@ export const UI_STRINGS = {
     hero: {
       tag: 'Siège à Abuja · Pôle Ouest-Africain & Mondial',
       headline: 'Forum des Présidents d’Entreprises Afrique–Chine',
-      chineseTitle: '非中企业领袖论坛',
+      chineseTitle: '非洲中国会长论坛',
       slogan: 'Connecter les Gouvernements · Autonomiser les Entreprises · Créer une Prospérité Partagée',
       ctaPrimary: 'Devenir Partenaire',
       ctaSecondary: 'Explorer les Modèles Stratégiques',
@@ -457,7 +457,7 @@ export const UI_STRINGS = {
     hero: {
       tag: 'المقر الرئيسي في أبوجا · المركز المحوري لغرب إفريقيا والعالم',
       headline: 'منتدى رؤساء مجالس إدارات الأعمال الإفريقية الصينية',
-      chineseTitle: '非中企业领袖论坛',
+      chineseTitle: '非洲中国会长论坛',
       slogan: 'ربط الحكومات · تمكين الأعمال · صناعة الازدهار المشترك',
       ctaPrimary: 'كن شريكاً معنا',
       ctaSecondary: 'استكشف النماذج الاستراتيجية',
@@ -595,7 +595,7 @@ export const UI_STRINGS = {
     hero: {
       tag: 'Sede em Abuja · Polo da África Ocidental & Global',
       headline: 'Fórum de Presidentes de Negócios África–China',
-      chineseTitle: '非中企业领袖论坛',
+      chineseTitle: '非洲中国会长论坛',
       slogan: 'Conectando Governos · Fortalecendo Empresas · Criando Prosperidade Compartilhada',
       ctaPrimary: 'Seja Nosso Parceiro',
       ctaSecondary: 'Explorar Modelos Estratégicos',

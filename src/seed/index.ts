@@ -340,7 +340,7 @@ export async function seedDatabase() {
         {
           title: {
             en: 'Inaugural General Assembly of the Africa China Chairmen of Business Forum',
-            zh: '非中企业领袖论坛（ACCBCF）全球成立大会',
+            zh: '非洲中国会长论坛（ACCBCF）全球成立大会',
           },
           date: new Date('2026-03-30T10:00:00Z').toISOString(),
           location: {
@@ -391,7 +391,7 @@ export async function seedDatabase() {
         {
           title: {
             en: '2026 Annual Africa China Chairmen Summit & Bilateral Trade Exposition',
-            zh: '2026非中企业领袖年会暨双边经贸博览会',
+            zh: '2026非洲中国会长年会暨双边经贸博览会',
           },
           date: new Date('2026-11-18T09:00:00Z').toISOString(),
           location: {

@@ -76,7 +76,7 @@ export default async function EventsPage({
           <div className="space-y-3">
             <h3 className="font-serif text-2xl font-bold text-accbcf-charcoal">
               {isZh
-                ? '非中企业领袖论坛（ACCBCF）全球成立大会'
+                ? '非洲中国会长论坛（ACCBCF）全球成立大会'
                 : 'Inaugural General Assembly of the Africa China Chairmen of Business Forum'}
             </h3>
             <p className="text-accbcf-gray text-sm leading-relaxed">
