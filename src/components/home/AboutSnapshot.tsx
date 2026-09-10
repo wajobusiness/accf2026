@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ArrowRight, Eye, Compass, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { SITE_INFO } from '@/lib/content';
@@ -45,13 +46,31 @@ export const AboutSnapshot: React.FC<AboutSnapshotProps> = ({ locale }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="p-8 rounded-2xl bg-white border border-gray-200/80 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group"
+            className="p-6 sm:p-8 rounded-2xl bg-white border border-gray-200/80 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group flex flex-col"
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-accbcf-blue/5 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform" />
-            <div className="w-12 h-12 rounded-xl bg-accbcf-blue/10 text-accbcf-blue flex items-center justify-center mb-6">
-              <Eye className="w-6 h-6 text-accbcf-blue" />
+            
+            {/* Vision Photographic Representation */}
+            <div className="relative w-full h-52 sm:h-64 rounded-xl overflow-hidden mb-6 border border-gray-100 shadow-xs">
+              <Image
+                src="/images/vision.jpg"
+                alt={t.visionTitle}
+                fill
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-accbcf-blue-deep/80 via-accbcf-blue-deep/20 to-transparent" />
+              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-accbcf-blue/90 text-white backdrop-blur-md border border-white/20 shadow-sm">
+                  <Eye className="w-3.5 h-3.5 text-accbcf-gold" />
+                  <span>{t.visionTitle}</span>
+                </span>
+                <span className="text-[11px] font-semibold text-white/90 backdrop-blur-md bg-black/40 px-2.5 py-0.5 rounded-full">
+                  {locale === 'zh' ? '全球经贸远景' : 'Global Perspective'}
+                </span>
+              </div>
             </div>
-            <h3 className="font-serif text-xl font-bold text-accbcf-charcoal mb-3">
+
+            <h3 className="font-serif text-xl sm:text-2xl font-bold text-accbcf-charcoal mb-3">
               {t.visionTitle}
             </h3>
             <p className="text-accbcf-gray text-sm leading-relaxed">
@@ -65,13 +84,31 @@ export const AboutSnapshot: React.FC<AboutSnapshotProps> = ({ locale }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="p-8 rounded-2xl bg-white border border-gray-200/80 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group"
+            className="p-6 sm:p-8 rounded-2xl bg-white border border-gray-200/80 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group flex flex-col"
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-accbcf-gold/10 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform" />
-            <div className="w-12 h-12 rounded-xl bg-accbcf-gold/20 text-accbcf-gold-dark flex items-center justify-center mb-6">
-              <Compass className="w-6 h-6 text-accbcf-gold-dark" />
+            
+            {/* Mission Photographic Representation */}
+            <div className="relative w-full h-52 sm:h-64 rounded-xl overflow-hidden mb-6 border border-gray-100 shadow-xs">
+              <Image
+                src="/images/mission.jpg"
+                alt={t.missionTitle}
+                fill
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-accbcf-blue-deep/80 via-accbcf-blue-deep/20 to-transparent" />
+              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-accbcf-gold text-accbcf-charcoal backdrop-blur-md border border-white/20 shadow-sm font-semibold">
+                  <Compass className="w-3.5 h-3.5 text-accbcf-blue-deep" />
+                  <span>{t.missionTitle}</span>
+                </span>
+                <span className="text-[11px] font-semibold text-white/90 backdrop-blur-md bg-black/40 px-2.5 py-0.5 rounded-full">
+                  {locale === 'zh' ? '中非双边协作' : 'Bilateral Action'}
+                </span>
+              </div>
             </div>
-            <h3 className="font-serif text-xl font-bold text-accbcf-charcoal mb-3">
+
+            <h3 className="font-serif text-xl sm:text-2xl font-bold text-accbcf-charcoal mb-3">
               {t.missionTitle}
             </h3>
             <p className="text-accbcf-gray text-sm leading-relaxed">

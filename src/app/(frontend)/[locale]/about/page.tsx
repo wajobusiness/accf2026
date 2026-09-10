@@ -91,9 +91,25 @@ export default async function AboutPage({
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="p-8 rounded-2xl bg-white border border-gray-200/90 shadow-sm space-y-4">
-            <div className="w-12 h-12 rounded-xl bg-accbcf-blue/10 flex items-center justify-center text-accbcf-blue">
-              <Eye className="w-6 h-6" />
+          {/* Vision */}
+          <div className="p-6 sm:p-8 rounded-2xl bg-white border border-gray-200/90 shadow-sm space-y-4 group flex flex-col">
+            <div className="relative w-full h-52 sm:h-64 rounded-xl overflow-hidden border border-gray-100 shadow-xs">
+              <Image
+                src="/images/vision.jpg"
+                alt={isZh ? '愿景' : 'Our Vision'}
+                fill
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-accbcf-blue-deep/80 via-accbcf-blue-deep/20 to-transparent" />
+              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-accbcf-blue/90 text-white backdrop-blur-md border border-white/20 shadow-sm">
+                  <Eye className="w-3.5 h-3.5 text-accbcf-gold" />
+                  <span>{isZh ? '战略愿景' : 'Our Vision'}</span>
+                </span>
+                <span className="text-[11px] font-semibold text-white/90 backdrop-blur-md bg-black/40 px-2.5 py-0.5 rounded-full">
+                  {isZh ? '全球经贸远景' : 'Global Perspective'}
+                </span>
+              </div>
             </div>
             <h3 className="font-serif text-2xl font-bold text-accbcf-charcoal">
               {isZh ? '愿景' : 'Our Vision'}
@@ -103,9 +119,25 @@ export default async function AboutPage({
             </p>
           </div>
 
-          <div className="p-8 rounded-2xl bg-white border border-gray-200/90 shadow-sm space-y-4">
-            <div className="w-12 h-12 rounded-xl bg-accbcf-gold/20 flex items-center justify-center text-accbcf-gold-dark">
-              <Compass className="w-6 h-6" />
+          {/* Mission */}
+          <div className="p-6 sm:p-8 rounded-2xl bg-white border border-gray-200/90 shadow-sm space-y-4 group flex flex-col">
+            <div className="relative w-full h-52 sm:h-64 rounded-xl overflow-hidden border border-gray-100 shadow-xs">
+              <Image
+                src="/images/mission.jpg"
+                alt={isZh ? '使命' : 'Our Mission'}
+                fill
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-accbcf-blue-deep/80 via-accbcf-blue-deep/20 to-transparent" />
+              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-accbcf-gold text-accbcf-charcoal backdrop-blur-md border border-white/20 shadow-sm font-semibold">
+                  <Compass className="w-3.5 h-3.5 text-accbcf-blue-deep" />
+                  <span>{isZh ? '制度化使命' : 'Our Mission'}</span>
+                </span>
+                <span className="text-[11px] font-semibold text-white/90 backdrop-blur-md bg-black/40 px-2.5 py-0.5 rounded-full">
+                  {isZh ? '中非双边协作' : 'Bilateral Action'}
+                </span>
+              </div>
             </div>
             <h3 className="font-serif text-2xl font-bold text-accbcf-charcoal">
               {isZh ? '使命' : 'Our Mission'}
