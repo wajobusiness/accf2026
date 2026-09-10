@@ -142,7 +142,23 @@ export interface UserAuthOperations {
  */
 export interface User {
   id: number;
-  name?: string | null;
+  name: string;
+  /**
+   * Administrators can manage all users. Editors can write and manage news posts.
+   */
+  role: 'admin' | 'editor';
+  designation?: string | null;
+  avatar?: (number | null) | Media;
+  /**
+   * Optional direct image link if not uploading to Media library
+   */
+  avatarUrl?: string | null;
+  bio?: string | null;
+  /**
+   * Automatically calculated total published news articles by this editor.
+   */
+  postCount?: number | null;
+  active?: boolean | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -215,16 +231,55 @@ export interface Media {
 export interface Post {
   id: number;
   title: string;
-  slug: string;
-  category: 'Institutional News' | 'Strategic Dialogue' | 'Industry Action' | 'Investment Insights';
   /**
-   * URL or path to featured image
+   * URL slug (e.g. bilateral-summit-2026)
+   */
+  slug: string;
+  category: 'Institutional News' | 'Strategic Dialogue' | 'Industry Action' | 'Investment Insights' | 'Summit & Events';
+  status: 'published' | 'draft';
+  /**
+   * Pin this dispatch to the homepage sliding carousel
+   */
+  featured?: boolean | null;
+  publishedDate: string;
+  /**
+   * Select the editor responsible for this article. Total post count will be tracked automatically.
+   */
+  author?: (number | null) | User;
+  /**
+   * Displayed if no specific user account is assigned.
+   */
+  authorName?: string | null;
+  readTime?: string | null;
+  /**
+   * Upload high-resolution article photo from your computer
+   */
+  featuredImage?: (number | null) | Media;
+  /**
+   * Direct image path or link if not uploading file (e.g. /images/forum/...)
    */
   featuredImageUrl?: string | null;
-  publishedDate: string;
-  author?: string | null;
+  imageCaption?: string | null;
+  /**
+   * Short 2-3 sentence overview displayed on cards and search snippets
+   */
   excerpt: string;
+  /**
+   * Detailed dispatch narrative (use blank lines to separate paragraphs)
+   */
   body: string;
+  seo?: {
+    metaTitle?: string | null;
+    metaDescription?: string | null;
+    metaKeywords?: string | null;
+    /**
+     * Custom preview picture for Twitter/X, Facebook, and LinkedIn sharing
+     */
+    ogImage?: (number | null) | Media;
+    ogImageUrl?: string | null;
+    canonicalUrl?: string | null;
+    noIndex?: boolean | null;
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -423,6 +478,13 @@ export interface PayloadMigration {
  */
 export interface UsersSelect<T extends boolean = true> {
   name?: T;
+  role?: T;
+  designation?: T;
+  avatar?: T;
+  avatarUrl?: T;
+  bio?: T;
+  postCount?: T;
+  active?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -501,11 +563,28 @@ export interface PostsSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
   category?: T;
-  featuredImageUrl?: T;
+  status?: T;
+  featured?: T;
   publishedDate?: T;
   author?: T;
+  authorName?: T;
+  readTime?: T;
+  featuredImage?: T;
+  featuredImageUrl?: T;
+  imageCaption?: T;
   excerpt?: T;
   body?: T;
+  seo?:
+    | T
+    | {
+        metaTitle?: T;
+        metaDescription?: T;
+        metaKeywords?: T;
+        ogImage?: T;
+        ogImageUrl?: T;
+        canonicalUrl?: T;
+        noIndex?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }

@@ -10,6 +10,7 @@ import { LatestNews } from '@/components/home/LatestNews';
 import { ContactCtaBand } from '@/components/home/ContactCtaBand';
 
 import { normalizeLocale } from '@/lib/content';
+import { getPublishedNews } from '@/lib/newsService';
 
 export default async function HomePage({
   params,
@@ -18,6 +19,7 @@ export default async function HomePage({
 }) {
   const { locale: rawLocale } = await params;
   const locale: Locale = normalizeLocale(rawLocale);
+  const newsArticles = await getPublishedNews({ locale, limit: 9 });
 
   return (
     <>
@@ -27,7 +29,7 @@ export default async function HomePage({
       <StrategicPositioning locale={locale} />
       <SectorsGrid locale={locale} />
       <AdvantagesGrid locale={locale} />
-      <LatestNews locale={locale} />
+      <LatestNews locale={locale} initialNews={newsArticles} />
       <ContactCtaBand locale={locale} />
     </>
   );

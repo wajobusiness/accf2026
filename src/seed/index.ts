@@ -12,25 +12,81 @@ export async function seedDatabase() {
 
   console.log('Seeding ACCBCF database from Product Bible...');
 
-  // 1. Create Default Admin User if none exists
+  // 1. Create Default Admin & Verified Editors
+  let editorAbujaId: string | number | undefined;
+  let editorAsiaId: string | number | undefined;
+
   try {
-    const existingUsers = await payload.find({
+    const existingAdmin = await payload.find({
       collection: 'users',
+      where: { email: { equals: 'admin@accbcf.org' } },
       limit: 1,
     });
 
-    if (existingUsers.totalDocs === 0) {
+    if (existingAdmin.totalDocs === 0) {
       await payload.create({
         collection: 'users',
         data: {
           email: 'admin@accbcf.org',
           password: 'Accbcf2026Admin!#',
           name: 'ACCBCF Secretariat Admin',
+          role: 'admin',
+          active: true,
         },
       });
       console.log('Created default admin: admin@accbcf.org');
+    }
+
+    // Seed Editor 1: Dr. Aliko Bello
+    const existingEditor1 = await payload.find({
+      collection: 'users',
+      where: { email: { equals: 'editor.abuja@accbcf.org' } },
+      limit: 1,
+    });
+    if (existingEditor1.totalDocs === 0) {
+      const ed1 = await payload.create({
+        collection: 'users',
+        data: {
+          email: 'editor.abuja@accbcf.org',
+          password: 'Accbcf2026Editor!#',
+          name: 'Dr. Aliko Bello',
+          role: 'editor',
+          designation: 'Chief Diplomatic Correspondent · Abuja Bureau',
+          bio: 'Senior correspondent specializing in West African bilateral trade policy, AfCFTA integration, and sovereign G2G cooperation agreements.',
+          avatarUrl: '/images/forum/04.jpeg',
+          active: true,
+        },
+      });
+      editorAbujaId = ed1.id;
+      console.log('Created editor: editor.abuja@accbcf.org (Dr. Aliko Bello)');
     } else {
-      console.log('Admin user already exists');
+      editorAbujaId = existingEditor1.docs[0].id;
+    }
+
+    // Seed Editor 2: Zhang Wei
+    const existingEditor2 = await payload.find({
+      collection: 'users',
+      where: { email: { equals: 'editor.asia@accbcf.org' } },
+      limit: 1,
+    });
+    if (existingEditor2.totalDocs === 0) {
+      const ed2 = await payload.create({
+        collection: 'users',
+        data: {
+          email: 'editor.asia@accbcf.org',
+          password: 'Accbcf2026Editor!#',
+          name: 'Zhang Wei',
+          role: 'editor',
+          designation: 'Senior Asia-Pacific Trade Analyst · Bilateral Desk',
+          bio: 'Lead analyst reporting on China–Africa economic corridors, industrial park concessions, and bilateral manufacturing investment.',
+          avatarUrl: '/images/forum/08.jpeg',
+          active: true,
+        },
+      });
+      editorAsiaId = ed2.id;
+      console.log('Created editor: editor.asia@accbcf.org (Zhang Wei)');
+    } else {
+      editorAsiaId = existingEditor2.docs[0].id;
     }
   } catch (err) {
     console.log('User check/creation note:', err);
@@ -448,18 +504,32 @@ export async function seedDatabase() {
     });
     const existingPostMap = new Map(existingPosts.docs.map((doc: any) => [doc.slug, doc.id]));
 
-    for (const post of SAMPLE_NEWS) {
+    for (let i = 0; i < SAMPLE_NEWS.length; i++) {
+      const post = SAMPLE_NEWS[i];
       let docId = existingPostMap.get(post.slug);
+      const assignedEditorId = i === 1 ? editorAsiaId : editorAbujaId;
+      const assignedAuthorName = i === 1 ? 'Zhang Wei' : 'Dr. Aliko Bello';
 
-      const enData = {
+      const enData: any = {
         title: post.title.en,
         slug: post.slug,
         category: post.category.en as any,
+        status: 'published',
+        featured: true,
         featuredImageUrl: post.image,
+        imageCaption: 'Official Bilateral Protocol Ceremony, Federal Secretariat, Abuja, Nigeria',
         publishedDate: post.date,
-        author: post.author,
+        author: assignedEditorId,
+        authorName: assignedAuthorName,
+        readTime: post.readTime.en,
         excerpt: post.excerpt.en,
         body: post.content.en,
+        seo: {
+          metaTitle: post.title.en,
+          metaDescription: post.excerpt.en,
+          metaKeywords: 'ACCBCF, China Africa Trade, Abuja Summit, Bilateral Investment',
+          ogImageUrl: post.image,
+        },
       };
 
       if (!docId) {
@@ -484,12 +554,44 @@ export async function seedDatabase() {
         locale: 'zh',
         data: {
           title: post.title.zh,
+          readTime: post.readTime.zh,
           excerpt: post.excerpt.zh,
           body: post.content.zh,
+          imageCaption: '阿布贾联邦秘书处官方发布现场',
+          seo: {
+            metaTitle: post.title.zh,
+            metaDescription: post.excerpt.zh,
+          },
         },
       });
     }
-    console.log(`Seeded/Updated ${SAMPLE_NEWS.length} News Dispatches`);
+
+    // Sync Editor post counts
+    if (editorAbujaId) {
+      const c1 = await payload.count({
+        collection: 'posts',
+        where: { author: { equals: editorAbujaId }, status: { equals: 'published' } },
+      });
+      await payload.update({
+        collection: 'users',
+        id: editorAbujaId,
+        data: { postCount: c1.totalDocs },
+      });
+    }
+
+    if (editorAsiaId) {
+      const c2 = await payload.count({
+        collection: 'posts',
+        where: { author: { equals: editorAsiaId }, status: { equals: 'published' } },
+      });
+      await payload.update({
+        collection: 'users',
+        id: editorAsiaId,
+        data: { postCount: c2.totalDocs },
+      });
+    }
+
+    console.log(`Seeded/Updated ${SAMPLE_NEWS.length} News Dispatches with Editor links`);
   } catch (err) {
     console.log('Posts seed note:', err);
   }
