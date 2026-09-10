@@ -1,8 +1,11 @@
 import { createServerClient } from "@supabase/ssr";
 import { type NextRequest, NextResponse } from "next/server";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
+const supabaseUrl =
+  process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://tqeqccszyxstsxtoffzf.supabase.co';
+const supabaseKey =
+  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
+  'sb_publishable_1xvhvHXbMvSIVAFhdbscLw_zAKZUENV';
 
 export const createClient = (request: NextRequest) => {
   // Create an unmodified response
@@ -12,27 +15,32 @@ export const createClient = (request: NextRequest) => {
     },
   });
 
-  const supabase = createServerClient(
-    supabaseUrl!,
-    supabaseKey!,
-    {
+  if (!supabaseUrl || !supabaseKey) {
+    return supabaseResponse;
+  }
+
+  try {
+    createServerClient(supabaseUrl, supabaseKey, {
       cookies: {
         getAll() {
-          return request.cookies.getAll()
+          return request.cookies.getAll();
         },
         setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value, options }) => request.cookies.set(name, value))
+          cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value));
           supabaseResponse = NextResponse.next({
             request,
-          })
+          });
           cookiesToSet.forEach(({ name, value, options }) =>
             supabaseResponse.cookies.set(name, value, options)
-          )
+          );
         },
       },
-    },
-  );
+    });
+  } catch (err) {
+    // Prevent any edge middleware crash
+    console.error('Supabase middleware client error:', err);
+  }
 
-  return supabaseResponse
+  return supabaseResponse;
 };
 

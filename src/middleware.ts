@@ -136,7 +136,19 @@ function detectLocale(req: NextRequest): Locale {
 }
 
 export function middleware(request: NextRequest) {
-  const supabaseResponse = createSupabaseClient(request);
+  let supabaseResponse = NextResponse.next({
+    request: {
+      headers: request.headers,
+    },
+  });
+
+  try {
+    supabaseResponse = createSupabaseClient(request);
+  } catch (err) {
+    // Prevent middleware crash
+    console.error('Middleware Supabase error:', err);
+  }
+
   const { pathname } = request.nextUrl;
 
   // Root path request -> detect locale and redirect
