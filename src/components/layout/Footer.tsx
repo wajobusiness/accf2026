@@ -7,6 +7,7 @@ import { Mail, Phone, MapPin, ExternalLink, Shield, Globe2, Lock } from 'lucide-
 import { UI_STRINGS } from '@/lib/translations';
 import { SITE_INFO, PRIORITY_SECTORS, CORE_SERVICES } from '@/lib/content';
 import { SocialIconsGroup } from '../common/SocialIcons';
+import { WhatsAppIcon } from '../common/WhatsAppLiveChat';
 import type { Locale } from '@/lib/content';
 
 interface FooterProps {
@@ -204,7 +205,34 @@ export const Footer: React.FC<FooterProps> = ({ locale }) => {
                   {SITE_INFO.phone}
                 </a>
               </div>
+
+              {/* WhatsApp Live Chat Desk Button */}
               <div className="pt-2">
+                <a
+                  href={SITE_INFO.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full inline-flex items-center justify-between gap-2 px-3.5 py-2.5 rounded-xl bg-emerald-600/90 hover:bg-emerald-500 text-white font-semibold text-xs border border-emerald-400/40 shadow-md transition-all group"
+                >
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-emerald-300 animate-ping" />
+                    <span>
+                      {locale === 'zh'
+                        ? 'WhatsApp 实时在线咨询'
+                        : locale === 'fr'
+                        ? 'Discussion WhatsApp Directe'
+                        : locale === 'ar'
+                        ? 'محادثة مباشرة عبر واتساب'
+                        : locale === 'pt'
+                        ? 'Chat Direto via WhatsApp'
+                        : 'WhatsApp Live Chat Desk'}
+                    </span>
+                  </div>
+                  <WhatsAppIcon className="w-4 h-4 text-white group-hover:scale-110 transition-transform flex-shrink-0" />
+                </a>
+              </div>
+
+              <div className="pt-1">
                 <Link
                   href="/admin"
                   className="inline-flex items-center gap-1.5 text-[11px] text-white/50 hover:text-white transition-colors"
