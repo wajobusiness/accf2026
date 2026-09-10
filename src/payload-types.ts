@@ -96,14 +96,19 @@ export interface Config {
   db: {
     defaultIDType: number;
   };
-  fallbackLocale: ('false' | 'none' | 'null') | false | null | ('en' | 'zh') | ('en' | 'zh')[];
+  fallbackLocale:
+    | ('false' | 'none' | 'null')
+    | false
+    | null
+    | ('en' | 'zh' | 'fr' | 'ar' | 'pt')
+    | ('en' | 'zh' | 'fr' | 'ar' | 'pt')[];
   globals: {
     siteSettings: SiteSetting;
   };
   globalsSelect: {
     siteSettings: SiteSettingsSelect<false> | SiteSettingsSelect<true>;
   };
-  locale: 'en' | 'zh';
+  locale: 'en' | 'zh' | 'fr' | 'ar' | 'pt';
   widgets: {
     collections: CollectionsWidget;
   };
@@ -265,6 +270,40 @@ export interface PrioritySector {
   icon: string;
   shortDescription: string;
   details?: string | null;
+  /**
+   * Industrial upgrading and domestic value addition roadmap
+   */
+  valueAdditionStrategy?: string | null;
+  /**
+   * Bilateral implementation framework (G2G, G2B concessions, B2B joint ventures)
+   */
+  bilateralMechanisms?: string | null;
+  /**
+   * Alignment with AfCFTA, SEZ incentives, and national industrial policies
+   */
+  policyAlignment?: string | null;
+  /**
+   * Assigned ACCBCF Specialized Standing Committee
+   */
+  actionCommittee?: string | null;
+  /**
+   * Strategic pillars and technological focus areas
+   */
+  strategicFocus?:
+    | {
+        point?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Priority investment and bankable project opportunities
+   */
+  keyOpportunities?:
+    | {
+        opportunity?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   order?: number | null;
   updatedAt: string;
   createdAt: string;
@@ -509,6 +548,22 @@ export interface PrioritySectorsSelect<T extends boolean = true> {
   icon?: T;
   shortDescription?: T;
   details?: T;
+  valueAdditionStrategy?: T;
+  bilateralMechanisms?: T;
+  policyAlignment?: T;
+  actionCommittee?: T;
+  strategicFocus?:
+    | T
+    | {
+        point?: T;
+        id?: T;
+      };
+  keyOpportunities?:
+    | T
+    | {
+        opportunity?: T;
+        id?: T;
+      };
   order?: T;
   updatedAt?: T;
   createdAt?: T;

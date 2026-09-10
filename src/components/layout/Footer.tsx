@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { Mail, Phone, MapPin, ExternalLink, Shield, Globe2, Lock } from 'lucide-react';
 import { UI_STRINGS } from '@/lib/translations';
 import { SITE_INFO, PRIORITY_SECTORS, CORE_SERVICES } from '@/lib/content';
+import { SocialIconsGroup } from '../common/SocialIcons';
 import type { Locale } from '@/lib/content';
 
 interface FooterProps {
@@ -76,16 +77,24 @@ export const Footer: React.FC<FooterProps> = ({ locale }) => {
               {t.desc}
             </p>
 
-            <div className="pt-2">
+            <div className="pt-2 flex flex-col gap-3">
               <a
                 href={SITE_INFO.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-700/80 hover:bg-emerald-600 text-white border border-emerald-500/40 transition-colors"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-700/80 hover:bg-emerald-600 text-white border border-emerald-500/40 transition-colors w-fit"
               >
                 <span>WhatsApp: {SITE_INFO.phone}</span>
                 <ExternalLink className="w-3 h-3 text-emerald-300" />
               </a>
+
+              {/* Official Social Media Channels */}
+              <div className="pt-2 space-y-2">
+                <p className="text-[11px] font-bold uppercase tracking-widest text-accbcf-gold">
+                  {locale === 'zh' ? '官方社交媒体' : 'Official Social Channels'}
+                </p>
+                <SocialIconsGroup variant="footer" />
+              </div>
             </div>
           </div>
 
@@ -208,21 +217,25 @@ export const Footer: React.FC<FooterProps> = ({ locale }) => {
           </div>
         </div>
 
-        {/* Bottom Bar: Copyright & Credit */}
-        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/60 text-center sm:text-left">
+        {/* Bottom Bar: Copyright, Socials & Credit */}
+        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/60 text-center md:text-left">
           <div>
             © {new Date().getFullYear()} ACCBF. {t.rights}
           </div>
-          <div className="flex items-center gap-1.5 text-white/60">
-            <span>Powered by</span>
-            <a
-              href="https://finxhost.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accbcf-gold hover:text-accbcf-gold-light hover:underline font-medium transition-colors"
-            >
-              FinxHost Limited
-            </a>
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <SocialIconsGroup variant="compact" />
+            <span className="text-white/20 hidden sm:inline">|</span>
+            <div className="flex items-center gap-1.5 text-white/60">
+              <span>Powered by</span>
+              <a
+                href="https://finxhost.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accbcf-gold hover:text-accbcf-gold-light hover:underline font-medium transition-colors"
+              >
+                FinxHost Limited
+              </a>
+            </div>
           </div>
         </div>
       </div>

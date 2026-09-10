@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { ArrowRight, Mail, Phone, MapPin, ExternalLink } from 'lucide-react';
+import { SocialIconsGroup } from '@/components/common/SocialIcons';
 import { SITE_INFO } from '@/lib/content';
 import { UI_STRINGS } from '@/lib/translations';
 import type { Locale } from '@/lib/content';
@@ -86,6 +87,14 @@ export const ContactCtaBand: React.FC<ContactCtaBandProps> = ({ locale }) => {
                     {SITE_INFO.phone}
                   </a>
                 </div>
+              </div>
+
+              {/* Official Social Channels */}
+              <div className="pt-3 border-t border-white/15 space-y-2">
+                <span className="block text-[11px] font-bold uppercase tracking-widest text-accbcf-gold">
+                  {locale === 'zh' ? '官方社交媒体' : 'Official Social Channels'}
+                </span>
+                <SocialIconsGroup variant="footer" />
               </div>
             </div>
           </div>

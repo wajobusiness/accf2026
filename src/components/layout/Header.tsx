@@ -20,6 +20,7 @@ import {
   Calendar,
 } from 'lucide-react';
 import { LanguageSwitcher } from '../common/LanguageSwitcher';
+import { SocialIconsGroup } from '../common/SocialIcons';
 import { UI_STRINGS } from '@/lib/translations';
 import type { Locale } from '@/lib/content';
 
@@ -358,8 +359,9 @@ export const Header: React.FC<HeaderProps> = ({ locale }) => {
               })}
             </nav>
 
-            {/* Right Controls: Language Switcher & Diplomatic CTA */}
+            {/* Right Controls: Social Links, Language Switcher & Diplomatic CTA */}
             <div className="hidden lg:flex items-center gap-3">
+              <SocialIconsGroup variant="header" className="pr-2 border-r border-white/15" />
               <LanguageSwitcher currentLocale={locale} variant="dark" />
               <Link
                 href={`/${locale}/contact`}
@@ -498,7 +500,15 @@ export const Header: React.FC<HeaderProps> = ({ locale }) => {
                   <span>{t.partnerCta}</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
-                <div className="flex items-center justify-center gap-2 text-[11px] text-white/70 pt-2">
+
+                <div className="flex flex-col items-center gap-1 pt-2 pb-1">
+                  <span className="text-[10px] uppercase font-bold tracking-widest text-accbcf-gold/80">
+                    Official Social Channels
+                  </span>
+                  <SocialIconsGroup variant="header" />
+                </div>
+
+                <div className="flex items-center justify-center gap-2 text-[11px] text-white/70 pt-1">
                   <ShieldCheck className="w-3.5 h-3.5 text-accbcf-gold flex-shrink-0" />
                   <span>HQ: Federal Ministry of Industry, Trade & Investment, Abuja</span>
                 </div>

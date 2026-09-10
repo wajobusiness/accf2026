@@ -63,6 +63,52 @@ export interface GovernanceTier {
   }[];
 }
 
+export interface SocialLinkItem {
+  id: 'x' | 'facebook' | 'linkedin' | 'instagram' | 'tiktok';
+  name: string;
+  handle: string;
+  url: string;
+  ariaLabel: string;
+}
+
+export const SOCIAL_LINKS: SocialLinkItem[] = [
+  {
+    id: 'x',
+    name: 'X',
+    handle: '@_ACCBCF',
+    url: 'https://x.com/_ACCBCF',
+    ariaLabel: 'Official ACCBCF X (formerly Twitter) Account @_ACCBCF',
+  },
+  {
+    id: 'facebook',
+    name: 'Facebook',
+    handle: 'Facebook.com/ACCBCF',
+    url: 'https://facebook.com/ACCBCF',
+    ariaLabel: 'Official ACCBCF Facebook Business Page Facebook.com/ACCBCF',
+  },
+  {
+    id: 'linkedin',
+    name: 'LinkedIn',
+    handle: 'linkedin.com/in/ACCBCF',
+    url: 'https://www.linkedin.com/in/ACCBCF',
+    ariaLabel: 'Official ACCBCF LinkedIn Profile linkedin.com/in/ACCBCF',
+  },
+  {
+    id: 'instagram',
+    name: 'Instagram',
+    handle: '@_AFRICACHINACHAIRMENFORUM',
+    url: 'https://instagram.com/_AFRICACHINACHAIRMENFORUM',
+    ariaLabel: 'Official ACCBCF Instagram Account @_AFRICACHINACHAIRMENFORUM',
+  },
+  {
+    id: 'tiktok',
+    name: 'TikTok',
+    handle: '@africachinachairmenforum',
+    url: 'https://www.tiktok.com/@africachinachairmenforum',
+    ariaLabel: 'Official ACCBCF TikTok Account @africachinachairmenforum',
+  },
+];
+
 export type Localized<T> = T extends { en: string }
   ? Record<Locale, string>
   : T extends Array<infer U>
@@ -126,6 +172,18 @@ const RAW_SITE_INFO = {
   phone: '+234 916 016 6906',
   whatsapp: '+2349160166906',
   whatsappUrl: 'https://wa.me/2349160166906',
+  social: {
+    x: 'https://x.com/_ACCBCF',
+    xHandle: '@_ACCBCF',
+    facebook: 'https://facebook.com/ACCBCF',
+    facebookHandle: 'Facebook.com/ACCBCF',
+    linkedin: 'https://www.linkedin.com/in/ACCBCF',
+    linkedinHandle: 'linkedin.com/in/ACCBCF',
+    instagram: 'https://instagram.com/_AFRICACHINACHAIRMENFORUM',
+    instagramHandle: '@_AFRICACHINACHAIRMENFORUM',
+    tiktok: 'https://www.tiktok.com/@africachinachairmenforum',
+    tiktokHandle: '@africachinachairmenforum',
+  },
   slogan: {
     en: 'Connecting Governments · Empowering Business · Creating Shared Prosperity',
     zh: '链接政府 · 赋能企业 · 共创繁荣',

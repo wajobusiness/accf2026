@@ -26,6 +26,22 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    meta: {
+      titleSuffix: ' · ACCBCF Admin Portal',
+      description: 'Institutional Admin & Content Management System for Africa China Chairmen of Business Forum',
+      icons: [
+        {
+          rel: 'icon',
+          url: '/images/accbcf-logo.svg',
+        },
+      ],
+    },
+    components: {
+      graphics: {
+        Logo: '@/components/admin/Logo#Logo',
+        Icon: '@/components/admin/Icon#Icon',
+      },
+    },
   },
   collections: [
     Users,
@@ -64,6 +80,19 @@ export default buildConfig({
       {
         label: '中文 (Chinese)',
         code: 'zh',
+      },
+      {
+        label: 'Français (French)',
+        code: 'fr',
+      },
+      {
+        label: 'العربية (Arabic)',
+        code: 'ar',
+        rtl: true,
+      },
+      {
+        label: 'Português (Portuguese)',
+        code: 'pt',
       },
     ],
     defaultLocale: 'en',

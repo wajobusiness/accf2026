@@ -11,7 +11,9 @@ import {
   ShieldCheck,
   CheckCircle,
   Clock,
+  Share2,
 } from 'lucide-react';
+import { SocialIconsGroup } from '@/components/common/SocialIcons';
 import { SITE_INFO, CORE_SERVICES, PRIORITY_SECTORS } from '@/lib/content';
 import { UI_STRINGS } from '@/lib/translations';
 import type { Locale } from '@/lib/content';
@@ -304,6 +306,31 @@ export const ContactForm: React.FC<ContactFormProps> = ({ locale }) => {
             <div className="pt-4 border-t border-white/15 flex items-center gap-2 text-xs text-white/70">
               <Clock className="w-4 h-4 text-accbcf-gold flex-shrink-0" />
               <span>{t.visitingHours}</span>
+            </div>
+          </div>
+
+          {/* Official Social Media Channels Card */}
+          <div className="bg-[#00142A] text-white rounded-3xl p-6 sm:p-8 border border-accbcf-gold/30 shadow-xl space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-accbcf-gold/10 flex items-center justify-center text-accbcf-gold border border-accbcf-gold/30">
+                <Share2 className="w-5 h-5" />
+              </div>
+              <div>
+                <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-accbcf-gold">
+                  {locale === 'zh' ? '官方社交媒体' : 'Official Channels'}
+                </span>
+                <h4 className="font-serif text-lg font-bold">
+                  {locale === 'zh' ? '关注论坛官方社交网络' : 'Official Social Networks'}
+                </h4>
+              </div>
+            </div>
+            <p className="text-xs text-white/75 leading-relaxed">
+              {locale === 'zh'
+                ? '关注 ACCBCF 官方社交平台，实时获取中非双边投资政策、重大产业签约、国际峰会及代表团交流动态。'
+                : 'Follow ACCBCF across verified platforms for real-time bilateral policy updates, high-level summit announcements, and multilateral trade initiatives.'}
+            </p>
+            <div className="pt-2">
+              <SocialIconsGroup variant="contact" />
             </div>
           </div>
 

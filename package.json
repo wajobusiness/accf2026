@@ -7,6 +7,7 @@
     "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev --webpack",
     "build": "cross-env NODE_OPTIONS=--no-deprecation next build --webpack",
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
+    "seed": "cross-env NODE_OPTIONS=--no-deprecation tsx src/seed/run.ts",
     "lint": "next lint"
   },
   "dependencies": {

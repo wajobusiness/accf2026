@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { SocialMediaDock } from '@/components/common/SocialMediaDock';
 import type { Locale } from '@/lib/content';
 import { SITE_INFO } from '@/lib/content';
 import '../../globals.css';
@@ -113,6 +114,7 @@ export default async function FrontendLayout({
         <Header locale={locale} />
         <main className="flex-grow">{children}</main>
         <Footer locale={locale} />
+        <SocialMediaDock locale={locale} />
       </body>
     </html>
   );
