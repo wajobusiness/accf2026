@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { createClient as createSupabaseClient } from '@/utils/supabase/middleware';
 
 const SUPPORTED_LOCALES = ['en', 'zh', 'fr', 'ar', 'pt'] as const;
 type Locale = (typeof SUPPORTED_LOCALES)[number];
@@ -135,6 +136,7 @@ function detectLocale(req: NextRequest): Locale {
 }
 
 export function middleware(request: NextRequest) {
+  const supabaseResponse = createSupabaseClient(request);
   const { pathname } = request.nextUrl;
 
   // Root path request -> detect locale and redirect
@@ -142,6 +144,10 @@ export function middleware(request: NextRequest) {
     const targetLocale = detectLocale(request);
     const redirectUrl = new URL(`/${targetLocale}`, request.url);
     const response = NextResponse.redirect(redirectUrl);
+    // Copy cookies from supabaseResponse
+    supabaseResponse.cookies.getAll().forEach((cookie) => {
+      response.cookies.set(cookie.name, cookie.value);
+    });
     // Persist auto-detected locale cookie
     response.cookies.set('accbcf_locale', targetLocale, {
       path: '/',
@@ -155,7 +161,7 @@ export function middleware(request: NextRequest) {
   const segments = pathname.split('/');
   const firstSegment = segments[1] as Locale;
   if (SUPPORTED_LOCALES.includes(firstSegment)) {
-    const response = NextResponse.next();
+    const response = supabaseResponse;
     const currentCookie = request.cookies.get('accbcf_locale')?.value;
     if (currentCookie !== firstSegment) {
       response.cookies.set('accbcf_locale', firstSegment, {
@@ -167,7 +173,7 @@ export function middleware(request: NextRequest) {
     return response;
   }
 
-  return NextResponse.next();
+  return supabaseResponse;
 }
 
 export const config = {
