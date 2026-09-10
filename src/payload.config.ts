@@ -18,7 +18,26 @@ const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
 // Support Postgres when DATABASE_URI is specified, fallback to SQLite for local preview
-const isPostgres = Boolean(process.env.DATABASE_URI && process.env.DATABASE_URI.startsWith('postgres'));
+function getDatabaseConfig() {
+  let uri = process.env.DATABASE_URI || '';
+  
+  // Supabase direct URLs are IPv6-only. When deployed to Vercel/serverless environments,
+  // automatically route through the IPv4-compatible connection pooler.
+  if (uri.includes('db.tqeqccszyxstsxtoffzf.supabase.co')) {
+    uri = uri
+      .replace('postgresql://postgres:', 'postgresql://postgres.tqeqccszyxstsxtoffzf:')
+      .replace('db.tqeqccszyxstsxtoffzf.supabase.co', 'aws-0-eu-west-2.pooler.supabase.com');
+  }
+
+  const isPostgres = Boolean(uri && uri.startsWith('postgres'));
+
+  return {
+    isPostgres,
+    uri,
+  };
+}
+
+const { isPostgres, uri: sanitizedDbUri } = getDatabaseConfig();
 
 export default buildConfig({
   admin: {
@@ -56,25 +75,27 @@ export default buildConfig({
     SiteSettings,
   ],
   editor: lexicalEditor(),
-  secret: process.env.PAYLOAD_SECRET || 'accbcf-super-secret-production-key-2026-abuja',
+  secret:
+    process.env.PAYLOAD_SECRET ||
+    'c7d0aefc5a0db2eaeb6569b7d5dd6bb42baab06365e701658ef211e1e93d4749',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
   db: isPostgres
     ? postgresAdapter({
         pool: {
-          connectionString: process.env.DATABASE_URI || '',
+          connectionString: sanitizedDbUri,
           ssl:
-            process.env.DATABASE_URI?.includes('supabase') ||
-            process.env.DATABASE_URI?.includes('neon') ||
-            process.env.DATABASE_URI?.includes('sslmode=require')
+            sanitizedDbUri.includes('supabase') ||
+            sanitizedDbUri.includes('neon') ||
+            sanitizedDbUri.includes('sslmode=require')
               ? { rejectUnauthorized: false }
               : undefined,
         },
       })
     : sqliteAdapter({
         client: {
-          url: 'file:./local-accbcf.db',
+          url: process.env.VERCEL ? 'file:/tmp/local-accbcf.db' : 'file:./local-accbcf.db',
         },
       }),
   localization: {
