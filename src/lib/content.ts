@@ -56,10 +56,21 @@ export interface GovernanceTier {
   name: BilingualText;
   description: BilingualText;
   level: number;
+  badge?: BilingualText;
+  subtitle?: BilingualText;
+  mandate?: BilingualText;
+  leaders?: {
+    title: BilingualText;
+    name: BilingualText;
+    role: BilingualText;
+    image?: string;
+    link?: string;
+  }[];
   items?: {
     name: BilingualText;
     role?: BilingualText;
     description?: BilingualText;
+    icon?: string;
   }[];
 }
 
@@ -999,102 +1010,530 @@ export const PRIORITY_SECTORS: SectorItem[] = localized(RAW_PRIORITY_SECTORS) as
 const RAW_GOVERNANCE_TIERS = [
   {
     id: 'board',
-    name: { en: 'Board of Directors', zh: '董事会' },
-    description: {
-      en: 'Highest governing authority responsible for strategic direction, statutory oversight, and long-term organizational stewardship.',
-      zh: '最高决策权力机构，负责统揽战略方向、法定监督管理及论坛长期愿景规划。',
-    },
     level: 1,
+    name: {
+      en: 'Board of Directors',
+      zh: '董事会（最高理事会）',
+      fr: 'Conseil d’Administration',
+      ar: 'مجلس الإدارة الأعلى',
+      pt: 'Conselho de Administração',
+    },
+    subtitle: {
+      en: 'Highest Decision-Making & Sovereign Strategic Authority',
+      zh: '论坛最高决策机构与主权战略指导核心',
+      fr: 'Plus haute autorité décisionnelle et orientation stratégique',
+      ar: 'أعلى سلطة لاتخاذ القرار والتوجيه الاستراتيجي السيادي',
+      pt: 'Mais alta autoridade decisória e orientação estratégica soberana',
+    },
+    description: {
+      en: 'The highest governing authority responsible for overall strategic direction, statutory oversight, sovereign bilateral alignment, and long-term institutional stewardship.',
+      zh: '论坛最高决策与监管理事机构，全面统筹中非双边战略合作方针、重大项目决策、涉外主权协同与组织长期稳健发展。',
+      fr: 'La plus haute autorité chargée de la direction stratégique, de la supervision statutaire, de l’alignement souverain et de la pérennité institutionnelle.',
+      ar: 'أعلى سلطة حاكمة مسؤولة عن التوجيه الاستراتيجي الشامل، والرقابة القانونية، والتنسيق السيادي الثنائي، والإشراف المؤسسي طويل الأمد.',
+      pt: 'A mais alta autoridade de governança responsável pela direção estratégica geral, supervisão estatutária, alinhamento soberano e gestão institucional de longo prazo.',
+    },
+    leaders: [
+      {
+        title: {
+          en: 'CEO & PUBLISHER ACN',
+          zh: '总裁兼非洲中国新闻社社长',
+          fr: 'PDG & ÉDITEUR ACN',
+          ar: 'الرئيس التنفيذي وناشر شبكة ACN',
+          pt: 'CEO & EDITOR ACN',
+        },
+        name: {
+          en: 'HIGH CHIEF MIKEL YOUSUF UGWU',
+          zh: '郑晓鹏（高酋 Mikel Yousuf Ugwu）博士',
+          fr: 'HIGH CHIEF MIKEL YOUSUF UGWU',
+          ar: 'الزعيم الأكبر مايكل يوسف أوغوو',
+          pt: 'HIGH CHIEF MIKEL YOUSUF UGWU',
+        },
+        role: {
+          en: 'President, Africa-China News Agency (ACN)',
+          zh: '非洲中国新闻社（ACN）社长 · 非洲特区联络官',
+          fr: 'Président, Agence de Presse Afrique-Chine (ACN)',
+          ar: 'رئيس وكالة أنباء إفريقيا والصين (ACN)',
+          pt: 'Presidente, Agência de Notícias África-China (ACN)',
+        },
+        image: '/images/founder/chief_mike_zheng_xiaopeng.jpg',
+        link: '/founders#founder-mike',
+      },
+      {
+        title: {
+          en: 'CO - FOUNDER',
+          zh: '联合创始人',
+          fr: 'CO - FONDATEUR',
+          ar: 'المؤسس المشارك',
+          pt: 'CO - FUNDADOR',
+        },
+        name: {
+          en: 'DR. WILLIAM DEIYAN TOWAH',
+          zh: '威廉·德扬·托瓦 酋长/博士（Chief Dr. William Deiyan Towah）',
+          fr: 'DR. WILLIAM DEIYAN TOWAH',
+          ar: 'الدكتور ويليام ديان تواه',
+          pt: 'DR. WILLIAM DEIYAN TOWAH',
+        },
+        role: {
+          en: 'Advisor on West African Community Elections and Strategic Decision-Making',
+          zh: '西共体选举与战略决策顾问 · 西共体法院前行政与财务司长',
+          fr: 'Conseiller sur les Élections de la Communauté Ouest-Africaine et la Prise de Décision Stratégique',
+          ar: 'مستشار انتخابات المجموعة الاقتصادية لدول غرب إفريقيا وصنع القرار الاستراتيجي',
+          pt: 'Assessor para Eleições da Comunidade da África Ocidental e Tomada de Decisão Estratégica',
+        },
+        image: '/images/founder/chief_dr_william_towah.jpg',
+        link: '/founders#founder-william',
+      },
+    ],
   },
   {
     id: 'stakeholders',
-    name: { en: 'Stakeholders Leadership Committee', zh: '利益相关方领袖委员会' },
-    description: {
-      en: 'Comprising distinguished African and Chinese enterprise chairmen, chamber presidents, and institutional partners who shape bilateral agendas.',
-      zh: '由非中知名企业家领袖、国家级商会会长及重要机构合作伙伴组成，引领双边议题。',
-    },
     level: 2,
+    name: {
+      en: 'Stakeholders Leadership Committee',
+      zh: '利益相关方领袖委员会',
+      fr: 'Comité de Direction des Parties Prenantes',
+      ar: 'لجنة قيادة أصحاب المصلحة',
+      pt: 'Comitê de Liderança de Partes Interessadas',
+    },
+    subtitle: {
+      en: 'Sovereign Priorities & Social Alignment',
+      zh: '保障双边合作全面契合非洲发展优先事项与社会民生需求',
+      fr: 'Priorités souveraines et alignement sur les besoins de développement en Afrique',
+      ar: 'الأولويات السيادية ومواءمة مشاريع التنمية مع الاحتياجات الاجتماعية لإفريقيا',
+      pt: 'Prioridades soberanas e alinhamento com as necessidades de desenvolvimento da África',
+    },
+    mandate: {
+      en: "Ensuring projects align with Africa's development priorities and social needs.",
+      zh: '确保所有中非合作落地项目高度契合非洲各国主权发展优先事项与社会民生福祉。',
+      fr: "Garantir que les projets s'alignent sur les priorités de développement et les besoins sociaux de l'Afrique.",
+      ar: 'ضمان توافق المشاريع مع أولويات التنمية والاحتياجات الاجتماعية في إفريقيا.',
+      pt: 'Garantir que os projetos estejam alinhados com as prioridades de desenvolvimento e necessidades sociais da África.',
+    },
+    description: {
+      en: "Brings together distinguished African and Chinese enterprise chairmen, national chamber leaders, and sovereign representatives to ensure every strategic engagement directly accelerates Africa's continental development agenda.",
+      zh: '汇聚非中资深企业家、国家级商协会会长及主权利益代表，确保各项重大投资与合作举措切实服务于非洲工业化进程与社会民生发展。',
+      fr: 'Rassemble d’éminents présidents d’entreprises africaines et chinoises, des dirigeants de chambres de commerce et des représentants souverains.',
+      ar: 'تضم نخبة من كبار رؤساء الشركات الإفريقية والصينية وغرف التجارة الوطنية لضمان توافق الشراكات مع الأجندة التنموية القارية.',
+      pt: 'Reúne ilustres presidentes de empresas africanas e chinesas, líderes de câmaras de comércio e parceiros institucionais soberanos.',
+    },
   },
   {
-    id: 'advisory',
-    name: { en: 'Senior Advisory Committee', zh: '高级顾问委员会' },
-    description: {
-      en: 'Eminent former diplomats, economists, legal scholars, and industry veterans providing non-executive guidance on geopolitical and macroeconomic trends.',
-      zh: '由资深前外交官、宏观经济学家、法学泰斗及行业权威人士组成，提供地缘政治与宏观战略前瞻指导。',
-    },
+    id: 'senior-advisory',
     level: 3,
+    name: {
+      en: 'Senior Advisory Committee',
+      zh: '高级顾问委员会',
+      fr: 'Comité Consultatif Supérieur',
+      ar: 'اللجنة الاستشارية العليا',
+      pt: 'Comitê Consultivo Sênior',
+    },
+    subtitle: {
+      en: '(Strategic Empowerment Level, Policy & Advisory Level)',
+      zh: '（战略赋能层 · 顶层政策与智库咨询层）',
+      fr: '(Niveau d’Autonomisation Stratégique, Politiques & Conseils)',
+      ar: '(مستوى التمكين الاستراتيجي ومستوى السياسات والاستشارات)',
+      pt: '(Nível de Empoderamento Estratégico, Políticas & Assessoria)',
+    },
+    description: {
+      en: 'Composed of seasoned ambassadors, former ministers, international legal experts, and leading macroeconomic scholars providing non-executive geopolitical guidance and sovereign risk mitigation.',
+      zh: '由资深前外交官、原部长级官员、国际法泰斗及宏观经济智库专家组成，为论坛提供高水准地缘政治研判、跨国法律合规与战略赋能支持。',
+      fr: 'Composé d’anciens diplomates, d’économistes de renom et de juristes internationaux fournissant une orientation géopolitique stratégique.',
+      ar: 'تضم نخبة من الدبلوماسيين السابقين والخبراء الاقتصاديين والفقهاء القانونيين لتقديم التوجيه الجيوسياسي والدعم الاستشاري.',
+      pt: 'Composto por eminentes diplomatas, economistas seniores e juristas internacionais, oferecendo aconselhamento geopolítico e de políticas públicas.',
+    },
   },
   {
-    id: 'executive',
-    name: { en: 'Executive Management Committee', zh: '执行管理委员会' },
-    description: {
-      en: 'Operational leadership team supervising day-to-day secretariat management, program execution, and departmental alignment.',
-      zh: '负责日常行政与业务推进的核心管理团队，统筹督导秘书处运转、项目落地与跨部门协作。',
-    },
+    id: 'executive-management',
     level: 4,
+    name: {
+      en: 'Executive Management Committee',
+      zh: '执行管理委员会',
+      fr: 'Comité de Direction Exécutive',
+      ar: 'لجنة الإدارة التنفيذية',
+      pt: 'Comitê de Gestão Executiva',
+    },
+    subtitle: {
+      en: '(Operational Management Level)',
+      zh: '（运营管理层 · 全面统筹推进与执行枢纽）',
+      fr: '(Niveau de Gestion Opérationnelle)',
+      ar: '(مستوى الإدارة التشغيلية)',
+      pt: '(Nível de Gestão Operacional)',
+    },
+    description: {
+      en: 'The central operational management engine overseeing executive decisions, inter-departmental alignment, resource allocation, and timely delivery of bilateral initiatives.',
+      zh: '论坛核心运营管理指挥中枢，统筹落实董事会决议，督导常设秘书处、各级职能司局及专业委员会的高效运转与协同执行。',
+      fr: 'Le moteur de gestion opérationnelle supervisant les décisions exécutives, l’alignement interdépartemental et la réalisation des initiatives.',
+      ar: 'المحرك الإداري والتشغيلي الذي يشرف على تنفيذ قرارات مجلس الإدارة والتنسيق بين الإدارات وإدارة الموارد الميدانية.',
+      pt: 'O motor de gestão operacional que supervisiona as decisões executivas, o alinhamento interdepartamental e a entrega das iniciativas.',
+    },
   },
   {
-    id: 'secretariat',
-    name: { en: 'Secretariat & Operational Departments', zh: '常设秘书处与各职能部门' },
-    description: {
-      en: 'The professional administrative engine executing forum initiatives across 5 specialized divisions.',
-      zh: '论坛常设专业执行机构，通过五大专业部门全面推动论坛各项决议落地实施。',
-    },
+    id: 'national-leadership',
     level: 5,
+    name: {
+      en: 'National Leadership Tier',
+      zh: '国家与区域领导架构',
+      fr: 'Direction Nationale & Régionale',
+      ar: 'القيادة الوطنية والإقليمية',
+      pt: 'Nível de Liderança Nacional',
+    },
+    subtitle: {
+      en: 'National Chapter Representation Across Africa and China',
+      zh: '统筹非中各国分会与主权区域经贸枢纽',
+      fr: 'Représentation nationale à travers l’Afrique et la Chine',
+      ar: 'التمثيل الوطني في مختلف دول إفريقيا والصين',
+      pt: 'Representação dos capítulos nacionais na África e na China',
+    },
+    description: {
+      en: 'National executive chairs driving sovereign engagement, national business council chapters, and high-level industrial mobilization.',
+      zh: '由各国分会领导班子组成，负责推动各国主权层级务实对接、商协会会员拓展与国家级产业论坛落地。',
+      fr: 'Présidents nationaux pilotant l’engagement souverain et la mobilisation industrielle.',
+      ar: 'القيادات الوطنية المسؤولة عن التفاعل السيادي وتأسيس فروع مجالس الأعمال الوطنية.',
+      pt: 'Presidentes executivos nacionais que lideram o engajamento com governos e o setor privado local.',
+    },
     items: [
       {
-        name: { en: 'International Cooperation Department', zh: '国际合作部' },
-        description: {
-          en: 'Bilateral government liaisons, multilateral protocols, and sovereign project coordination.',
-          zh: '统筹多双边政府外交事务衔接、涉外合作协议起草及主权级经贸项目协调。',
+        name: {
+          en: 'National Chairman',
+          zh: '国家总主席 (National Chairman)',
+          fr: 'Président National',
+          ar: 'الرئيس الوطني',
+          pt: 'Presidente Nacional',
+        },
+        role: {
+          en: 'Sovereign Liaison & National Chapter Oversight',
+          zh: '主权联络与全国分会最高代表',
+          fr: 'Liaison Souveraine & Supervision Nationale',
+          ar: 'التنسيق السيادي والإشراف على الفروع الوطنية',
+          pt: 'Liaison Soberana e Supervisão Nacional',
         },
       },
       {
-        name: { en: 'International Liaison Department', zh: '国际联络部' },
-        description: {
-          en: 'Chamber alliances, diplomatic missions, VIP delegation management, and continental membership.',
-          zh: '对接全球各大商协会、驻华及驻非使领馆，统筹高端商务考察团及各大会员事务。',
+        name: {
+          en: 'Executive Chairman',
+          zh: '执行主席 (Executive Chairman)',
+          fr: 'Président Exécutif',
+          ar: 'الرئيس التنفيذي للفرع',
+          pt: 'Presidente Executivo',
+        },
+        role: {
+          en: 'Operational Leadership & Industry Mobilization',
+          zh: '日常运营指挥与全国重点产业组织',
+          fr: 'Direction Opérationnelle & Mobilisation Industrielle',
+          ar: 'القيادة التنفيذية وتعبئة القطاعات الاقتصادية',
+          pt: 'Liderança Operacional e Mobilização Industrial',
         },
       },
       {
-        name: { en: 'Trade & Investment Dept / International Media Center', zh: '经贸投资部 / 国际传媒中心' },
-        description: {
-          en: 'Direct investment landing, business matching, and global multilingual institutional media dissemination.',
-          zh: '承接投资促进落地与商业撮合，协同运营国际全媒体矩阵进行官方权威发布。',
+        name: {
+          en: 'Vice Chairman',
+          zh: '副主席 (Vice Chairman)',
+          fr: 'Vice-Président',
+          ar: 'نائب الرئيس',
+          pt: 'Vice-Presidente',
         },
-      },
-      {
-        name: { en: 'China–Africa Business Mediation Center', zh: '中非商事调解中心' },
-        description: {
-          en: 'Independent commercial dispute mediation, legal risk mitigation, and intellectual property protection.',
-          zh: '提供独立公允的涉外商事争端预防与调解、涉外法务合规咨询及海外权益救济。',
-        },
-      },
-      {
-        name: { en: 'Branding & Communications Center', zh: '品牌传播中心' },
-        description: {
-          en: 'Brand identity protection, corporate publishing, official summit staging, and public diplomacy.',
-          zh: '维护论坛视觉形象与国际公信力，策划承办高级别旗舰年会及系列公关活动。',
+        role: {
+          en: 'Sectoral Coordination & Regional Alliances',
+          zh: '分管领域专项协调与区域战略联盟',
+          fr: 'Coordination Sectorielle & Alliances Régionales',
+          ar: 'التنسيق القطاعي والتحالفات الإقليمية',
+          pt: 'Coordenação Setorial e Alianças Regionais',
         },
       },
     ],
   },
   {
-    id: 'committees',
-    name: { en: 'Industry Professional Committees', zh: '各行业专业委员会' },
-    description: {
-      en: 'Specialized sectoral councils driving practical industrial partnerships, technical standards, and joint ventures.',
-      zh: '聚焦重点实体赛道设立的行业专门机构，负责深耕各细分行业务实合作与技术对接。',
-    },
+    id: 'secretariat-directors',
     level: 6,
+    name: {
+      en: 'Secretariat & Directors of ACCBCF',
+      zh: '总秘书处与各职能局（署）长',
+      fr: 'Secrétariat Général & Directeurs de l’ACCBCF',
+      ar: 'الأمانة العامة ومديرو إدارات المنتدى',
+      pt: 'Secretariado & Diretores do ACCBCF',
+    },
+    subtitle: {
+      en: '8 Specialized Functional Directorates',
+      zh: '八大专业职能司局 / 核心执行机构',
+      fr: '8 Directions Fonctionnelles Spécialisées',
+      ar: '8 إدارات وظيفية متخصصة',
+      pt: '8 Diretorias Funcionais Especializadas',
+    },
+    description: {
+      en: 'The permanent institutional secretariat coordinating 8 specialized functional directorates responsible for global corporate development, foreign affairs, media dissemination, economic trade, and sovereign mediation.',
+      zh: '常设实体总秘书处，统率八大职能司局，常态化推进涉外经贸洽谈、国际公关、多双边媒体传播与落地保障。',
+      fr: 'Le secrétariat permanent coordonnant 8 directions fonctionnelles pour le développement bilatéral.',
+      ar: 'الأمانة العامة الدائمة التي تدير 8 إدارات وظيفية متخصصة في التنمية المؤسسية، والشؤون الخارجية، والإعلام، والتجارة.',
+      pt: 'O secretariado institucional permanente que coordena 8 diretorias funcionais para a execução de parcerias globais.',
+    },
     items: [
-      { name: { en: 'Agriculture Committee', zh: '农业专业委员会' } },
-      { name: { en: 'Mining Committee', zh: '矿业专业委员会' } },
-      { name: { en: 'Energy Committee', zh: '能源专业委员会' } },
-      { name: { en: 'Engineering Committee', zh: '工程建设专业委员会' } },
-      { name: { en: 'Manufacturing Committee', zh: '装备制造专业委员会' } },
-      { name: { en: 'Medical Committee', zh: '医药医疗专业委员会' } },
-      { name: { en: 'Finance Committee', zh: '金融投资专业委员会' } },
+      {
+        name: {
+          en: 'International Corporation Development',
+          zh: '国际合作发展局',
+          fr: 'Développement de la Coopération Internationale',
+          ar: 'تنمية التعاون الدولي للشركات',
+          pt: 'Desenvolvimento de Cooperação Internacional',
+        },
+        description: {
+          en: 'Structuring sovereign-backed corporate joint ventures, multinational consortiums, and bilateral government-to-business enterprise pacts.',
+          zh: '负责跨国联合企业组建、主权级经贸项目投资协同与中非大型企业伙伴关系缔结。',
+          fr: 'Structuration de coentreprises multinationales et pactes de coopération économique souveraine.',
+          ar: 'هيكلة المشاريع المشتركة والتحالفات المؤسسية الكبرى بين الشركات الإفريقية والصينية.',
+          pt: 'Estruturação de consórcios corporativos e alianças de investimento público-privado.',
+        },
+      },
+      {
+        name: {
+          en: 'Foreign Affairs',
+          zh: '外事局',
+          fr: 'Affaires Étrangères',
+          ar: 'الشؤون الخارجية والدبلوماسية',
+          pt: 'Assuntos Externos & Diplomáticos',
+        },
+        description: {
+          en: 'Diplomatic mission liaisons, embassy protocols, high-level sovereign delegations, and multilateral treaty alignment.',
+          zh: '统筹全球使领馆外事衔接、高级别主权代表团互访礼宾及多边政府间协议落实。',
+          fr: 'Relations avec les missions diplomatiques, protocoles d’ambassade et délégations souveraines.',
+          ar: 'إدارة العلاقات الدبلوماسية مع السفارات والوزارات وتنظيم وفود كبار الشخصيات الرسمية.',
+          pt: 'Relações com missões diplomáticas, protocolo de embaixadas e delegações governamentais de alto nível.',
+        },
+      },
+      {
+        name: {
+          en: 'Public Admin Relation',
+          zh: '公共行政关系局',
+          fr: 'Relations avec l’Administration Publique',
+          ar: 'العلاقات مع الإدارة العامة والحكومية',
+          pt: 'Relações com a Administração Pública',
+        },
+        description: {
+          en: 'Regulatory compliance, ministerial interfaces, sovereign statutory alignment, and institutional governance standard setting.',
+          zh: '对接受益国公共行政部门，推进法定资质合规、投资准入与主权政策协同。',
+          fr: 'Conformité réglementaire, interfaces ministérielles et alignement statutaire souverain.',
+          ar: 'متابعة التراخيص الحكومية والامتثال للسياسات العامة والتنسيق مع الأجهزة التنفيذية للدول.',
+          pt: 'Conformidade regulatória, relacionamento ministerial e governança com entidades públicas.',
+        },
+      },
+      {
+        name: {
+          en: 'International Media Center',
+          zh: '国际传媒中心',
+          fr: 'Centre Médias International',
+          ar: 'المركز الإعلامي الدولي',
+          pt: 'Centro Internacional de Mídia',
+        },
+        description: {
+          en: 'Syndicated global multilingual broadcasting, official summit broadcasting, Africa-China News Agency (ACN) network distribution.',
+          zh: '依托非洲中国新闻社（ACN）全球多语种全媒体传播矩阵，负责官方动态发布与峰会全球实况报道。',
+          fr: 'Diffusion médiatique multilingue, communiqués officiels et couverture via l’agence ACN.',
+          ar: 'إدارة البث الإعلامي العالمي متعدد اللغات وتغطية فعاليات المنتدى بالتعاون مع وكالة ACN.',
+          pt: 'Distribuição global de notícias multilíngues e cobertura oficial através da agência ACN.',
+        },
+      },
+      {
+        name: {
+          en: 'Liaison Office',
+          zh: '联络处',
+          fr: 'Bureau de Liaison',
+          ar: 'مكتب الاتصال والارتباط',
+          pt: 'Gabinete de Ligação',
+        },
+        description: {
+          en: 'Chambers of commerce partnerships, bilateral trade mission desks, diaspora outreach, and regional liaison offices across Beijing and African capitals.',
+          zh: '对接各大国际商会、驻华商务代表处、涉侨涉非协会，负责跨区域分支机构统筹。',
+          fr: 'Partenariats avec les chambres de commerce et bureaux régionaux à Pékin et en Afrique.',
+          ar: 'التنسيق مع غرف التجارة الوطنية والمكاتب الإقليمية للمنتدى في بكين والعواصم الإفريقية.',
+          pt: 'Parcerias com câmaras de comércio, representação regional em capitais africanas e em Pequim.',
+        },
+      },
+      {
+        name: {
+          en: 'Economics and Trade',
+          zh: '经贸事务局',
+          fr: 'Économie et Commerce',
+          ar: 'الشؤون الاقتصادية والتجارة',
+          pt: 'Economia e Comércio',
+        },
+        description: {
+          en: 'Cross-border trade facilitation, customs tariffs, local currency settlements, industrial parks, and investment landing.',
+          zh: '推动中非双边贸易便利化、清关与本币结算、产业园区建设与重大投资项目落地。',
+          fr: 'Facilitation du commerce bilatéral, dédouanement, zones industrielles et investissements directs.',
+          ar: 'تسهيل التجارة البينية، وتنسيق الإجراءات الجمركية، وتسوية المعاملات المالية، وإنشاء المناطق الصناعية.',
+          pt: 'Facilitação de comércio transfronteiriço, tarifas aduaneiras, liquidação em moedas locais e polos industriais.',
+        },
+      },
+      {
+        name: {
+          en: 'Africa China Business Coordination Center',
+          zh: '非中商业协调中心',
+          fr: 'Centre de Coordination des Affaires Afrique–Chine',
+          ar: 'مركز التنسيق التجاري بين إفريقيا والصين',
+          pt: 'Centro de Coordenação de Negócios África–China',
+        },
+        description: {
+          en: 'Central clearinghouse matching vetted African project promoters directly with qualified Chinese engineering, EPC, and investment conglomerates.',
+          zh: '中非重大经贸项目核心撮合枢纽，精准对接非洲主权与重点项目方与中方实力总包及投资联合体。',
+          fr: 'Centre d’appariement reliant les porteurs de projets africains aux conglomérats chinois d’ingénierie et d’investissement.',
+          ar: 'المنصة المركزية للربط المباشر بين أصحاب المشاريع الأفارقة وكبرى التحالفات الهندسية والاستثمارية الصينية.',
+          pt: 'Plataforma central que conecta promotores de projetos africanos a grandes conglomerados e investidores chineses.',
+        },
+      },
+      {
+        name: {
+          en: 'General Services Department',
+          zh: '综合事务与后勤保障部',
+          fr: 'Département des Services Généraux',
+          ar: 'إدارة الخدمات العامة واللوجستيات',
+          pt: 'Departamento de Serviços Gerais',
+        },
+        description: {
+          en: 'Operational infrastructure, high-security summit logistics, conference facilities, IT infrastructure, and institutional administrative services.',
+          zh: '负责论坛全球峰会高规格后勤保障、跨国会务接待、数字化系统维护及行政综合管理。',
+          fr: 'Infrastructures opérationnelles, logistique des sommets de haut niveau et services administratifs.',
+          ar: 'إدارة البنية التحتية واللوجستيات الأمنية للمؤتمرات وتسهيلات الإقامة والترجمة وخدمات تكنولوجيا المعلومات.',
+          pt: 'Infraestrutura operacional, logística de cúpulas internacionais, TI e serviços de apoio corporativo.',
+        },
+      },
+    ],
+  },
+  {
+    id: 'committees-accbcf',
+    level: 7,
+    name: {
+      en: 'Committees of ACCBCF',
+      zh: '行业专业行动委员会',
+      fr: 'Comités Sectoriels de l’ACCBCF',
+      ar: 'اللجان القطاعية المتخصصة في المنتدى',
+      pt: 'Comitês Setoriais do ACCBCF',
+    },
+    subtitle: {
+      en: '7 Specialized Sectoral Action Committees',
+      zh: '七大重点产业领域专业行动委员会',
+      fr: '7 Comités d’Action Sectoriels Spécialisés',
+      ar: '7 لجان عمل قطاعية متخصصة',
+      pt: '7 Comitês de Ação Setorial Especializados',
+    },
+    description: {
+      en: 'Specialized industrial action committees driving practical joint ventures, technical standards, factory landing, and bilateral trade showcases across Africa and China.',
+      zh: '聚焦中非合作最核心产业设立的专业行动委员会，深耕农业、矿产、清洁能源、先进制造、医药健康、金融资本及大型国际展会。',
+      fr: 'Comités industriels spécialisés stimulant les coentreprises concrètes, le transfert technologique et le commerce bilatéral.',
+      ar: 'لجان قطاعية متخصصة تركز على إقامة المشاريع المشتركة ونقل التقنية وتطوير سلاسل الإمداد والمعارض التجارية الكبرى.',
+      pt: 'Comitês setoriais focados em viabilizar empreendimentos industriais conjuntos, padrões técnicos e feiras comerciais de grande porte.',
+    },
+    items: [
+      {
+        name: {
+          en: 'Agriculture Committee',
+          zh: '农业专业委员会',
+          fr: 'Comité de l’Agriculture',
+          ar: 'لجنة الزراعة والأمن الغذائي',
+          pt: 'Comitê de Agricultura',
+        },
+        description: {
+          en: 'Mechanized farming, grain storage, high-yield seed varieties, drip irrigation networks, and continental food sovereignty.',
+          zh: '现代农业机械化、大型粮仓仓储、杂交育种技术推广、节水灌溉网络与非洲粮食自主保障。',
+          fr: 'Agriculture mécanisée, stockage des céréales, semences à haut rendement et sécurité alimentaire.',
+          ar: 'الميكنة الزراعية، والصوامع الحديثة، والبذور المحسنة، وشبكات الري، وتعزيز الأمن الغذائي القاري.',
+          pt: 'Agricultura mecanizada, silos de grãos, sementes de alta produtividade e soberania alimentar.',
+        },
+      },
+      {
+        name: {
+          en: 'Mining Committee',
+          zh: '矿业专业委员会',
+          fr: 'Comité des Mines & Ressources',
+          ar: 'لجنة التعدين والثروات المعدنية',
+          pt: 'Comitê de Mineração',
+        },
+        description: {
+          en: 'Critical minerals, battery metals (lithium, cobalt, copper), in-country beneficiation, smelting plants, and sustainable extraction.',
+          zh: '战略关键矿产、锂钴铜电池金属深加工、本土提炼冶炼中心与绿色可持续矿业开发。',
+          fr: 'Minéraux critiques, valorisation locale des métaux de batterie, fonderies et extraction durable.',
+          ar: 'المعادن الاستراتيجية، ومعالجة خامات بطاريات الطاقة محلياً، ومحطات الصهر، والتعدين المستدام.',
+          pt: 'Minerais críticos, refino local de metais estratégicos, fundições e mineração sustentável.',
+        },
+      },
+      {
+        name: {
+          en: 'Energy Committee',
+          zh: '能源专业委员会',
+          fr: 'Comité de l’Énergie',
+          ar: 'لجنة الطاقة والكهرباء',
+          pt: 'Comitê de Energia',
+        },
+        description: {
+          en: 'Utility-scale solar arrays, mini-grids, hydroelectric stations, LNG value chains, and trans-continental power transmission.',
+          zh: '大型光伏地面电站、智能微电网、水电站扩建、液化天然气（LNG）全产业链及跨国高压输电走廊。',
+          fr: 'Parcs solaires photovoltaïques, mini-réseaux, centrales hydroélectriques et réseaux de transmission.',
+          ar: 'محطات الطاقة الشمسية الكبرى، والشبكات الذكية، ومشاريع الطاقة الكهرومائية، وتوليد ونقل الطاقة.',
+          pt: 'Usinas solares, minirredes, hidroelétricas, infraestrutura de GNL e linhas de transmissão.',
+        },
+      },
+      {
+        name: {
+          en: 'Manufacturing Committee',
+          zh: '制造业专业委员会',
+          fr: 'Comité de l’Industrie & Fabrication',
+          ar: 'لجنة التصنيع والإنتاج الصناعي',
+          pt: 'Comitê de Manufatura',
+        },
+        description: {
+          en: 'Special Economic Zones (SEZs), automotive assembly, industrial equipment, construction materials, and technology transfer.',
+          zh: '特色经济特区（SEZ）投资建设、汽车及重工装配、现代建材生产与工业制造技术转移。',
+          fr: 'Zones Économiques Spéciales (ZES), assemblage automobile, équipements industriels et transfert technologique.',
+          ar: 'المناطق الاقتصادية الخاصة، وتجميع السيارات، ومواد البناء، ونقل التكنولوجيا الصناعية المتقدمة.',
+          pt: 'Zonas Econômicas Especiais (ZEE), montagem automotiva, bens de capital e transferência tecnológica.',
+        },
+      },
+      {
+        name: {
+          en: 'Healthcare Committee',
+          zh: '医疗卫生专业委员会',
+          fr: 'Comité de la Santé & Pharmacie',
+          ar: 'لجنة الرعاية الصحية والصيدلة',
+          pt: 'Comitê de Saúde',
+        },
+        description: {
+          en: 'Local pharmaceutical manufacturing, hospital infrastructure, essential medical diagnostic equipment, and vaccine facilities.',
+          zh: '非洲本土制药厂投资建设、现代化医院综合体、高端医疗影像设备供应与公共卫生防疫合作。',
+          fr: 'Fabrication pharmaceutique locale, hôpitaux modernes, équipements de diagnostic et centres vaccinaux.',
+          ar: 'تصنيع الأدوية محلياً في إفريقيا، وتجهيز المستشفيات الحديثة، ونقل تقنيات الرعاية الصحية.',
+          pt: 'Manufatura farmacêutica local, infraestrutura hospitalar, equipamentos médicos e saúde pública.',
+        },
+      },
+      {
+        name: {
+          en: 'Finance Committee',
+          zh: '金融投资专业委员会',
+          fr: 'Comité des Finances & Investissements',
+          ar: 'لجنة التمويل والاستثمار',
+          pt: 'Comitê de Finanças',
+        },
+        description: {
+          en: 'Sovereign syndication, infrastructure bonds, multi-currency trade settlements, export credit guarantees, and private equity.',
+          zh: '跨国银团联合授信、主权基建债券发行、中非本币双边结算清算体系与产业引导母基金。',
+          fr: 'Syndication financière, obligations d’infrastructures, règlement en monnaies locales et capital-investissement.',
+          ar: 'ترتيب القروض السيادية المشتركة، وإصدار سندات البنية التحتية، وتسوية المدفوعات، وصناديق الاستثمار.',
+          pt: 'Sindicação de crédito, títulos de infraestrutura, liquidação em moedas locais e fundos de investimento.',
+        },
+      },
+      {
+        name: {
+          en: 'Trade Fair',
+          zh: '国际经贸博览会委员会',
+          fr: 'Comité des Foires Commerciales & Expositions',
+          ar: 'لجنة المعارض التجارية الدولية',
+          pt: 'Comitê de Feiras & Exposições',
+        },
+        description: {
+          en: 'Annual flagship China-Africa business expositions, sovereign investment summits, bilateral commodity showcases, and B2B match sessions.',
+          zh: '负责筹办中非大型国际经贸博览会、年度主权投资领袖峰会、大宗商品双向直展与高层B2B精准撮合。',
+          fr: 'Organisation des grandes foires commerciales bilatérales, sommets d’investissement et pavillons d’exposition.',
+          ar: 'تنظيم المعرض التجاري السنوي البارز بين إفريقيا والصين، وقمم الاستثمار، وجلسات مطابقة الأعمال B2B.',
+          pt: 'Feiras anuais de negócios África–China, cúpulas de investimentos e rodadas de negócios B2B.',
+        },
+      },
     ],
   },
 ];
