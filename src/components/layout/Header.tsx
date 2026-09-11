@@ -18,6 +18,7 @@ import {
   Globe,
   FileText,
   Calendar,
+  Award,
 } from 'lucide-react';
 import { LanguageSwitcher } from '../common/LanguageSwitcher';
 import { SocialIconsGroup } from '../common/SocialIcons';
@@ -88,6 +89,12 @@ export const Header: React.FC<HeaderProps> = ({ locale }) => {
           label: t.aboutOverview,
           description: t.aboutOverviewDesc,
           icon: Landmark,
+        },
+        {
+          href: `/${locale}/founders`,
+          label: t.aboutFounders,
+          description: t.aboutFoundersDesc,
+          icon: Award,
         },
         {
           href: `/${locale}/governance`,
