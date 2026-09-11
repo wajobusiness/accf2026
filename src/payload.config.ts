@@ -64,7 +64,7 @@ export default buildConfig({
         Logo: '@/components/admin/Logo#Logo',
         Icon: '@/components/admin/Icon#Icon',
       },
-      actions: [
+      afterNavLinks: [
         '@/components/admin/LiveSiteAction#LiveSiteAction',
       ],
       beforeDashboard: [

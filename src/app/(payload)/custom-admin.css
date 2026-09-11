@@ -28,9 +28,9 @@ body,
   --theme-elevation-750: #F4F7FD !important;
   --theme-elevation-800: #F8FAFC !important;
   --theme-elevation-850: #FFFFFF !important;
-  --theme-elevation-900: #060D1D !important;
-  --theme-elevation-950: #040914 !important;
-  --theme-elevation-1000: #03070E !important;
+  --theme-elevation-900: #FFFFFF !important;
+  --theme-elevation-950: #FFFFFF !important;
+  --theme-elevation-1000: #FFFFFF !important;
 
   --theme-input-bg: #09152C !important;
   --theme-text: #F1F5F9 !important;
@@ -92,13 +92,18 @@ aside.nav {
 .nav__link,
 .nav-group a,
 a.nav__link {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
   color: #CBD5E1 !important;
-  font-size: 13px !important;
+  font-size: 13.5px !important;
   font-weight: 500 !important;
   border-radius: 6px !important;
-  padding: 6px 10px !important;
-  transition: background-color 0.15s ease, color 0.15s ease !important;
-  margin: 1px 0 !important;
+  padding: 7px 12px !important;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease !important;
+  margin: 2px 0 !important;
+  text-decoration: none !important;
 }
 
 .nav__link:hover,
@@ -106,15 +111,24 @@ a.nav__link {
 a.nav__link:hover {
   background: rgba(212, 175, 55, 0.12) !important;
   color: #FFFFFF !important;
+  text-decoration: none !important;
 }
 
 .nav__link--active,
 .nav__link.active,
 a.nav__link--active {
-  background: linear-gradient(90deg, rgba(212, 175, 55, 0.2) 0%, rgba(212, 175, 55, 0.03) 100%) !important;
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.22) 0%, rgba(212, 175, 55, 0.04) 100%) !important;
   color: #F0D078 !important;
   border-left: 3px solid #D4AF37 !important;
   font-weight: 600 !important;
+}
+
+/* Sidebar Live Public Button */
+.accbcf-sidebar-public-btn:hover {
+  background: rgba(212, 175, 55, 0.22) !important;
+  border-color: #D4AF37 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.2) !important;
 }
 
 /* App Header / Top Navigation Bar */
@@ -331,4 +345,132 @@ table tr:hover td {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(212, 175, 55, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   Document Editing, Forms & Field Inputs
+   -------------------------------------------------------------------------- */
+.collection-edit {
+  width: 100% !important;
+}
+
+.collection-edit__main {
+  max-width: 1200px !important;
+}
+
+.field-type input[type="text"],
+.field-type input[type="email"],
+.field-type input[type="password"],
+.field-type input[type="number"],
+.field-type textarea,
+.field-type select,
+input.input,
+textarea.input {
+  background: #09152C !important;
+  border: 1px solid rgba(212, 175, 55, 0.28) !important;
+  border-radius: 7px !important;
+  color: #F8FAFC !important;
+  font-family: var(--font-body) !important;
+  font-size: 13.5px !important;
+  padding: 10px 14px !important;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+  box-sizing: border-box !important;
+}
+
+.field-type input[type="text"]:focus,
+.field-type input[type="email"]:focus,
+.field-type input[type="password"]:focus,
+.field-type input[type="number"]:focus,
+.field-type textarea:focus,
+.field-type select:focus,
+input.input:focus,
+textarea.input:focus {
+  border-color: #D4AF37 !important;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2) !important;
+  outline: none !important;
+}
+
+/* Field labels */
+label.field-label,
+.field-label {
+  color: #D4AF37 !important;
+  font-size: 12.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
+  margin-bottom: 6px !important;
+}
+
+label.field-label .required,
+.field-label .required {
+  color: #EF4444 !important;
+  font-weight: 700 !important;
+  margin-left: 4px !important;
+}
+
+/* React-Select dropdown styling */
+.rs__control {
+  background: #09152C !important;
+  border: 1px solid rgba(212, 175, 55, 0.28) !important;
+  border-radius: 7px !important;
+  color: #F8FAFC !important;
+  min-height: 40px !important;
+}
+
+.rs__control--is-focused {
+  border-color: #D4AF37 !important;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2) !important;
+}
+
+.rs__menu {
+  background: #0B172E !important;
+  border: 1px solid rgba(212, 175, 55, 0.35) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7) !important;
+  z-index: 100 !important;
+}
+
+.rs__option {
+  color: #CBD5E1 !important;
+  background: transparent !important;
+  padding: 8px 12px !important;
+  font-size: 13px !important;
+}
+
+.rs__option--is-focused,
+.rs__option:hover {
+  background: rgba(212, 175, 55, 0.15) !important;
+  color: #FFFFFF !important;
+}
+
+.rs__option--is-selected {
+  background: rgba(212, 175, 55, 0.3) !important;
+  color: #F0D078 !important;
+  font-weight: 600 !important;
+}
+
+.rs__single-value {
+  color: #F8FAFC !important;
+  font-size: 13.5px !important;
+}
+
+/* Document Sidebar / Controls */
+.doc-sidebar {
+  background: rgba(11, 23, 46, 0.5) !important;
+  border-left: 1px solid rgba(212, 175, 55, 0.18) !important;
+  border-radius: 8px !important;
+}
+
+/* Localizer button styling in header */
+.localizer__button,
+.localizer-button {
+  background: #0E1E3E !important;
+  border: 1px solid rgba(212, 175, 55, 0.25) !important;
+  color: #F0D078 !important;
+  border-radius: 6px !important;
+}
+
+.localizer__button:hover,
+.localizer-button:hover {
+  border-color: #D4AF37 !important;
+  background: rgba(212, 175, 55, 0.15) !important;
 }
