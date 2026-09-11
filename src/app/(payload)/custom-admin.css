@@ -3,7 +3,7 @@
    Africa China Chairmen of Business Forum · Official Secretariat Styling
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&display=swap');
 
 :root,
 html,
@@ -59,8 +59,7 @@ body {
 /* Dignified Institutional Headings */
 h1, h2, h3, h4,
 .collection-list__header h1,
-.doc-header__title,
-.dashboard__card-title {
+.doc-header__title {
   font-family: 'Playfair Display', Georgia, serif !important;
   letter-spacing: -0.01em;
   color: #FFFFFF !important;
@@ -85,8 +84,8 @@ aside.nav {
   font-weight: 700 !important;
   letter-spacing: 0.1em !important;
   text-transform: uppercase !important;
-  margin-top: 18px !important;
-  padding-bottom: 6px !important;
+  margin-top: 14px !important;
+  padding-bottom: 4px !important;
 }
 
 /* Nav Links */
@@ -94,12 +93,12 @@ aside.nav {
 .nav-group a,
 a.nav__link {
   color: #CBD5E1 !important;
-  font-size: 13.5px !important;
+  font-size: 13px !important;
   font-weight: 500 !important;
-  border-radius: 8px !important;
-  padding: 8px 12px !important;
-  transition: all 0.18s ease-in-out !important;
-  margin: 2px 0 !important;
+  border-radius: 6px !important;
+  padding: 6px 10px !important;
+  transition: background-color 0.15s ease, color 0.15s ease !important;
+  margin: 1px 0 !important;
 }
 
 .nav__link:hover,
@@ -107,13 +106,12 @@ a.nav__link {
 a.nav__link:hover {
   background: rgba(212, 175, 55, 0.12) !important;
   color: #FFFFFF !important;
-  transform: translateX(3px);
 }
 
 .nav__link--active,
 .nav__link.active,
 a.nav__link--active {
-  background: linear-gradient(90deg, rgba(212, 175, 55, 0.22) 0%, rgba(212, 175, 55, 0.04) 100%) !important;
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.2) 0%, rgba(212, 175, 55, 0.03) 100%) !important;
   color: #F0D078 !important;
   border-left: 3px solid #D4AF37 !important;
   font-weight: 600 !important;
@@ -127,145 +125,162 @@ header.app-header,
 }
 
 /* --------------------------------------------------------------------------
-   Buttons & Actions (Diplomatic Gold Aesthetic)
+   Buttons & Controls (Preserve Native Sizing & Layout)
    -------------------------------------------------------------------------- */
-.btn--style-primary,
-button.btn--style-primary,
-a.btn--style-primary,
-.form-submit button {
-  background: linear-gradient(135deg, #D4AF37 0%, #AA8022 100%) !important;
-  color: #060D1D !important;
-  font-weight: 700 !important;
-  font-size: 13px !important;
-  letter-spacing: 0.04em !important;
-  border-radius: 8px !important;
-  border: none !important;
-  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35) !important;
-  transition: all 0.18s ease !important;
-  text-decoration: none !important;
-  padding: 8px 18px !important;
+.btn--style-primary {
+  --color: #060D1D !important;
+  --bg-color: #D4AF37 !important;
+  --hover-bg: #F0D078 !important;
+  --hover-color: #040914 !important;
+  --btn-font-weight: 700 !important;
+  border-radius: 6px !important;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.25) !important;
 }
 
-.btn--style-primary:hover,
-button.btn--style-primary:hover,
-a.btn--style-primary:hover,
-.form-submit button:hover {
-  background: linear-gradient(135deg, #F0D078 0%, #D4AF37 100%) !important;
-  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5) !important;
-  transform: translateY(-1px) !important;
-  color: #040914 !important;
-}
-
-.btn--style-secondary,
-button.btn--style-secondary,
-a.btn--style-secondary {
-  background: rgba(14, 30, 62, 0.7) !important;
-  border: 1px solid rgba(212, 175, 55, 0.3) !important;
-  color: #F0D078 !important;
-  border-radius: 8px !important;
-  font-weight: 600 !important;
-  font-size: 13px !important;
-  transition: all 0.18s ease !important;
-}
-
-.btn--style-secondary:hover,
-button.btn--style-secondary:hover,
-a.btn--style-secondary:hover {
-  background: rgba(212, 175, 55, 0.15) !important;
-  border-color: #D4AF37 !important;
-  color: #FFFFFF !important;
+.btn--style-secondary {
+  --color: #F0D078 !important;
+  --bg-color: rgba(14, 30, 62, 0.7) !important;
+  --btn-border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  --hover-bg: rgba(212, 175, 55, 0.15) !important;
+  --hover-color: #FFFFFF !important;
+  --hover-btn-border: 1px solid #D4AF37 !important;
+  border-radius: 6px !important;
 }
 
 /* --------------------------------------------------------------------------
-   Cards, Panels & Containers
+   Dashboard & Collection Groups (Fix 2-Card Width & Balance)
    -------------------------------------------------------------------------- */
-.card,
-.dashboard__card,
-.collection-card,
-.template-default__wrap,
-.table {
-  background: linear-gradient(145deg, #0A162E 0%, #0E1E3E 100%) !important;
-  border: 1px solid rgba(212, 175, 55, 0.22) !important;
-  border-radius: 12px !important;
-  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.5) !important;
-  transition: all 0.2s ease !important;
+.dashboard {
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 
-.card:hover,
-.dashboard__card:hover,
-.collection-card:hover {
-  border-color: rgba(212, 175, 55, 0.45) !important;
-  box-shadow: 0 12px 30px -4px rgba(212, 175, 55, 0.15) !important;
-  transform: translateY(-2px);
+.collections {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.collections__wrap {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+  box-sizing: border-box !important;
+}
+
+.collections__group {
+  width: 100% !important;
+  background: rgba(11, 23, 46, 0.5) !important;
+  border: 1px solid rgba(212, 175, 55, 0.18) !important;
+  border-radius: 12px !important;
+  padding: 16px 20px !important;
+  box-sizing: border-box !important;
+}
+
+.collections__label {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #D4AF37 !important;
+  letter-spacing: 0.04em !important;
+  margin: 0 0 12px 0 !important;
+  padding-bottom: 8px !important;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.12) !important;
+}
+
+/* 2-column balanced grid so 2 cards fill 100% width comfortably */
+.collections__card-list {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  list-style: none !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 768px) {
+  .collections__card-list {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.collections__card-list .card {
+  background: linear-gradient(145deg, #0C1A36 0%, #102244 100%) !important;
+  border: 1px solid rgba(212, 175, 55, 0.22) !important;
+  border-radius: 10px !important;
+  padding: 14px 18px !important;
+  min-height: 60px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25) !important;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.collections__card-list .card:hover {
+  border-color: rgba(212, 175, 55, 0.5) !important;
+  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.12) !important;
+}
+
+.collections__card-list .card__title {
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-size: 14.5px !important;
+  font-weight: 600 !important;
+  color: #F8FAFC !important;
+  margin: 0 !important;
+  line-height: 1.3 !important;
+}
+
+.collections__card-list .card__actions .btn {
+  margin: 0 !important;
+}
+
+.collections__card-list .card__actions .btn__icon {
+  border-color: rgba(212, 175, 55, 0.35) !important;
+  color: #D4AF37 !important;
+  background: rgba(212, 175, 55, 0.08) !important;
+}
+
+.collections__card-list .card__actions .btn__icon:hover {
+  background: #D4AF37 !important;
+  color: #060D1D !important;
+  border-color: #D4AF37 !important;
 }
 
 /* --------------------------------------------------------------------------
    Tables & Data Collections
    -------------------------------------------------------------------------- */
+.table {
+  width: 100% !important;
+}
+
 .table th,
 table th {
   background: #09152C !important;
   color: #D4AF37 !important;
-  font-size: 11.5px !important;
+  font-size: 11px !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.08em !important;
-  border-bottom: 2px solid rgba(212, 175, 55, 0.25) !important;
-  padding: 12px 16px !important;
+  letter-spacing: 0.06em !important;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
+  padding: 10px 14px !important;
 }
 
 .table td,
 table td {
   border-bottom: 1px solid rgba(212, 175, 55, 0.08) !important;
-  padding: 12px 16px !important;
+  padding: 10px 14px !important;
   color: #E2E8F0 !important;
+  font-size: 13px !important;
 }
 
 .table tr:hover td,
 table tr:hover td {
-  background: rgba(212, 175, 55, 0.05) !important;
-}
-
-/* --------------------------------------------------------------------------
-   Form Fields, Inputs & Controls
-   -------------------------------------------------------------------------- */
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="number"],
-input[type="date"],
-textarea,
-select,
-.react-select__control {
-  background-color: #09152C !important;
-  border: 1px solid rgba(212, 175, 55, 0.25) !important;
-  border-radius: 8px !important;
-  color: #F1F5F9 !important;
-  font-size: 14px !important;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
-}
-
-input:focus,
-textarea:focus,
-select:focus,
-.react-select__control--is-focused {
-  border-color: #D4AF37 !important;
-  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.22) !important;
-  outline: none !important;
-}
-
-label.field-label,
-.field-label {
-  color: #E2E8F0 !important;
-  font-size: 13px !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.02em !important;
-  margin-bottom: 6px !important;
-}
-
-.field-description {
-  color: #8DA4C4 !important;
-  font-size: 12px !important;
+  background: rgba(212, 175, 55, 0.04) !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -279,9 +294,12 @@ label.field-label,
 .login__form {
   background: linear-gradient(145deg, #0A162E 0%, #0E1E3E 100%) !important;
   border: 1px solid rgba(212, 175, 55, 0.3) !important;
-  border-radius: 16px !important;
-  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(212, 175, 55, 0.1) !important;
-  padding: 36px !important;
+  border-radius: 14px !important;
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.7) !important;
+  padding: 32px !important;
+  max-width: 440px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 /* Pill status badges */
@@ -301,16 +319,16 @@ label.field-label,
 
 /* Custom Scrollbars */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
   background: #060D1D;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(212, 175, 55, 0.25);
+  background: rgba(212, 175, 55, 0.22);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(212, 175, 55, 0.45);
+  background: rgba(212, 175, 55, 0.4);
 }

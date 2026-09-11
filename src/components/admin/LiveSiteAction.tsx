@@ -9,33 +9,35 @@ export const LiveSiteAction: React.FC = () => {
       style={{
         display: 'inline-flex',
         alignItems: 'center',
-        gap: '8px',
-        padding: '6px 14px',
-        borderRadius: '8px',
-        background: 'linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(200, 168, 78, 0.05) 100%)',
+        gap: '6px',
+        height: '30px',
+        padding: '0 12px',
+        borderRadius: '6px',
+        background: 'rgba(212, 175, 55, 0.1)',
         border: '1px solid rgba(212, 175, 55, 0.35)',
         color: '#F0D078',
-        fontSize: '12px',
+        fontSize: '11.5px',
         fontWeight: 600,
-        letterSpacing: '0.04em',
+        letterSpacing: '0.03em',
         textDecoration: 'none',
-        transition: 'all 0.2s ease',
+        whiteSpace: 'nowrap',
+        boxSizing: 'border-box',
         cursor: 'pointer',
       }}
       className="accbcf-live-site-btn"
     >
       <span
         style={{
-          width: '7px',
-          height: '7px',
+          width: '6px',
+          height: '6px',
           borderRadius: '50%',
           backgroundColor: '#10B981',
-          boxShadow: '0 0 8px #10B981',
+          boxShadow: '0 0 6px #10B981',
           display: 'inline-block',
         }}
       />
-      <span>Visit Public Website</span>
-      <span style={{ fontSize: '11px', opacity: 0.8 }}>↗</span>
+      <span>Live Public Site</span>
+      <span style={{ fontSize: '10px', opacity: 0.8 }}>↗</span>
     </a>
   );
 };

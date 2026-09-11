@@ -4,51 +4,34 @@ export const Logo: React.FC = () => {
   return (
     <div
       style={{
-        display: 'flex',
+        display: 'inline-flex',
         alignItems: 'center',
-        gap: '14px',
-        padding: '8px 4px',
+        gap: '10px',
+        padding: '2px 0',
         textDecoration: 'none',
+        maxHeight: '36px',
       }}
     >
-      <div
+      <img
+        src="/images/accbcf-logo.svg"
+        alt="ACCBCF Seal"
         style={{
-          position: 'relative',
-          padding: '2px',
-          borderRadius: '10px',
-          background: 'linear-gradient(135deg, rgba(212, 175, 55, 0.4) 0%, rgba(200, 168, 78, 0.1) 100%)',
-          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          height: '28px',
+          width: 'auto',
+          objectFit: 'contain',
+          display: 'block',
+          flexShrink: 0,
         }}
-      >
-        <img
-          src="/images/accbcf-logo.svg"
-          alt="ACCBCF Seal"
-          style={{
-            height: '44px',
-            width: 'auto',
-            objectFit: 'contain',
-            display: 'block',
-          }}
-        />
-      </div>
+      />
       <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-          }}
-        >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
           <span
             style={{
               fontFamily: "'Playfair Display', Georgia, serif",
               fontWeight: 800,
-              fontSize: '19px',
-              letterSpacing: '0.06em',
-              background: 'linear-gradient(135deg, #F0D078 0%, #D4AF37 50%, #AA8022 100%)',
+              fontSize: '16px',
+              letterSpacing: '0.05em',
+              background: 'linear-gradient(135deg, #F0D078 0%, #D4AF37 60%, #AA8022 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               lineHeight: 1.1,
@@ -58,32 +41,34 @@ export const Logo: React.FC = () => {
           </span>
           <span
             style={{
-              fontSize: '9px',
+              fontSize: '8px',
               fontWeight: 700,
-              letterSpacing: '0.1em',
+              letterSpacing: '0.08em',
               color: '#10B981',
               backgroundColor: 'rgba(16, 185, 129, 0.15)',
               border: '1px solid rgba(16, 185, 129, 0.3)',
               borderRadius: '999px',
-              padding: '2px 7px',
+              padding: '1px 5px',
               textTransform: 'uppercase',
+              lineHeight: 1.2,
             }}
           >
-            Official
+            Portal
           </span>
         </div>
         <div
           style={{
-            fontSize: '10px',
+            fontSize: '9px',
             fontWeight: 600,
-            letterSpacing: '0.08em',
+            letterSpacing: '0.06em',
             textTransform: 'uppercase',
-            color: '#94A3B8',
-            marginTop: '3px',
-            lineHeight: 1.2,
+            color: '#8DA4C4',
+            marginTop: '1px',
+            lineHeight: 1.1,
+            whiteSpace: 'nowrap',
           }}
         >
-          Secretariat Admin Portal
+          Secretariat Admin
         </div>
       </div>
     </div>
