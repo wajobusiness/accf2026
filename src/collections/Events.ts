@@ -5,7 +5,9 @@ export const Events: CollectionConfig = {
   access: {
     read: () => true,
   },
+  defaultSort: '-date',
   admin: {
+    group: 'Programs & Strategic Sectors',
     useAsTitle: 'title',
     defaultColumns: ['title', 'date', 'location'],
   },

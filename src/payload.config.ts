@@ -13,6 +13,7 @@ import { CoreServices } from './collections/CoreServices';
 import { PrioritySectors } from './collections/PrioritySectors';
 import { Events } from './collections/Events';
 import { SiteSettings } from './globals/SiteSettings';
+import { migrations } from './migrations';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -63,6 +64,15 @@ export default buildConfig({
         Logo: '@/components/admin/Logo#Logo',
         Icon: '@/components/admin/Icon#Icon',
       },
+      actions: [
+        '@/components/admin/LiveSiteAction#LiveSiteAction',
+      ],
+      beforeDashboard: [
+        '@/components/admin/DashboardHeader#DashboardHeader',
+      ],
+      beforeLogin: [
+        '@/components/admin/LoginNotice#LoginNotice',
+      ],
     },
   },
   collections: [
@@ -95,6 +105,8 @@ export default buildConfig({
               ? { rejectUnauthorized: false }
               : undefined,
         },
+        push: false,
+        prodMigrations: migrations,
       })
     : sqliteAdapter({
         client: {

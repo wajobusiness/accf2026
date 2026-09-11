@@ -5,7 +5,9 @@ export const PrioritySectors: CollectionConfig = {
   access: {
     read: () => true,
   },
+  defaultSort: 'order',
   admin: {
+    group: 'Programs & Strategic Sectors',
     useAsTitle: 'name',
     defaultColumns: ['name', 'slug', 'order'],
   },

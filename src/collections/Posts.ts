@@ -11,7 +11,9 @@ export const Posts: CollectionConfig = {
       return req.user.role === 'admin';
     },
   },
+  defaultSort: '-publishedDate',
   admin: {
+    group: 'Editorial & Dispatches',
     useAsTitle: 'title',
     defaultColumns: ['title', 'category', 'status', 'author', 'publishedDate', 'featured'],
   },

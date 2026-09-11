@@ -5,6 +5,10 @@ export const Media: CollectionConfig = {
   access: {
     read: () => true,
   },
+  admin: {
+    group: 'Editorial & Dispatches',
+    useAsTitle: 'alt',
+  },
   upload: {
     staticDir: 'public/media',
     imageSizes: [

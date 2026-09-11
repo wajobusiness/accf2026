@@ -5,7 +5,9 @@ export const CommitteeMembers: CollectionConfig = {
   access: {
     read: () => true,
   },
+  defaultSort: 'order',
   admin: {
+    group: 'Institutional Governance',
     useAsTitle: 'name',
     defaultColumns: ['name', 'title', 'committee', 'order'],
   },
