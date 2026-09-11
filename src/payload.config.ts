@@ -22,11 +22,14 @@ function getDatabaseConfig() {
   let uri = process.env.DATABASE_URI || '';
   
   // Supabase direct URLs are IPv6-only. When deployed to Vercel/serverless environments,
-  // automatically route through the IPv4-compatible connection pooler.
+  // automatically route through the IPv4-compatible connection pooler on transaction port 6543.
   if (uri.includes('db.tqeqccszyxstsxtoffzf.supabase.co')) {
     uri = uri
       .replace('postgresql://postgres:', 'postgresql://postgres.tqeqccszyxstsxtoffzf:')
-      .replace('db.tqeqccszyxstsxtoffzf.supabase.co', 'aws-0-eu-west-2.pooler.supabase.com');
+      .replace('db.tqeqccszyxstsxtoffzf.supabase.co:5432', 'aws-0-eu-west-2.pooler.supabase.com:6543')
+      .replace('db.tqeqccszyxstsxtoffzf.supabase.co', 'aws-0-eu-west-2.pooler.supabase.com:6543');
+  } else if (uri.includes('aws-0-eu-west-2.pooler.supabase.com:5432')) {
+    uri = uri.replace(':5432', ':6543');
   }
 
   const isPostgres = Boolean(uri && uri.startsWith('postgres'));

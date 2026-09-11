@@ -136,6 +136,20 @@ function detectLocale(req: NextRequest): Locale {
 }
 
 export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  // Immediately bypass admin (Payload CMS), api, and internal routes
+  if (
+    pathname.startsWith('/admin') ||
+    pathname.startsWith('/api') ||
+    pathname.startsWith('/_next') ||
+    pathname === '/favicon.ico' ||
+    pathname === '/robots.txt' ||
+    pathname === '/sitemap.xml'
+  ) {
+    return NextResponse.next();
+  }
+
   let supabaseResponse = NextResponse.next({
     request: {
       headers: request.headers,
@@ -148,8 +162,6 @@ export function middleware(request: NextRequest) {
     // Prevent middleware crash
     console.error('Middleware Supabase error:', err);
   }
-
-  const { pathname } = request.nextUrl;
 
   // Root path request -> detect locale and redirect
   if (pathname === '/') {
