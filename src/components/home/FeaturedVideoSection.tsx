@@ -9,8 +9,6 @@ import {
   RotateCcw,
   Sparkles,
   ShieldCheck,
-  Globe2,
-  Landmark,
   ArrowRight,
   Compass,
 } from 'lucide-react';
@@ -20,11 +18,6 @@ interface FeaturedVideoSectionProps {
   locale: Locale;
 }
 
-interface PillarCard {
-  title: string;
-  desc: string;
-}
-
 interface SectionI18n {
   badge: string;
   title: string;
@@ -32,7 +25,6 @@ interface SectionI18n {
   videoBadge: string;
   playPrompt: string;
   stopPrompt: string;
-  pillars: [PillarCard, PillarCard, PillarCard];
   ctaPrimary: string;
   ctaSecondary: string;
 }
@@ -46,20 +38,6 @@ const SECTION_I18N: Record<Locale, SectionI18n> = {
     videoBadge: 'Official 4K / HD Broadcast Dispatch',
     playPrompt: 'Watch Official Video Presentation',
     stopPrompt: 'Return to Cover',
-    pillars: [
-      {
-        title: 'Institutional Backing',
-        desc: 'Officially accredited under the Federal Ministry of Industry, Trade & Investment, Abuja Headquarters.',
-      },
-      {
-        title: '12 Action Sectors',
-        desc: 'Driving bilateral capital and joint ventures across energy, solid minerals, agriculture, infrastructure, and technology.',
-      },
-      {
-        title: '2026 Continental Summit',
-        desc: 'Uniting 500+ corporate chairmen, royal sovereigns, and diplomatic leaders to sign high-impact investment treaties.',
-      },
-    ],
     ctaPrimary: 'Explore Priority Sectors',
     ctaSecondary: 'Summit Delegate Inquiries',
   },
@@ -71,20 +49,6 @@ const SECTION_I18N: Record<Locale, SectionI18n> = {
     videoBadge: '官方超高清 4K / 1080P 双语呈献',
     playPrompt: '点击播放官方推介视频',
     stopPrompt: '返回封面',
-    pillars: [
-      {
-        title: '主权部委强力背书',
-        desc: '尼日利亚联邦工业、贸易与投资部官方备案设立，直通双边国家级政企沟通高地。',
-      },
-      {
-        title: '十二大核心产业走廊',
-        desc: '深耕清洁能源、关键矿产、现代农业、智能电网及数字经济双向投资落地。',
-      },
-      {
-        title: '2026阿布贾全球盛会',
-        desc: '汇聚500余位中非领军企业董事长、侨领领袖、传统王室及政要签署百亿级合作协议。',
-      },
-    ],
     ctaPrimary: '了解十二大重点产业',
     ctaSecondary: '成立大会代表参会申请',
   },
@@ -96,20 +60,6 @@ const SECTION_I18N: Record<Locale, SectionI18n> = {
     videoBadge: 'Diffusion Officielle Haute Définition',
     playPrompt: 'Visionner la Présentation Officielle',
     stopPrompt: 'Retour à la Couverture',
-    pillars: [
-      {
-        title: 'Soutien Institutionnel',
-        desc: 'Accrédité auprès du Ministère Fédéral de l’Industrie, du Commerce et de l’Investissement à Abuja.',
-      },
-      {
-        title: '12 Secteurs Stratégiques',
-        desc: 'Mobilisation de capitaux bilatéraux dans l’énergie, les mines, l’agro-industrie et les infrastructures.',
-      },
-      {
-        title: 'Sommet Continental 2026',
-        desc: 'Rassemblement de plus de 500 présidents d’entreprises, souverains et hauts dignitaires diplomatiques.',
-      },
-    ],
     ctaPrimary: 'Explorer les Secteurs Prioritaires',
     ctaSecondary: 'Délégation au Sommet & Contact',
   },
@@ -121,20 +71,6 @@ const SECTION_I18N: Record<Locale, SectionI18n> = {
     videoBadge: 'بث رسمي عالي الدقة 4K / HD',
     playPrompt: 'مشاهدة العرض المرئي الرسمي',
     stopPrompt: 'العودة إلى الغلاف',
-    pillars: [
-      {
-        title: 'دعم مؤسسي رفيع',
-        desc: 'معتمد رسمياً تحت مظلة وزارة الصناعة والتجارة والاستثمار الاتحادية، المقر الرئيسي في أبوجا.',
-      },
-      {
-        title: '12 قطاعاً استراتيجياً',
-        desc: 'تحفيز الاستثمارات الثنائية في الطاقة والمعادن والزراعة والبنية التحتية والتقنيات المتقدمة.',
-      },
-      {
-        title: 'قمة أبوجا القارية 2026',
-        desc: 'تجمع أكثر من 500 من رؤساء مجالس الإدارات وقادة الأعمال والزعماء لتوقيع اتفاقيات كبرى.',
-      },
-    ],
     ctaPrimary: 'استكشاف القطاعات ذات الأولوية',
     ctaSecondary: 'التسجيل في القمة والتواصل',
   },
@@ -146,20 +82,6 @@ const SECTION_I18N: Record<Locale, SectionI18n> = {
     videoBadge: 'Transmissão Oficial em Alta Definição',
     playPrompt: 'Assistir à Apresentação Oficial',
     stopPrompt: 'Voltar à Capa',
-    pillars: [
-      {
-        title: 'Apoio Institucional',
-        desc: 'Oficialmente acreditado junto ao Ministério Federal da Indústria, Comércio e Investimento em Abuja.',
-      },
-      {
-        title: '12 Setores de Ação',
-        desc: 'Mobilização de capital em energia, mineração, agronegócio, infraestrutura e inovação tecnológica.',
-      },
-      {
-        title: 'Cúpula Continental 2026',
-        desc: 'Reunindo mais de 500 presidentes de corporações, soberanos tradicionais e líderes de estado.',
-      },
-    ],
     ctaPrimary: 'Explorar Setores Prioritários',
     ctaSecondary: 'Inscrição de Delegados na Cúpula',
   },
@@ -171,12 +93,6 @@ export const FeaturedVideoSection: React.FC<FeaturedVideoSectionProps> = ({ loca
   const [isPlaying, setIsPlaying] = useState(false);
   const t = SECTION_I18N[locale] || SECTION_I18N.en;
   const isRtl = locale === 'ar';
-
-  const pillarIcons = [
-    <Landmark key="pillar-0" className="w-5 h-5 text-accbcf-gold" />,
-    <Globe2 key="pillar-1" className="w-5 h-5 text-accbcf-gold" />,
-    <ShieldCheck key="pillar-2" className="w-5 h-5 text-accbcf-gold" />,
-  ];
 
   return (
     <section
@@ -350,37 +266,13 @@ export const FeaturedVideoSection: React.FC<FeaturedVideoSectionProps> = ({ loca
           </div>
         </motion.div>
 
-        {/* 3 Strategic Diplomatic Pillar Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 max-w-5xl mx-auto">
-          {t.pillars.map((pillar, idx) => (
-            <motion.div
-              key={`pillar-${idx}`}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 * idx }}
-              className="p-5 sm:p-6 rounded-2xl bg-white/[0.04] hover:bg-white/[0.07] border border-white/10 hover:border-accbcf-gold/40 transition-all duration-300 shadow-lg group flex flex-col"
-            >
-              <div className="w-10 h-10 rounded-xl bg-accbcf-gold/15 border border-accbcf-gold/30 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-accbcf-gold group-hover:text-[#060D1D] transition-all duration-300">
-                {pillarIcons[idx]}
-              </div>
-              <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-accbcf-gold transition-colors mb-2">
-                {pillar.title}
-              </h3>
-              <p className="text-xs sm:text-sm text-white/70 leading-relaxed flex-grow">
-                {pillar.desc}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-
         {/* Action CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2"
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2 sm:pt-4"
         >
           <Link
             href={`/${locale}/sectors`}
@@ -404,4 +296,3 @@ export const FeaturedVideoSection: React.FC<FeaturedVideoSectionProps> = ({ loca
 };
 
 export default FeaturedVideoSection;
-
