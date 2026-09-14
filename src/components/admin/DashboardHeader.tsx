@@ -146,7 +146,7 @@ export const DashboardHeader: React.FC = () => {
                 boxSizing: 'border-box',
               }}
             >
-              <span>✍️ + New Dispatch</span>
+              <span>✍️ + New Article</span>
             </a>
 
             <a
@@ -195,7 +195,7 @@ export const DashboardHeader: React.FC = () => {
             }}
           >
             <div style={{ fontSize: '10px', color: '#8DA4C4', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-              Editorial Dispatches
+              News & Press Releases
             </div>
             <div style={{ fontSize: '14px', fontWeight: 700, color: '#FFFFFF', marginTop: '1px' }}>
               Policy & Briefs

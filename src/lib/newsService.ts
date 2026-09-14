@@ -10,6 +10,61 @@ import {
 export type { EditorInfo, NewsSeo, NewsArticleItem };
 export { DEFAULT_EDITORS, getFallbackArticles };
 
+const SUPABASE_MEDIA_BASE =
+  'https://tqeqccszyxstsxtoffzf.supabase.co/storage/v1/object/public/media';
+
+/**
+ * Resolves any media object, string, or relative path to a valid public image URL.
+ */
+export function resolveMediaUrl(media: any, fallbackUrl?: string): string {
+  const defaultFallback = fallbackUrl || '/images/forum/fmiti-headquarters-handshake.jpg';
+  if (!media) return defaultFallback;
+
+  if (typeof media === 'string') {
+    if (
+      media.startsWith('http://') ||
+      media.startsWith('https://') ||
+      media.startsWith('/images/')
+    ) {
+      return media;
+    }
+    if (media.startsWith('/api/media/file/')) {
+      const filename = media.replace('/api/media/file/', '');
+      return `${SUPABASE_MEDIA_BASE}/${filename}`;
+    }
+    if (!media.startsWith('/')) {
+      return `${SUPABASE_MEDIA_BASE}/${media}`;
+    }
+    return media;
+  }
+
+  if (typeof media === 'object') {
+    if (typeof media.thumbnailURL === 'string' && media.thumbnailURL.startsWith('http')) {
+      return media.thumbnailURL;
+    }
+    if (typeof media.thumbnail_u_r_l === 'string' && media.thumbnail_u_r_l.startsWith('http')) {
+      return media.thumbnail_u_r_l;
+    }
+    if (typeof media.url === 'string') {
+      if (media.url.startsWith('http://') || media.url.startsWith('https://')) {
+        return media.url;
+      }
+      if (media.url.startsWith('/api/media/file/')) {
+        const filename = media.url.replace('/api/media/file/', '');
+        return `${SUPABASE_MEDIA_BASE}/${filename}`;
+      }
+    }
+    if (media.filename && typeof media.filename === 'string') {
+      return `${SUPABASE_MEDIA_BASE}/${media.filename}`;
+    }
+    if (typeof media.url === 'string' && media.url) {
+      return media.url;
+    }
+  }
+
+  return defaultFallback;
+}
+
 /**
  * Server-side function to retrieve published news from Payload CMS,
  * falling back seamlessly to institutional sample articles.
@@ -91,11 +146,8 @@ export async function getPublishedNews(options?: {
           }
         }
 
-        // Determine image URL
-        let imageUrl = doc.featuredImageUrl || '/images/forum/fmiti-headquarters-handshake.jpg';
-        if (doc.featuredImage && typeof doc.featuredImage === 'object' && doc.featuredImage.url) {
-          imageUrl = doc.featuredImage.url;
-        }
+        // Determine image URL with Supabase resolution
+        const imageUrl = resolveMediaUrl(doc.featuredImage, doc.featuredImageUrl);
 
         parsedDocs.push({
           id: String(doc.id),
@@ -122,8 +174,7 @@ export async function getPublishedNews(options?: {
             metaTitle: doc.seo?.metaTitle || doc.title,
             metaDescription: doc.seo?.metaDescription || doc.excerpt,
             metaKeywords: doc.seo?.metaKeywords,
-            ogImage:
-              doc.seo?.ogImage?.url || doc.seo?.ogImageUrl || imageUrl,
+            ogImage: resolveMediaUrl(doc.seo?.ogImage, doc.seo?.ogImageUrl || imageUrl),
             canonicalUrl: doc.seo?.canonicalUrl,
             noIndex: doc.seo?.noIndex,
           },
@@ -201,10 +252,7 @@ export async function getNewsArticleBySlug(
         }
       }
 
-      let imageUrl = doc.featuredImageUrl || '/images/forum/fmiti-headquarters-handshake.jpg';
-      if (doc.featuredImage && typeof doc.featuredImage === 'object' && doc.featuredImage.url) {
-        imageUrl = doc.featuredImage.url;
-      }
+      const imageUrl = resolveMediaUrl(doc.featuredImage, doc.featuredImageUrl);
 
       return {
         id: String(doc.id),
@@ -231,8 +279,7 @@ export async function getNewsArticleBySlug(
           metaTitle: doc.seo?.metaTitle || doc.title,
           metaDescription: doc.seo?.metaDescription || doc.excerpt,
           metaKeywords: doc.seo?.metaKeywords,
-          ogImage:
-            doc.seo?.ogImage?.url || doc.seo?.ogImageUrl || imageUrl,
+          ogImage: resolveMediaUrl(doc.seo?.ogImage, doc.seo?.ogImageUrl || imageUrl),
           canonicalUrl: doc.seo?.canonicalUrl,
           noIndex: doc.seo?.noIndex,
         },

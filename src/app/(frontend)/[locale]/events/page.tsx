@@ -91,7 +91,7 @@ export default async function EventsPage({
               href={`/${locale}/news/inauguration-of-accbcf-in-abuja`}
               className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-accbcf-blue hover:text-accbcf-orange transition-colors"
             >
-              <span>{isZh ? '查看成立大会实况报道' : 'Read Assembly Dispatch'}</span>
+              <span>{isZh ? '查看成立大会实况报道' : 'Read Assembly Report'}</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>

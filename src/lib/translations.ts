@@ -33,7 +33,7 @@ export const UI_STRINGS = {
       cooperationSectorsDesc: 'Targeted industries for technology transfer & capital partnership',
 
       menuMedia: 'Media & Events',
-      menuMediaDesc: 'Official releases, dispatches and bilateral calendar',
+      menuMediaDesc: 'Official releases, news and bilateral calendar',
       mediaNews: 'News',
       mediaNewsDesc: 'Official communiqués, strategic reports & trade updates',
       mediaEvents: 'Events & Summits',
@@ -81,10 +81,10 @@ export const UI_STRINGS = {
       subtitle: 'Institutional certainty, diplomatic access, and end-to-end execution capabilities.',
     },
     news: {
-      badge: 'Official Dispatch',
+      badge: 'Official News & Updates',
       title: 'Latest News',
       subtitle: 'Official announcements, bilateral summit briefings, and industrial policy updates.',
-      viewAll: 'View All Dispatches',
+      viewAll: 'View All News',
       readArticle: 'Read Full Analysis',
     },
     contactBand: {
@@ -240,10 +240,10 @@ export const UI_STRINGS = {
       subtitle: '权威政策准入、高能级外交对话渠道与全流程项目实施攻坚能力。',
     },
     news: {
-      badge: '官方动态发布',
+      badge: '官方新闻与动态',
       title: '最新要闻',
       subtitle: '官方新闻公告、双边高层会晤纪要与跨境产业政策动态深度解读。',
-      viewAll: '查看全部官方发布',
+      viewAll: '查看全部新闻',
       readArticle: '阅读完整分析',
     },
     contactBand: {
@@ -396,10 +396,10 @@ export const UI_STRINGS = {
       subtitle: 'Sécurité institutionnelle, accès diplomatique et capacités d’exécution de bout en bout.',
     },
     news: {
-      badge: 'Dépêches Officielles',
+      badge: 'Actualités Officielles',
       title: 'Dernières Actualités',
       subtitle: 'Annonces officielles, bilans des sommets bilatéraux et actualités de politique industrielle.',
-      viewAll: 'Voir Toutes les Dépêches',
+      viewAll: 'Toutes les Actualités',
       readArticle: 'Lire l’Analyse Complète',
     },
     contactBand: {
@@ -552,10 +552,10 @@ export const UI_STRINGS = {
       subtitle: 'اليقين المؤسسي، والوصول الدبلوماسي، والقدرة الفائقة على تنفيذ المشاريع.',
     },
     news: {
-      badge: 'البيانات الرسمية',
+      badge: 'الأخبار الرسمية والمستجدات',
       title: 'آخر الأخبار',
       subtitle: 'الإعلانات الرسمية، إحاطات القمم الثنائية، ومستجدات السياسات الصناعية.',
-      viewAll: 'عرض جميع البيانات',
+      viewAll: 'عرض جميع الأخبار',
       readArticle: 'قراءة التحليل الكامل',
     },
     contactBand: {
@@ -708,10 +708,10 @@ export const UI_STRINGS = {
       subtitle: 'Segurança institucional, acesso diplomático e capacidade integral de execução de projetos.',
     },
     news: {
-      badge: 'Despachos Oficiais',
+      badge: 'Notícias Oficiais',
       title: 'Últimas Notícias',
       subtitle: 'Anúncios oficiais, informes de cúpulas bilaterais e atualizações de política industrial.',
-      viewAll: 'Ver Todos os Despachos',
+      viewAll: 'Ver Todas as Notícias',
       readArticle: 'Ler Análise Completa',
     },
     contactBand: {

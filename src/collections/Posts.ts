@@ -13,7 +13,7 @@ export const Posts: CollectionConfig = {
   },
   defaultSort: '-publishedDate',
   admin: {
-    group: 'Editorial & Dispatches',
+    group: 'News & Media',
     useAsTitle: 'title',
     defaultColumns: ['title', 'category', 'status', 'author', 'publishedDate', 'featured'],
   },
@@ -59,6 +59,31 @@ export const Posts: CollectionConfig = {
               typeof data.body === 'string'
                 ? data.body.slice(0, 200).trim() + '...'
                 : data.body;
+          }
+        }
+        return data;
+      },
+    ],
+    beforeChange: [
+      async ({ data, req }) => {
+        if (data && data.featuredImage && !data.featuredImageUrl) {
+          try {
+            const mediaId =
+              typeof data.featuredImage === 'object' ? data.featuredImage.id : data.featuredImage;
+            if (mediaId) {
+              const mediaDoc = (await req.payload.findByID({
+                collection: 'media',
+                id: mediaId,
+                depth: 0,
+              })) as any;
+              if (mediaDoc?.url) {
+                data.featuredImageUrl = mediaDoc.url;
+              } else if (mediaDoc?.filename) {
+                data.featuredImageUrl = `https://tqeqccszyxstsxtoffzf.supabase.co/storage/v1/object/public/media/${mediaDoc.filename}`;
+              }
+            }
+          } catch {
+            // Ignore error
           }
         }
         return data;
@@ -172,7 +197,7 @@ export const Posts: CollectionConfig = {
       label: 'Feature on Homepage Slider',
       admin: {
         position: 'sidebar',
-        description: 'Pin this dispatch to the homepage sliding carousel',
+        description: 'Pin this article to the homepage sliding carousel',
       },
     },
     {
@@ -261,7 +286,7 @@ export const Posts: CollectionConfig = {
       localized: true,
       label: 'Full Article Content',
       admin: {
-        description: 'Detailed dispatch narrative (use blank lines to separate paragraphs)',
+        description: 'Detailed article narrative (use blank lines to separate paragraphs)',
       },
     },
     // SEO Settings Group

@@ -10,7 +10,7 @@ export const Media: CollectionConfig = {
     delete: () => true,
   },
   admin: {
-    group: 'Editorial & Dispatches',
+    group: 'News & Media',
     useAsTitle: 'alt',
     defaultColumns: ['alt', 'filename', 'mimeType', 'filesize', 'createdAt'],
   },
@@ -18,12 +18,24 @@ export const Media: CollectionConfig = {
     staticDir: 'public/media',
     disableLocalStorage: true, // Prevents EROFS read-only filesystem crash on Vercel
     adminThumbnail: ({ doc }) => {
+      if (doc?.thumbnailURL && typeof doc.thumbnailURL === 'string') return doc.thumbnailURL;
+      if (doc?.filename)
+        return `https://tqeqccszyxstsxtoffzf.supabase.co/storage/v1/object/public/media/${doc.filename}`;
       if (doc?.url && typeof doc.url === 'string') return doc.url;
       return null;
     },
     mimeTypes: ['image/*'],
   },
   hooks: {
+    afterRead: [
+      ({ doc }) => {
+        if (doc?.filename) {
+          doc.url = `https://tqeqccszyxstsxtoffzf.supabase.co/storage/v1/object/public/media/${doc.filename}`;
+          doc.thumbnailURL = doc.url;
+        }
+        return doc;
+      },
+    ],
     beforeValidate: [
       ({ data, req }) => {
         if (data) {

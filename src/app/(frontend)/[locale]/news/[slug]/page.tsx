@@ -17,19 +17,19 @@ import type { Locale } from '@/lib/content';
 import { getNewsArticleBySlug, getAllNewsSlugs } from '@/lib/newsService';
 
 const BACK_LABELS: Record<Locale, string> = {
-  en: 'Back to All Dispatches',
-  zh: '返回全部要闻',
-  fr: 'Retour à toutes les dépêches',
-  ar: 'العودة إلى جميع البيانات',
+  en: 'Back to All News',
+  zh: '返回全部新闻',
+  fr: 'Retour à toutes les actualités',
+  ar: 'العودة إلى جميع الأخبار',
   pt: 'Voltar a todas as notícias',
 };
 
 const CERT_TITLES: Record<Locale, string> = {
-  en: 'Official Secretariat Diplomatic Dispatch',
-  zh: '官方涉外经贸通讯认证',
-  fr: 'Dépêche diplomatique officielle du secrétariat',
-  ar: 'بيان دبلوماسي رسمي من الأمانة العامة',
-  pt: 'Despacho diplomático oficial da secretaria',
+  en: 'Official Secretariat Press Release',
+  zh: '论坛秘书处官方新闻公告',
+  fr: 'Communiqué de presse officiel du secrétariat',
+  ar: 'بيان صحفي رسمي من الأمانة العامة',
+  pt: 'Comunicado de imprensa oficial da secretaria',
 };
 
 const CERT_DESCS: Record<Locale, string> = {
@@ -52,35 +52,35 @@ const EDITOR_LABELS: Record<
 > = {
   en: {
     filedBy: 'Filed by Accredited Correspondent',
-    totalDispatches: 'Dispatches Published',
+    totalDispatches: 'Articles Published',
     deskBadge: 'ACCBCF Press Corps',
     verifiedEditor: 'Verified Diplomatic Desk Editor',
     editorRole: 'Contributing Editor',
   },
   zh: {
     filedBy: '责任编辑及特派撰稿人',
-    totalDispatches: '篇已发布通讯',
+    totalDispatches: '篇已发布文章',
     deskBadge: '论坛新闻公报署',
     verifiedEditor: '认证涉外特约编辑',
     editorRole: '特约责任编辑',
   },
   fr: {
     filedBy: 'Rédigé par le correspondant accrédité',
-    totalDispatches: 'Dépêches publiées',
+    totalDispatches: 'Articles publiés',
     deskBadge: 'Corps de Presse ACCBCF',
     verifiedEditor: 'Éditeur de bureau diplomatique vérifié',
     editorRole: 'Rédacteur accrédité',
   },
   ar: {
     filedBy: 'حرر بواسطة المراسل المعتمد',
-    totalDispatches: 'بيانات منشورة',
+    totalDispatches: 'مقالات منشورة',
     deskBadge: 'هيئة الصحافة ACCBCF',
     verifiedEditor: 'محرر مكتب دبلوماسي معتمد',
     editorRole: 'محرر معتمد',
   },
   pt: {
     filedBy: 'Escrito por correspondente credenciado',
-    totalDispatches: 'Despachos publicados',
+    totalDispatches: 'Artigos publicados',
     deskBadge: 'Corpo de Imprensa ACCBCF',
     verifiedEditor: 'Editor de mesa diplomática verificado',
     editorRole: 'Editor credenciado',
@@ -109,7 +109,7 @@ export async function generateMetadata({
   const locale: Locale = normalizeLocale(rawLocale);
   const post = await getNewsArticleBySlug(slug, locale);
 
-  if (!post) return { title: 'Dispatch Not Found' };
+  if (!post) return { title: 'Article Not Found' };
 
   const metaTitle = post.seo?.metaTitle || `${post.title} | ACCBCF`;
   const metaDescription = post.seo?.metaDescription || post.excerpt;
@@ -186,7 +186,7 @@ export default async function SingleNewsPage({
                 <span className="font-medium text-white">{post.author.name}</span>
                 <span className="text-white/40">•</span>
                 <span className="text-accbcf-gold font-medium">
-                  {post.author.totalPosts} {isZh ? '篇已发要闻' : 'Dispatches'}
+                  {post.author.totalPosts} {isZh ? '篇已发文章' : 'Articles'}
                 </span>
               </div>
 
