@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Locale } from '@/lib/content';
 import { Hero } from '@/components/home/Hero';
+import { FeaturedVideoSection } from '@/components/home/FeaturedVideoSection';
 import { CredibilityStrip } from '@/components/home/CredibilityStrip';
 import { AboutSnapshot } from '@/components/home/AboutSnapshot';
 import { StrategicPositioning } from '@/components/home/StrategicPositioning';
@@ -24,6 +25,7 @@ export default async function HomePage({
   return (
     <>
       <Hero locale={locale} />
+      <FeaturedVideoSection locale={locale} />
       <CredibilityStrip locale={locale} />
       <AboutSnapshot locale={locale} />
       <StrategicPositioning locale={locale} />
