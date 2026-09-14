@@ -18,6 +18,52 @@ export const Posts: CollectionConfig = {
     defaultColumns: ['title', 'category', 'status', 'author', 'publishedDate', 'featured'],
   },
   hooks: {
+    beforeValidate: [
+      ({ data, req }) => {
+        if (data) {
+          // Auto-generate slug if missing or empty
+          if (!data.slug || typeof data.slug !== 'string' || data.slug.trim() === '') {
+            const rawTitle =
+              typeof data.title === 'string'
+                ? data.title
+                : typeof data.title === 'object'
+                ? data.title?.en || Object.values(data.title)[0]
+                : '';
+            if (rawTitle && typeof rawTitle === 'string') {
+              data.slug = rawTitle
+                .toLowerCase()
+                .replace(/[^a-z0-9\s-]/g, '')
+                .trim()
+                .replace(/\s+/g, '-')
+                .slice(0, 80);
+            }
+            if (!data.slug) {
+              data.slug = `news-${Date.now()}`;
+            }
+          } else {
+            data.slug = data.slug
+              .toLowerCase()
+              .replace(/[^a-z0-9\s-]/g, '')
+              .trim()
+              .replace(/\s+/g, '-');
+          }
+
+          // Auto-assign logged in author if not manually selected
+          if (!data.author && req?.user?.id) {
+            data.author = req.user.id;
+          }
+
+          // Auto-populate excerpt from body if missing
+          if (!data.excerpt && data.body) {
+            data.excerpt =
+              typeof data.body === 'string'
+                ? data.body.slice(0, 200).trim() + '...'
+                : data.body;
+          }
+        }
+        return data;
+      },
+    ],
     afterChange: [
       async ({ doc, req, previousDoc }) => {
         try {
