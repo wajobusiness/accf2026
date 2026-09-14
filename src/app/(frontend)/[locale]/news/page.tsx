@@ -16,11 +16,11 @@ export async function generateMetadata({
   const { locale: rawLocale } = await params;
   const locale: Locale = normalizeLocale(rawLocale);
   const titles: Record<Locale, string> = {
-    en: 'News & Insights',
-    zh: '新闻与洞察',
-    fr: 'Actualités et perspectives',
-    ar: 'الأخبار والرؤى الاستراتيجية',
-    pt: 'Notícias e Perspectivas',
+    en: 'News',
+    zh: '新闻',
+    fr: 'Actualités',
+    ar: 'الأخبار',
+    pt: 'Notícias',
   };
   return {
     title: titles[locale] || titles.en,
