@@ -3,6 +3,7 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { SocialMediaDock } from '@/components/common/SocialMediaDock';
 import { WhatsAppLiveChat } from '@/components/common/WhatsAppLiveChat';
+import { WelcomeVideoModal } from '@/components/common/WelcomeVideoModal';
 import type { Locale } from '@/lib/content';
 import { SITE_INFO } from '@/lib/content';
 import '../../globals.css';
@@ -117,6 +118,7 @@ export default async function FrontendLayout({
         <Footer locale={locale} />
         <SocialMediaDock locale={locale} />
         <WhatsAppLiveChat locale={locale} />
+        <WelcomeVideoModal locale={locale} />
       </body>
     </html>
   );

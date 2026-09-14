@@ -70,3 +70,4 @@ export async function deleteMediaFromSupabase(urlOrFilename: string): Promise<vo
     console.warn('Failed to delete media from Supabase Storage:', err);
   }
 }
+
