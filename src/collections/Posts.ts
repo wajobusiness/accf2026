@@ -16,6 +16,13 @@ export const Posts: CollectionConfig = {
     group: 'News & Media',
     useAsTitle: 'title',
     defaultColumns: ['title', 'category', 'status', 'author', 'publishedDate', 'featured'],
+    components: {
+      edit: {
+        beforeDocumentControls: [
+          '@/components/admin/PostPublishNotification#PostPublishControlsBadge',
+        ],
+      },
+    },
   },
   hooks: {
     beforeValidate: [
@@ -144,6 +151,16 @@ export const Posts: CollectionConfig = {
     ],
   },
   fields: [
+    {
+      name: 'publicationNotice',
+      type: 'ui',
+      admin: {
+        position: 'sidebar',
+        components: {
+          Field: '@/components/admin/PostPublishNotification#PostPublishNotification',
+        },
+      },
+    },
     {
       name: 'title',
       type: 'text',
