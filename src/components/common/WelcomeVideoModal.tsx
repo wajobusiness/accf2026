@@ -74,7 +74,7 @@ const MODAL_I18N: Record<Locale, ModalI18n> = {
   },
 };
 
-const YOUTUBE_VIDEO_ID = '-gzEK1slRWU';
+const YOUTUBE_VIDEO_ID = 'YGiA9rLG2yw';
 const STORAGE_KEY = 'accbcf_welcome_video_viewed';
 
 export const WelcomeVideoModal: React.FC<WelcomeVideoModalProps> = ({ locale }) => {

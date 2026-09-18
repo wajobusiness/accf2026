@@ -87,7 +87,7 @@ const SECTION_I18N: Record<Locale, SectionI18n> = {
   },
 };
 
-const YOUTUBE_VIDEO_ID = '-gzEK1slRWU';
+const YOUTUBE_VIDEO_ID = 'YGiA9rLG2yw';
 
 export const FeaturedVideoSection: React.FC<FeaturedVideoSectionProps> = ({ locale }) => {
   const [isPlaying, setIsPlaying] = useState(false);
