@@ -9,6 +9,7 @@ import { fileURLToPath } from 'url';
 import { Users } from './collections/Users';
 import { Media } from './collections/Media';
 import { Posts } from './collections/Posts';
+import { Videos } from './collections/Videos';
 import { CommitteeMembers } from './collections/CommitteeMembers';
 import { CoreServices } from './collections/CoreServices';
 import { PrioritySectors } from './collections/PrioritySectors';
@@ -81,6 +82,7 @@ export default buildConfig({
     Users,
     Media,
     Posts,
+    Videos,
     CommitteeMembers,
     CoreServices,
     PrioritySectors,

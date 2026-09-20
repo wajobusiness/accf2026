@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { Calendar, MapPin, Shield, ArrowRight, Clock } from 'lucide-react';
 import { SITE_INFO, normalizeLocale } from '@/lib/content';
 import type { Locale } from '@/lib/content';
+import { getPublishedVideos } from '@/lib/videoService';
+import { EventVideosSection } from '@/components/events/EventVideosSection';
 
 export async function generateMetadata({
   params,
@@ -33,6 +35,7 @@ export default async function EventsPage({
   const { locale: rawLocale } = await params;
   const locale: Locale = normalizeLocale(rawLocale);
   const isZh = locale === 'zh';
+  const videos = await getPublishedVideos({ locale });
 
   return (
     <div className="pt-24 pb-20">
@@ -54,6 +57,9 @@ export default async function EventsPage({
           </p>
         </div>
       </section>
+
+      {/* Official Video Recordings & Broadcast Section */}
+      <EventVideosSection locale={locale} videos={videos} />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-8">
         <div className="bg-white rounded-3xl p-8 border border-gray-200 shadow-sm space-y-6">
