@@ -195,8 +195,15 @@ export const Hero: React.FC<HeroProps> = ({ locale }) => {
 
       {/* 3. Foreground Content: Bold, Authoritative Typography directly on the full-bleed photograph */}
       <div className="relative max-w-5xl mx-auto text-center z-10 w-full px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-7">
-        {/* BOLD Authoritative Headline with Staggered Word Reveal */}
-        <div className="space-y-2">
+        {/* BOLD Authoritative Headline (Only displayed on the 1st slide; hidden on other slides while maintaining layout flow so below content stays in position) */}
+        <div
+          className={`space-y-2 transition-opacity duration-700 ease-in-out ${
+            currentSlide === 0
+              ? 'opacity-100 pointer-events-auto'
+              : 'opacity-0 pointer-events-none select-none'
+          }`}
+          aria-hidden={currentSlide !== 0}
+        >
           <motion.h1
             initial="hidden"
             animate="visible"
