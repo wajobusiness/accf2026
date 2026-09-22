@@ -8,6 +8,7 @@ import { ArrowRight, Eye, Compass, ShieldCheck, CheckCircle2 } from 'lucide-reac
 import { SITE_INFO } from '@/lib/content';
 import { UI_STRINGS } from '@/lib/translations';
 import type { Locale } from '@/lib/content';
+import { ClickableImagePreview } from '@/components/common/ClickableImagePreview';
 
 interface AboutSnapshotProps {
   locale: Locale;
@@ -51,15 +52,19 @@ export const AboutSnapshot: React.FC<AboutSnapshotProps> = ({ locale }) => {
             <div className="absolute top-0 right-0 w-32 h-32 bg-accbcf-blue/5 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform" />
             
             {/* Vision Photographic Representation */}
-            <div className="relative w-full h-52 sm:h-64 rounded-xl overflow-hidden mb-6 border border-gray-100 shadow-xs">
-              <Image
-                src="/images/vision.jpg"
-                alt={t.visionTitle}
-                fill
-                className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-accbcf-blue-deep/80 via-accbcf-blue-deep/20 to-transparent" />
-              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+            <ClickableImagePreview
+              src="/images/vision.jpg"
+              alt={t.visionTitle}
+              title={t.visionTitle}
+              caption={SITE_INFO.vision[locale]}
+              tag={locale === 'zh' ? '战略愿景' : 'Our Vision'}
+              category={locale === 'zh' ? '全球经贸远景' : 'Global Perspective'}
+              locale={locale}
+              className="w-full rounded-xl overflow-hidden mb-6 border border-gray-100 shadow-xs"
+              aspectRatioClassName="relative w-full h-52 sm:h-64"
+            >
+              <div className="absolute inset-0 bg-gradient-to-t from-accbcf-blue-deep/80 via-accbcf-blue-deep/20 to-transparent pointer-events-none" />
+              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none z-10">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-accbcf-blue/90 text-white backdrop-blur-md border border-white/20 shadow-sm">
                   <Eye className="w-3.5 h-3.5 text-accbcf-gold" />
                   <span>{t.visionTitle}</span>
@@ -68,7 +73,7 @@ export const AboutSnapshot: React.FC<AboutSnapshotProps> = ({ locale }) => {
                   {locale === 'zh' ? '全球经贸远景' : 'Global Perspective'}
                 </span>
               </div>
-            </div>
+            </ClickableImagePreview>
 
             <h3 className="font-serif text-xl sm:text-2xl font-bold text-accbcf-charcoal mb-3">
               {t.visionTitle}
@@ -89,15 +94,19 @@ export const AboutSnapshot: React.FC<AboutSnapshotProps> = ({ locale }) => {
             <div className="absolute top-0 right-0 w-32 h-32 bg-accbcf-gold/10 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform" />
             
             {/* Mission Photographic Representation */}
-            <div className="relative w-full h-52 sm:h-64 rounded-xl overflow-hidden mb-6 border border-gray-100 shadow-xs">
-              <Image
-                src="/images/mission.jpg"
-                alt={t.missionTitle}
-                fill
-                className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-accbcf-blue-deep/80 via-accbcf-blue-deep/20 to-transparent" />
-              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+            <ClickableImagePreview
+              src="/images/mission.jpg"
+              alt={t.missionTitle}
+              title={t.missionTitle}
+              caption={SITE_INFO.mission[locale]}
+              tag={locale === 'zh' ? '制度使命' : 'Our Mission'}
+              category={locale === 'zh' ? '中非双边协作' : 'Bilateral Action'}
+              locale={locale}
+              className="w-full rounded-xl overflow-hidden mb-6 border border-gray-100 shadow-xs"
+              aspectRatioClassName="relative w-full h-52 sm:h-64"
+            >
+              <div className="absolute inset-0 bg-gradient-to-t from-accbcf-blue-deep/80 via-accbcf-blue-deep/20 to-transparent pointer-events-none" />
+              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none z-10">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-accbcf-gold text-accbcf-charcoal backdrop-blur-md border border-white/20 shadow-sm font-semibold">
                   <Compass className="w-3.5 h-3.5 text-accbcf-blue-deep" />
                   <span>{t.missionTitle}</span>
@@ -106,7 +115,7 @@ export const AboutSnapshot: React.FC<AboutSnapshotProps> = ({ locale }) => {
                   {locale === 'zh' ? '中非双边协作' : 'Bilateral Action'}
                 </span>
               </div>
-            </div>
+            </ClickableImagePreview>
 
             <h3 className="font-serif text-xl sm:text-2xl font-bold text-accbcf-charcoal mb-3">
               {t.missionTitle}

@@ -19,6 +19,8 @@ import {
 } from 'lucide-react';
 import { normalizeLocale } from '@/lib/content';
 import type { Locale } from '@/lib/content';
+import { DiplomaticArchiveGallery } from '@/components/founders/DiplomaticArchiveGallery';
+import { ClickableImagePreview } from '@/components/common/ClickableImagePreview';
 
 export function generateStaticParams() {
   return [
@@ -165,49 +167,6 @@ export default async function FoundersPage({
     },
   ];
 
-  const diplomaticGallery = [
-    {
-      image: '/images/founder/founder_img_28.jpg',
-      caption: isZh ? '与尼日利亚阿南布拉州州长查尔斯·索卢多教授阁下' : 'With Anambra State Governor Prof. Charles Soludo',
-      tag: 'G2B Economic Dialogue',
-    },
-    {
-      image: '/images/founder/founder_img_29.jpg',
-      caption: isZh ? '与前中国驻尼日利亚特命全权大使崔建春阁下' : 'With Former Chinese Ambassador to Nigeria H.E. Cui Jianchun',
-      tag: 'Bilateral Diplomatic Mission',
-    },
-    {
-      image: '/images/founder/founder_img_37.jpg',
-      caption: isZh ? '与尼日利亚联邦众议院副议长本杰明·卡卢阁下' : 'With Deputy Speaker, Federal House of Representatives Rt. Hon. Benjamin Kalu',
-      tag: 'Legislative Cooperation',
-    },
-    {
-      image: '/images/founder/founder_img_38.jpg',
-      caption: isZh ? '与前执政党全国主席、前参议员亚当斯·奥希奥姆霍尔阁下' : 'With Senator Adams Oshiomhole (Former APC National Chairman)',
-      tag: 'National Leadership',
-    },
-    {
-      image: '/images/founder/founder_img_40.jpg',
-      caption: isZh ? '与约鲁巴传统最高王领伊费皇城奥尼大帝阁下' : 'With His Imperial Majesty The Ooni of Ife, Oba Adeyeye Enitan Ogunwusi',
-      tag: 'Royal Cultural Sovereignty',
-    },
-    {
-      image: '/images/founder/founder_img_18.jpg',
-      caption: isZh ? '与尼日利亚联邦众议院非中关系委员会主席贾法鲁·雅库布议员' : 'With Hon. Ja’afaru Yakubu, Chairman House Committee on Nigeria-China Relations',
-      tag: 'Parliamentary Ties',
-    },
-    {
-      image: '/images/founder/founder_img_21.jpg',
-      caption: isZh ? '与塔拉巴州副州长阿尔哈吉·阿米努·阿尔卡利阁下' : 'With Taraba State Deputy Governor Alhaji Aminu Alkali',
-      tag: 'Sub-National Investment',
-    },
-    {
-      image: '/images/founder/founder_img_25.jpg',
-      caption: isZh ? '与印度尼西亚驻尼日利亚特命全权大使阁下' : 'With H.E. The Ambassador of the Republic of Indonesia to Nigeria',
-      tag: 'Multilateral Diplomacy',
-    },
-  ];
-
   return (
     <div className="pt-24 pb-24">
       {/* Hero Header */}
@@ -242,15 +201,19 @@ export default async function FoundersPage({
               </div>
 
               <div className="w-full space-y-6 my-auto pt-6 text-center">
-                <div className="relative w-64 h-80 sm:w-72 sm:h-96 mx-auto rounded-2xl overflow-hidden shadow-2xl border-4 border-accbcf-gold/70 bg-black/20">
-                  <Image
-                    src="/images/founder/chief_mike_zheng_xiaopeng.jpg"
-                    alt="High Chief Mike Zheng Xiaopeng (郑晓鹏)"
-                    fill
-                    className="object-cover object-top"
-                    priority
-                  />
-                </div>
+                <ClickableImagePreview
+                  src="/images/founder/chief_mike_zheng_xiaopeng.jpg"
+                  alt="High Chief Mike Zheng Xiaopeng (郑晓鹏)"
+                  title={isZh ? '郑晓鹏 高级大酋长 官方肖像' : 'High Chief Mike Yousuf Ugwu (Zheng Xiaopeng)'}
+                  caption={isZh ? '非洲中国会长论坛创会全国主席 · 加纳与尼日利亚多邦大酋长' : 'National Chairman & Founder, ACCBCF · High Chief in Nigeria and Ghana'}
+                  tag={strings.founderTag}
+                  category={isZh ? '创会领袖' : 'Founder'}
+                  locale={locale}
+                  priority
+                  className="w-64 h-80 sm:w-72 sm:h-96 mx-auto rounded-2xl overflow-hidden shadow-2xl border-4 border-accbcf-gold/70 bg-black/20"
+                  aspectRatioClassName="relative w-full h-full"
+                  imageClassName="object-cover object-top"
+                />
 
                 <div className="space-y-2">
                   <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white">
@@ -378,14 +341,18 @@ export default async function FoundersPage({
               </div>
 
               <div className="w-full space-y-6 my-auto pt-6 text-center">
-                <div className="relative w-64 h-80 sm:w-72 sm:h-96 mx-auto rounded-2xl overflow-hidden shadow-2xl border-4 border-accbcf-gold/70 bg-black/20">
-                  <Image
-                    src="/images/founder/chief_dr_william_towah.jpg"
-                    alt="Chief William Deiyan Towah, Ph.D (IGWUMBA I)"
-                    fill
-                    className="object-cover object-top"
-                  />
-                </div>
+                <ClickableImagePreview
+                  src="/images/founder/chief_dr_william_towah.jpg"
+                  alt="Chief William Deiyan Towah, Ph.D (IGWUMBA I)"
+                  title={isZh ? '威廉·德扬·托瓦 博士大酋长 官方肖像' : 'Chief William Deiyan Towah, Ph.D (“IGWUMBA I”)'}
+                  caption={isZh ? '“IGWUMBA I” · 西非共同体法院行政与财务司长 · 论坛联合发起人' : '“IGWUMBA I” · Director, ECOWAS Court of Justice · ACCBCF Co-Founder'}
+                  tag={strings.coFounderTag}
+                  category={isZh ? '联合发起人' : 'Co-Founder'}
+                  locale={locale}
+                  className="w-64 h-80 sm:w-72 sm:h-96 mx-auto rounded-2xl overflow-hidden shadow-2xl border-4 border-accbcf-gold/70 bg-black/20"
+                  aspectRatioClassName="relative w-full h-full"
+                  imageClassName="object-cover object-top"
+                />
 
                 <div className="space-y-2">
                   <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white">
@@ -520,35 +487,7 @@ export default async function FoundersPage({
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {diplomaticGallery.map((item, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-2xl overflow-hidden border border-gray-200/90 shadow-sm hover:shadow-lg transition-all group flex flex-col justify-between"
-            >
-              <div>
-                <div className="relative h-56 w-full overflow-hidden bg-gray-100">
-                  <Image
-                    src={item.image}
-                    alt={item.caption}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute top-3 left-3">
-                    <span className="px-2.5 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-accbcf-blue-deep/90 text-white backdrop-blur-sm shadow-sm">
-                      {item.tag}
-                    </span>
-                  </div>
-                </div>
-                <div className="p-4">
-                  <p className="text-xs sm:text-sm font-medium text-accbcf-charcoal leading-snug">
-                    {item.caption}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <DiplomaticArchiveGallery locale={locale} />
       </section>
 
       {/* ========================================================================= */}

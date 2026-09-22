@@ -15,6 +15,7 @@ import {
 import { normalizeLocale } from '@/lib/content';
 import type { Locale } from '@/lib/content';
 import { getNewsArticleBySlug, getAllNewsSlugs } from '@/lib/newsService';
+import { ClickableImagePreview } from '@/components/common/ClickableImagePreview';
 
 const BACK_LABELS: Record<Locale, string> = {
   en: 'Back to All News',
@@ -212,15 +213,19 @@ export default async function SingleNewsPage({
 
       {/* Featured Image */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 sm:-mt-10">
-        <div className="relative h-64 sm:h-96 w-full rounded-2xl overflow-hidden shadow-xl border-4 border-white bg-gray-100">
-          <Image
-            src={post.image}
-            alt={post.title}
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
+        <ClickableImagePreview
+          src={post.image}
+          alt={post.title}
+          title={post.title}
+          caption={post.imageCaption || post.title}
+          tag={post.category}
+          category={post.category}
+          locale={locale}
+          priority
+          className="w-full rounded-2xl overflow-hidden shadow-xl border-4 border-white bg-gray-100"
+          aspectRatioClassName="relative h-64 sm:h-96 w-full"
+          imageClassName="object-cover"
+        />
         {post.imageCaption && (
           <p className="mt-2.5 text-xs text-center text-accbcf-gray italic">
             {post.imageCaption}
