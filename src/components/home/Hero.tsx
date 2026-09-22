@@ -9,13 +9,10 @@ import {
   ChevronDown,
   ChevronLeft,
   ChevronRight,
-  Shield,
-  Building2,
   Globe2,
   Camera,
 } from 'lucide-react';
 import { UI_STRINGS } from '@/lib/translations';
-import { SITE_INFO } from '@/lib/content';
 import type { Locale } from '@/lib/content';
 
 interface HeroProps {
@@ -198,28 +195,6 @@ export const Hero: React.FC<HeroProps> = ({ locale }) => {
 
       {/* 3. Foreground Content: Bold, Authoritative Typography directly on the full-bleed photograph */}
       <div className="relative max-w-5xl mx-auto text-center z-10 w-full px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-7">
-        {/* Emblem & Tag */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.88, y: -16 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="inline-flex flex-col items-center justify-center"
-        >
-          <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden bg-white p-1 shadow-[0_0_35px_rgba(0,0,0,0.8)] ring-4 ring-accbcf-gold mb-3 group hover:scale-105 transition-transform duration-200">
-            <Image
-              src="/images/accbcf-emblem.jpg"
-              alt="ACCBCF Official Emblem"
-              fill
-              className="object-contain p-0.5"
-              priority
-            />
-          </div>
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/60 border border-accbcf-gold/70 backdrop-blur-md text-xs sm:text-sm font-bold text-accbcf-gold tracking-wider shadow-xl">
-            <Shield className="w-3.5 h-3.5 text-accbcf-gold" />
-            <span>{t.tag}</span>
-          </div>
-        </motion.div>
-
         {/* BOLD Authoritative Headline with Staggered Word Reveal */}
         <div className="space-y-2">
           <motion.h1
@@ -311,27 +286,6 @@ export const Hero: React.FC<HeroProps> = ({ locale }) => {
             <Globe2 className="w-4 h-4 text-accbcf-gold" />
             <span>{t.ctaSecondary}</span>
           </Link>
-        </motion.div>
-
-        {/* Credibility Micro-Strip */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.3, ease: 'easeOut' }}
-          className="pt-2 flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs font-semibold"
-        >
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/60 border border-white/20 backdrop-blur-md text-white/90 shadow-md">
-            <span className="w-2 h-2 rounded-full bg-accbcf-gold" />
-            <span>{SITE_INFO.established}</span>
-          </div>
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/60 border border-white/20 backdrop-blur-md text-white/90 shadow-md">
-            <Building2 className="w-3.5 h-3.5 text-accbcf-gold" />
-            <span>{SITE_INFO.hqCity[locale]}</span>
-          </div>
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/60 border border-white/20 backdrop-blur-md text-white/90 shadow-md">
-            <span className="w-2 h-2 rounded-full bg-emerald-400" />
-            <span>G2G · G2B · B2B · B2C</span>
-          </div>
         </motion.div>
       </div>
 
