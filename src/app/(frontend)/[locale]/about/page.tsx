@@ -7,6 +7,7 @@ import { SITE_INFO, normalizeLocale } from '@/lib/content';
 import type { Locale } from '@/lib/content';
 import { OfficialPhotoArchives } from '@/components/about/OfficialPhotoArchives';
 import { ClickableImagePreview } from '@/components/common/ClickableImagePreview';
+import { getSiteSeoSettings } from '@/lib/seoService';
 
 export async function generateMetadata({
   params,
@@ -15,16 +16,13 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale: rawLocale } = await params;
   const locale: Locale = normalizeLocale(rawLocale);
-  const titles: Record<Locale, string> = {
-    en: 'About ACCBCF',
-    zh: '关于论坛',
-    fr: 'À propos de l’ACCBCF',
-    ar: 'عن المنتدى',
-    pt: 'Sobre o ACCBCF',
-  };
+  const seo = await getSiteSeoSettings(locale);
+  const pageSeo = seo.pages?.about;
+
   return {
-    title: titles[locale] || titles.en,
-    description: SITE_INFO.about[locale],
+    title: pageSeo?.title || (locale === 'zh' ? '关于论坛 · 机构宗旨与战略定位' : 'About ACCBCF · Vision, Mandate & Strategic Positioning'),
+    description: pageSeo?.description || SITE_INFO.about[locale],
+    keywords: pageSeo?.keywords || seo.defaultKeywords,
   };
 }
 

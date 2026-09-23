@@ -6,6 +6,7 @@ import { SITE_INFO, normalizeLocale } from '@/lib/content';
 import type { Locale } from '@/lib/content';
 import { getPublishedVideos } from '@/lib/videoService';
 import { EventVideosSection } from '@/components/events/EventVideosSection';
+import { getSiteSeoSettings } from '@/lib/seoService';
 
 export async function generateMetadata({
   params,
@@ -14,16 +15,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale: rawLocale } = await params;
   const locale: Locale = normalizeLocale(rawLocale);
-  const titles: Record<Locale, string> = {
-    en: 'Events & Bilateral Summits',
-    zh: '重要活动',
-    fr: 'Événements et sommets bilatéraux',
-    ar: 'الفعاليات والقمم الثنائية',
-    pt: 'Eventos e Cúpulas Bilaterais',
-  };
+  const seo = await getSiteSeoSettings(locale);
+  const pageSeo = seo.pages?.events;
+
   return {
-    title: titles[locale] || titles.en,
-    description: 'ACCBCF official events, bilateral summits, trade delegations, and ministerial roundtables.',
+    title: pageSeo?.title || (locale === 'zh' ? '重要活动、高层峰会与视频专区' : 'Summits, Business Dialogues & Events · ACCBCF'),
+    description: pageSeo?.description || 'ACCBCF official events, bilateral summits, trade delegations, and ministerial roundtables.',
   };
 }
 

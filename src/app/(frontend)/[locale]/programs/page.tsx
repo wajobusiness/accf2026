@@ -15,6 +15,7 @@ import { CORE_SERVICES } from '@/lib/content';
 import { UI_STRINGS } from '@/lib/translations';
 import type { Locale } from '@/lib/content';
 import { normalizeLocale } from '@/lib/content';
+import { getSiteSeoSettings } from '@/lib/seoService';
 
 export async function generateMetadata({
   params,
@@ -23,16 +24,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale: rawLocale } = await params;
   const locale: Locale = normalizeLocale(rawLocale);
-  const titles: Record<Locale, string> = {
-    en: 'Programs & Core Services',
-    zh: '核心服务与项目',
-    fr: 'Programmes et services clés',
-    ar: 'البرامج والخدمات الأساسية',
-    pt: 'Programas e Serviços Centrais',
-  };
+  const seo = await getSiteSeoSettings(locale);
+  const pageSeo = seo.pages?.programs;
+
   return {
-    title: titles[locale] || titles.en,
-    description: 'ACCBCF institutional services covering Government Cooperation, Investment Promotion, Financial Services, Legal Compliance, and Business Matching.',
+    title: pageSeo?.title || (locale === 'zh' ? '综合服务体系与核心重大项目 · 非洲中国会长论坛' : 'Programs & Core Services · ACCBCF'),
+    description: pageSeo?.description || 'ACCBCF institutional services covering Government Cooperation, Investment Promotion, Financial Services, Legal Compliance, and Business Matching.',
   };
 }
 

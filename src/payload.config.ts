@@ -15,6 +15,7 @@ import { CoreServices } from './collections/CoreServices';
 import { PrioritySectors } from './collections/PrioritySectors';
 import { Events } from './collections/Events';
 import { SiteSettings } from './globals/SiteSettings';
+import { SeoSettings } from './globals/SeoSettings';
 import { migrations } from './migrations';
 
 const filename = fileURLToPath(import.meta.url);
@@ -90,6 +91,7 @@ export default buildConfig({
   ],
   globals: [
     SiteSettings,
+    SeoSettings,
   ],
   editor: lexicalEditor(),
   secret:

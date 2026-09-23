@@ -10,9 +10,47 @@ import { AdvantagesGrid } from '@/components/home/AdvantagesGrid';
 import { LatestNews } from '@/components/home/LatestNews';
 import { ContactCtaBand } from '@/components/home/ContactCtaBand';
 
+import type { Metadata } from 'next';
 import { normalizeLocale } from '@/lib/content';
 import { getPublishedNews } from '@/lib/newsService';
 import { getPublishedVideos } from '@/lib/videoService';
+import { getSiteSeoSettings } from '@/lib/seoService';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale: rawLocale } = await params;
+  const locale: Locale = normalizeLocale(rawLocale);
+  const seo = await getSiteSeoSettings(locale);
+  const homeSeo = seo.pages?.home;
+
+  const title = homeSeo?.title || seo.siteName;
+  const description = homeSeo?.description || seo.defaultMetaDescription;
+
+  return {
+    title: {
+      absolute: title,
+    },
+    description,
+    keywords: homeSeo?.keywords || seo.defaultKeywords,
+    openGraph: {
+      title,
+      description,
+      url: `${seo.canonicalBaseUrl}/${locale}`,
+      siteName: seo.siteName,
+      images: [
+        {
+          url: seo.ogImageUrl || '/images/accbcf-emblem.jpg',
+          width: 1200,
+          height: 630,
+          alt: seo.siteName,
+        },
+      ],
+    },
+  };
+}
 
 export default async function HomePage({
   params,

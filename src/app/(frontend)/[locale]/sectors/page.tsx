@@ -20,6 +20,7 @@ import {
 import { PRIORITY_SECTORS, normalizeLocale } from '@/lib/content';
 import { UI_STRINGS } from '@/lib/translations';
 import type { Locale } from '@/lib/content';
+import { getSiteSeoSettings } from '@/lib/seoService';
 
 export async function generateMetadata({
   params,
@@ -28,16 +29,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale: rawLocale } = await params;
   const locale: Locale = normalizeLocale(rawLocale);
-  const titles: Record<Locale, string> = {
-    en: '12 Priority Sectors',
-    zh: '十二大重点产业',
-    fr: '12 Secteurs prioritaires',
-    ar: '12 قطاعاً ذو أولوية استراتيجية',
-    pt: '12 Setores Prioritários',
-  };
+  const seo = await getSiteSeoSettings(locale);
+  const pageSeo = seo.pages?.sectors;
+
   return {
-    title: titles[locale] || titles.en,
-    description: 'ACCBCF Priority Sectors for China-Africa economic cooperation and industrial development.',
+    title: pageSeo?.title || (locale === 'zh' ? '非中经贸合作十二大重点产业 · 非洲中国会长论坛' : '12 Priority Economic Sectors · ACCBCF'),
+    description: pageSeo?.description || 'ACCBCF Priority Sectors for China-Africa economic cooperation, infrastructure investment, and industrial development.',
   };
 }
 

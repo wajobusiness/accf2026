@@ -5,6 +5,7 @@ import { UI_STRINGS } from '@/lib/translations';
 import { OrgChart } from '@/components/governance/OrgChart';
 import type { Locale } from '@/lib/content';
 import { normalizeLocale } from '@/lib/content';
+import { getSiteSeoSettings } from '@/lib/seoService';
 
 export async function generateMetadata({
   params,
@@ -13,16 +14,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale: rawLocale } = await params;
   const locale: Locale = normalizeLocale(rawLocale);
-  const titles: Record<Locale, string> = {
-    en: 'Governance & Leadership',
-    zh: '治理架构',
-    fr: 'Gouvernance et direction',
-    ar: 'الحوكمة والقيادة',
-    pt: 'Governança e Liderança',
-  };
+  const seo = await getSiteSeoSettings(locale);
+  const pageSeo = seo.pages?.governance;
+
   return {
-    title: titles[locale] || titles.en,
-    description: 'ACCBCF institutional governance structure, Board of Directors, and committees.',
+    title: pageSeo?.title || (locale === 'zh' ? '组织治理架构与领导集体 · 非洲中国会长论坛' : 'Institutional Governance & Leadership Council · ACCBCF'),
+    description: pageSeo?.description || 'ACCBCF institutional governance structure, Board of Directors, and committees.',
   };
 }
 

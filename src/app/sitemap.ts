@@ -1,28 +1,52 @@
 import { MetadataRoute } from 'next';
-import { SAMPLE_NEWS, CORE_SERVICES, PRIORITY_SECTORS } from '@/lib/content';
+import { PRIORITY_SECTORS } from '@/lib/content';
+import { getAllNewsSlugs } from '@/lib/newsService';
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://africachinachairmenforum.org';
-  const locales = ['en', 'zh'];
-  const routes = ['', '/about', '/governance', '/programs', '/sectors', '/news', '/events', '/contact'];
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const baseUrl = 'https://www.africachinachairmenforum.com';
+  const locales = ['en', 'zh', 'fr', 'ar', 'pt'];
+  const staticRoutes = [
+    '',
+    '/about',
+    '/founders',
+    '/governance',
+    '/programs',
+    '/sectors',
+    '/events',
+    '/news',
+    '/contact',
+  ];
 
   const entries: MetadataRoute.Sitemap = [];
+  const newsSlugs = await getAllNewsSlugs();
 
   for (const locale of locales) {
-    for (const route of routes) {
+    // 1. Static Core Pages
+    for (const route of staticRoutes) {
       entries.push({
         url: `${baseUrl}/${locale}${route}`,
         lastModified: new Date(),
-        changeFrequency: route === '/news' ? 'daily' : 'weekly',
-        priority: route === '' ? 1.0 : 0.8,
+        changeFrequency: route === '' || route === '/news' ? 'daily' : 'weekly',
+        priority: route === '' ? 1.0 : route === '/events' || route === '/news' ? 0.9 : 0.8,
       });
     }
 
-    for (const post of SAMPLE_NEWS) {
+    // 2. Dynamic 12 Priority Sector Detail Pages
+    for (const sec of PRIORITY_SECTORS) {
       entries.push({
-        url: `${baseUrl}/${locale}/news/${post.slug}`,
-        lastModified: new Date(post.date),
-        changeFrequency: 'monthly',
+        url: `${baseUrl}/${locale}/sectors/${sec.slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: 0.75,
+      });
+    }
+
+    // 3. Dynamic News Articles
+    for (const slug of newsSlugs) {
+      entries.push({
+        url: `${baseUrl}/${locale}/news/${slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
         priority: 0.7,
       });
     }

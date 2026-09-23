@@ -7,6 +7,7 @@ import { normalizeLocale } from '@/lib/content';
 import { UI_STRINGS } from '@/lib/translations';
 import { getPublishedNews } from '@/lib/newsService';
 import type { Locale } from '@/lib/content';
+import { getSiteSeoSettings } from '@/lib/seoService';
 
 export async function generateMetadata({
   params,
@@ -15,16 +16,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale: rawLocale } = await params;
   const locale: Locale = normalizeLocale(rawLocale);
-  const titles: Record<Locale, string> = {
-    en: 'News',
-    zh: '新闻',
-    fr: 'Actualités',
-    ar: 'الأخبار',
-    pt: 'Notícias',
-  };
+  const seo = await getSiteSeoSettings(locale);
+  const pageSeo = seo.pages?.news;
+
   return {
-    title: titles[locale] || titles.en,
-    description: 'Official announcements, bilateral summit reports, and China-Africa industrial intelligence from ACCBCF.',
+    title: pageSeo?.title || (locale === 'zh' ? '官方要闻与双边经贸动态 · 非洲中国会长论坛' : 'Official News & Strategic Dispatches · ACCBCF'),
+    description: pageSeo?.description || 'Official announcements, bilateral summit reports, and China-Africa industrial intelligence from ACCBCF.',
   };
 }
 

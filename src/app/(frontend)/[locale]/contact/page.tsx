@@ -4,6 +4,7 @@ import { Shield } from 'lucide-react';
 import { ContactForm } from '@/components/contact/ContactForm';
 import type { Locale } from '@/lib/content';
 import { normalizeLocale } from '@/lib/content';
+import { getSiteSeoSettings } from '@/lib/seoService';
 
 export async function generateMetadata({
   params,
@@ -12,16 +13,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale: rawLocale } = await params;
   const locale: Locale = normalizeLocale(rawLocale);
-  const titles: Record<Locale, string> = {
-    en: 'Contact Us',
-    zh: '联系我们',
-    fr: 'Contactez-nous',
-    ar: 'اتصل بنا',
-    pt: 'Fale Conosco',
-  };
+  const seo = await getSiteSeoSettings(locale);
+  const pageSeo = seo.pages?.contact;
+
   return {
-    title: titles[locale] || titles.en,
-    description: 'Contact the ACCBCF Secretariat headquartered in Abuja, Nigeria. Official diplomatic and business cooperation inquiries.',
+    title: pageSeo?.title || (locale === 'zh' ? '联络论坛常设秘书处 · 非洲中国会长论坛' : 'Connect with Secretariat · ACCBCF Abuja'),
+    description: pageSeo?.description || 'Contact the ACCBCF Secretariat headquartered in Abuja, Nigeria. Official diplomatic and business cooperation inquiries.',
   };
 }
 

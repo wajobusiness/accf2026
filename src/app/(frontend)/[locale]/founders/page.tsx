@@ -55,6 +55,8 @@ const PAGE_META: Record<Locale, { title: string; desc: string }> = {
   },
 };
 
+import { getSiteSeoSettings } from '@/lib/seoService';
+
 export async function generateMetadata({
   params,
 }: {
@@ -62,20 +64,25 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale: rawLocale } = await params;
   const locale = normalizeLocale(rawLocale);
+  const seo = await getSiteSeoSettings(locale);
+  const pageSeo = seo.pages?.founders;
   const meta = PAGE_META[locale] || PAGE_META.en;
 
+  const title = pageSeo?.title || meta.title;
+  const description = pageSeo?.description || meta.desc;
+
   return {
-    title: meta.title,
-    description: meta.desc,
+    title,
+    description,
     openGraph: {
-      title: meta.title,
-      description: meta.desc,
+      title,
+      description,
       images: [
         {
           url: '/images/founder/chief_mike_zheng_xiaopeng.jpg',
           width: 1200,
           height: 630,
-          alt: 'High Chief Mike Zheng Xiaopeng & Chief Dr. William Deiyan Towah',
+          alt: 'Chief Yousuf Mike Ugwu & Madam Wu Zhiying',
         },
       ],
     },
