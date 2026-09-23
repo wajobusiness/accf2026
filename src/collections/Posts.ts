@@ -6,10 +6,7 @@ export const Posts: CollectionConfig = {
     read: () => true,
     create: ({ req }) => Boolean(req.user),
     update: ({ req }) => Boolean(req.user),
-    delete: ({ req }) => {
-      if (!req.user) return false;
-      return req.user.role === 'admin';
-    },
+    delete: ({ req }) => Boolean(req.user),
   },
   defaultSort: '-publishedDate',
   admin: {
@@ -26,46 +23,57 @@ export const Posts: CollectionConfig = {
   },
   hooks: {
     beforeValidate: [
-      ({ data, req }) => {
+      ({ data, req, operation }) => {
         if (data) {
-          // Auto-generate slug if missing or empty
+          // Auto-generate slug if missing or empty on create or if explicitly cleared
           if (!data.slug || typeof data.slug !== 'string' || data.slug.trim() === '') {
             const rawTitle =
               typeof data.title === 'string'
                 ? data.title
-                : typeof data.title === 'object'
+                : typeof data.title === 'object' && data.title !== null
                 ? data.title?.en || Object.values(data.title)[0]
                 : '';
             if (rawTitle && typeof rawTitle === 'string') {
-              data.slug = rawTitle
+              const cleaned = rawTitle
                 .toLowerCase()
                 .replace(/[^a-z0-9\s-]/g, '')
                 .trim()
                 .replace(/\s+/g, '-')
                 .slice(0, 80);
-            }
-            if (!data.slug) {
+              data.slug = cleaned || `news-${Date.now()}`;
+            } else {
               data.slug = `news-${Date.now()}`;
             }
           } else {
-            data.slug = data.slug
+            // Clean up slug if user provided one
+            const cleanedSlug = data.slug
               .toLowerCase()
               .replace(/[^a-z0-9\s-]/g, '')
               .trim()
               .replace(/\s+/g, '-');
+            data.slug = cleanedSlug || `news-${Date.now()}`;
           }
 
-          // Auto-assign logged in author if not manually selected
-          if (!data.author && req?.user?.id) {
+          // Auto-assign logged in author if not manually selected during create
+          if (!data.author && req?.user?.id && operation === 'create') {
             data.author = req.user.id;
           }
 
           // Auto-populate excerpt from body if missing
           if (!data.excerpt && data.body) {
-            data.excerpt =
-              typeof data.body === 'string'
-                ? data.body.slice(0, 200).trim() + '...'
-                : data.body;
+            if (typeof data.body === 'string') {
+              data.excerpt = data.body.slice(0, 200).trim() + '...';
+            } else if (typeof data.body === 'object' && data.body !== null) {
+              const excerptObj: Record<string, string> = {};
+              for (const [lang, text] of Object.entries(data.body)) {
+                if (typeof text === 'string') {
+                  excerptObj[lang] = text.slice(0, 200).trim() + '...';
+                }
+              }
+              if (Object.keys(excerptObj).length > 0) {
+                data.excerpt = excerptObj;
+              }
+            }
           }
         }
         return data;
@@ -82,6 +90,7 @@ export const Posts: CollectionConfig = {
                 collection: 'media',
                 id: mediaId,
                 depth: 0,
+                overrideAccess: true,
               })) as any;
               if (mediaDoc?.url) {
                 data.featuredImageUrl = mediaDoc.url;
@@ -104,20 +113,26 @@ export const Posts: CollectionConfig = {
           const authorIds = Array.from(new Set([currentAuthorId, prevAuthorId].filter(Boolean)));
 
           for (const authorId of authorIds) {
-            const countResult = await req.payload.count({
-              collection: 'posts',
-              where: {
-                author: { equals: authorId },
-                status: { equals: 'published' },
-              },
-            });
-            await req.payload.update({
-              collection: 'users',
-              id: authorId,
-              data: {
-                postCount: countResult.totalDocs,
-              },
-            });
+            try {
+              const countResult = await req.payload.count({
+                collection: 'posts',
+                where: {
+                  author: { equals: authorId },
+                  status: { equals: 'published' },
+                },
+                overrideAccess: true,
+              });
+              await req.payload.update({
+                collection: 'users',
+                id: authorId,
+                data: {
+                  postCount: countResult.totalDocs,
+                },
+                overrideAccess: true,
+              });
+            } catch {
+              // Ignore single user count sync error
+            }
           }
         } catch (err) {
           console.error('Failed to sync editor post count:', err);
@@ -129,20 +144,26 @@ export const Posts: CollectionConfig = {
         try {
           const authorId = typeof doc?.author === 'object' ? doc?.author?.id : doc?.author;
           if (authorId) {
-            const countResult = await req.payload.count({
-              collection: 'posts',
-              where: {
-                author: { equals: authorId },
-                status: { equals: 'published' },
-              },
-            });
-            await req.payload.update({
-              collection: 'users',
-              id: authorId,
-              data: {
-                postCount: countResult.totalDocs,
-              },
-            });
+            try {
+              const countResult = await req.payload.count({
+                collection: 'posts',
+                where: {
+                  author: { equals: authorId },
+                  status: { equals: 'published' },
+                },
+                overrideAccess: true,
+              });
+              await req.payload.update({
+                collection: 'users',
+                id: authorId,
+                data: {
+                  postCount: countResult.totalDocs,
+                },
+                overrideAccess: true,
+              });
+            } catch {
+              // Ignore single user count sync error
+            }
           }
         } catch (err) {
           console.error('Failed to sync editor post count after deletion:', err);

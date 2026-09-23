@@ -105,8 +105,14 @@ export async function getPublishedNews(options?: {
       const editorCountCache = new Map<string, number>();
 
       const parsedDocs: NewsArticleItem[] = [];
+      const seenSlugs = new Set<string>();
 
       for (const doc of postsResult.docs as any[]) {
+        if (!doc.slug || seenSlugs.has(doc.slug)) {
+          continue;
+        }
+        seenSlugs.add(doc.slug);
+
         let editorId = 'editor-secretariat';
         let editorName = doc.authorName || 'ACCBCF Secretariat';
         let editorDesignation = 'Official Secretariat Desk';
