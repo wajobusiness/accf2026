@@ -12,6 +12,7 @@ import { ContactCtaBand } from '@/components/home/ContactCtaBand';
 
 import { normalizeLocale } from '@/lib/content';
 import { getPublishedNews } from '@/lib/newsService';
+import { getPublishedVideos } from '@/lib/videoService';
 
 export default async function HomePage({
   params,
@@ -20,12 +21,16 @@ export default async function HomePage({
 }) {
   const { locale: rawLocale } = await params;
   const locale: Locale = normalizeLocale(rawLocale);
-  const newsArticles = await getPublishedNews({ locale, limit: 9 });
+  const [newsArticles, featuredVideos] = await Promise.all([
+    getPublishedNews({ locale, limit: 9 }),
+    getPublishedVideos({ locale, limit: 1, featuredOnly: true }),
+  ]);
+  const featuredVideo = featuredVideos[0];
 
   return (
     <>
       <Hero locale={locale} />
-      <FeaturedVideoSection locale={locale} />
+      <FeaturedVideoSection locale={locale} featuredVideo={featuredVideo} />
       <CredibilityStrip locale={locale} />
       <AboutSnapshot locale={locale} />
       <StrategicPositioning locale={locale} />

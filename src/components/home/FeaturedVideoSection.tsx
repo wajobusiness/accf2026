@@ -11,11 +11,15 @@ import {
   ShieldCheck,
   ArrowRight,
   Compass,
+  Video as VideoIcon,
+  ExternalLink,
 } from 'lucide-react';
 import type { Locale } from '@/lib/content';
+import type { VideoItem } from '@/lib/videoService';
 
 interface FeaturedVideoSectionProps {
   locale: Locale;
+  featuredVideo?: VideoItem;
 }
 
 interface SectionI18n {
@@ -27,6 +31,7 @@ interface SectionI18n {
   stopPrompt: string;
   ctaPrimary: string;
   ctaSecondary: string;
+  exploreAllVideos: string;
 }
 
 const SECTION_I18N: Record<Locale, SectionI18n> = {
@@ -34,65 +39,79 @@ const SECTION_I18N: Record<Locale, SectionI18n> = {
     badge: 'Official Keynote & Presentation',
     title: 'Bilateral Vision in Action · Connecting Africa & China',
     subtitle:
-      'Experience the official inaugural presentation outlining the sovereign mandate of the Africa China Chairmen of Business Forum (ACCBCF), our 12 strategic action corridors, and the forthcoming 2026 Continental Summit in Abuja.',
+      'Experience official broadcasts, keynote addresses, and high-level bilateral dialogues from the Africa China Chairmen of Business Forum (ACCBCF).',
     videoBadge: 'Official 4K / HD Broadcast Dispatch',
     playPrompt: 'Watch Official Video Presentation',
     stopPrompt: 'Return to Cover',
     ctaPrimary: 'Explore Priority Sectors',
     ctaSecondary: 'Summit Delegate Inquiries',
+    exploreAllVideos: 'View All Channel Videos',
   },
   zh: {
-    badge: '官方主旨推介与献礼视频',
+    badge: '官方主旨推介与实况展播',
     title: '跨越洲际桥梁 · 共创中非经贸繁荣新篇章',
     subtitle:
-      '观看非洲中国会长论坛（ACCBCF）官方推介视频，全方位领略中非经贸投资机制、十二大重点产业发展走廊及2026阿布贾全球成立大会的历史性战略布局。',
+      '观看非洲中国会长论坛（ACCBCF）官方实况展播与高端双边对话，全方位领略中非经贸投资机制、十二大重点产业发展走廊及2026阿布贾全球成立大会的历史性战略布局。',
     videoBadge: '官方超高清 4K / 1080P 双语呈献',
     playPrompt: '点击播放官方推介视频',
     stopPrompt: '返回封面',
     ctaPrimary: '了解十二大重点产业',
     ctaSecondary: '成立大会代表参会申请',
+    exploreAllVideos: '查看全部官方视频',
   },
   fr: {
     badge: 'Allocution Principale & Présentation',
     title: 'Vision Bilatérale en Action · Relier l’Afrique et la Chine',
     subtitle:
-      'Découvrez la présentation inaugurale officielle soulignant le mandat souverain du Forum des Présidents d’Entreprises Afrique-Chine (ACCBCF), nos 12 corridors stratégiques et le prochain Sommet Continental d’Abuja 2026.',
+      'Découvrez les diffusions officielles et les dialogues bilatéraux de haut niveau du Forum des Présidents d’Entreprises Afrique-Chine (ACCBCF).',
     videoBadge: 'Diffusion Officielle Haute Définition',
     playPrompt: 'Visionner la Présentation Officielle',
     stopPrompt: 'Retour à la Couverture',
     ctaPrimary: 'Explorer les Secteurs Prioritaires',
     ctaSecondary: 'Délégation au Sommet & Contact',
+    exploreAllVideos: 'Voir toutes les vidéos',
   },
   ar: {
     badge: 'العرض المرئي والكلمة الافتتاحية الرسمية',
     title: 'رؤية ثنائية في العمل · مد جسور التعاون بين إفريقيا والصين',
     subtitle:
-      'شاهد العرض التقديمي الافتتاحي الرسمي الذي يستعرض التفويض السيادي لمنتدى رؤساء مجالس إدارات الأعمال الإفريقية الصينية (ACCBCF)، وممرات العمل الـ 12 ذات الأولوية، وقمة أبوجا القارية 2026.',
+      'شاهد البث الرسمي ومداولات الحوار الثنائي لمنتدى رؤساء مجالس إدارات الأعمال الإفريقية الصينية (ACCBCF).',
     videoBadge: 'بث رسمي عالي الدقة 4K / HD',
     playPrompt: 'مشاهدة العرض المرئي الرسمي',
     stopPrompt: 'العودة إلى الغلاف',
     ctaPrimary: 'استكشاف القطاعات ذات الأولوية',
     ctaSecondary: 'التسجيل في القمة والتواصل',
+    exploreAllVideos: 'عرض جميع الفيديوهات',
   },
   pt: {
     badge: 'Discurso Principal e Apresentação Oficial',
     title: 'Visão Bilateral em Ação · Conectando a África e a China',
     subtitle:
-      'Assista à apresentação inaugural oficial destacando o mandato soberano do Fórum de Presidentes de Negócios África–China (ACCBCF), nossos 12 corredores estratégicos e a Cúpula Continental de Abuja 2026.',
+      'Assista às transmissões oficiais e diálogos bilaterais de alto nível do Fórum de Presidentes de Negócios África–China (ACCBCF).',
     videoBadge: 'Transmissão Oficial em Alta Definição',
     playPrompt: 'Assistir à Apresentação Oficial',
     stopPrompt: 'Voltar à Capa',
     ctaPrimary: 'Explorar Setores Prioritários',
     ctaSecondary: 'Inscrição de Delegados na Cúpula',
+    exploreAllVideos: 'Ver todos os vídeos',
   },
 };
 
-const YOUTUBE_VIDEO_ID = 'YGiA9rLG2yw';
+const DEFAULT_YOUTUBE_VIDEO_ID = 'iWhDtiAuaBs';
 
-export const FeaturedVideoSection: React.FC<FeaturedVideoSectionProps> = ({ locale }) => {
+export const FeaturedVideoSection: React.FC<FeaturedVideoSectionProps> = ({
+  locale,
+  featuredVideo,
+}) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const t = SECTION_I18N[locale] || SECTION_I18N.en;
   const isRtl = locale === 'ar';
+
+  const videoId = featuredVideo?.youtubeVideoId || DEFAULT_YOUTUBE_VIDEO_ID;
+  const videoTitle = featuredVideo?.title || 'Africa China Chairmen Forum Official Broadcast';
+  const eventName = featuredVideo?.eventName || 'Africa China Chairmen of Business Forum';
+  const coverThumb =
+    featuredVideo?.thumbnailUrl || `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
 
   return (
     <section
@@ -162,12 +181,17 @@ export const FeaturedVideoSection: React.FC<FeaturedVideoSectionProps> = ({ loca
                     onClick={() => setIsPlaying(true)}
                   >
                     {/* Background Backdrop Image */}
-                    <Image
-                      src="/images/forum/leadership-council-assembly.jpg"
-                      alt="ACCBCF Inaugural High-Level Assembly"
-                      fill
-                      priority
-                      className="object-cover transition-transform duration-700 group-hover:scale-105 filter brightness-[0.72] contrast-[1.08]"
+                    <img
+                      src={coverThumb}
+                      alt={videoTitle}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter brightness-[0.80] contrast-[1.05]"
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        const hqUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+                        if (target.src !== hqUrl) {
+                          target.src = hqUrl;
+                        }
+                      }}
                     />
 
                     {/* Dark Dramatic Vignette Overlay */}
@@ -181,27 +205,23 @@ export const FeaturedVideoSection: React.FC<FeaturedVideoSectionProps> = ({ loca
                         <span>{t.videoBadge}</span>
                       </div>
 
-                      <div className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/70 border border-accbcf-gold/30 backdrop-blur-md text-xs font-medium text-accbcf-gold">
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-accbcf-gold/90 text-accbcf-charcoal text-[11px] sm:text-xs font-bold shadow-lg">
                         <ShieldCheck className="w-3.5 h-3.5" />
-                        <span>Federal Secretariat, Abuja</span>
+                        <span>ACCBCF Official</span>
                       </div>
                     </div>
 
-                    {/* Center Big Gold Play Button */}
+                    {/* Centered Luxury Play Button with Ripple Aura */}
                     <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
                       <div className="relative flex items-center justify-center">
-                        {/* Glowing ripple wave */}
-                        <div className="absolute w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-accbcf-gold/30 animate-ping pointer-events-none" />
-                        <div className="absolute w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-accbcf-gold/15 blur-md pointer-events-none" />
-
-                        {/* Button Disc */}
-                        <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-tr from-accbcf-gold-dark via-accbcf-gold to-amber-300 text-[#060D1D] flex items-center justify-center shadow-[0_0_35px_rgba(240,180,40,0.6)] group-hover:scale-110 group-hover:shadow-[0_0_50px_rgba(240,180,40,0.9)] transition-all duration-300">
-                          <Play className="w-8 h-8 sm:w-10 sm:h-10 fill-current translate-x-0.5" />
+                        <div className="absolute w-20 h-20 sm:w-28 sm:h-28 rounded-full bg-accbcf-gold/30 animate-ping opacity-60 pointer-events-none" />
+                        <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-gradient-to-tr from-accbcf-gold via-[#FBD76F] to-accbcf-gold text-accbcf-charcoal flex items-center justify-center shadow-[0_0_50px_rgba(240,180,40,0.8)] group-hover:scale-110 group-hover:shadow-[0_0_70px_rgba(240,180,40,1)] transition-all duration-300">
+                          <Play className="w-7 h-7 sm:w-10 sm:h-10 fill-current translate-x-0.5 sm:translate-x-1" />
                         </div>
                       </div>
 
                       {/* Prompt Label */}
-                      <span className="px-4 py-2 rounded-full bg-black/80 border border-accbcf-gold/40 backdrop-blur-md text-xs sm:text-sm font-bold tracking-wide text-white group-hover:text-accbcf-gold group-hover:border-accbcf-gold transition-all duration-300 shadow-xl">
+                      <span className="px-4 py-2 rounded-full bg-black/80 border border-accbcf-gold/40 backdrop-blur-md text-xs sm:text-sm font-bold tracking-wide text-white group-hover:text-accbcf-gold group-hover:border-accbcf-gold transition-all duration-300 shadow-xl max-w-[85%] text-center truncate">
                         {t.playPrompt}
                       </span>
                     </div>
@@ -218,12 +238,12 @@ export const FeaturedVideoSection: React.FC<FeaturedVideoSectionProps> = ({ loca
                             className="object-cover w-full h-full"
                           />
                         </div>
-                        <div className="text-left">
-                          <p className="text-xs sm:text-sm font-bold text-white tracking-wide drop-shadow">
-                            Africa China Chairmen of Business Forum
+                        <div className="text-left max-w-md">
+                          <p className="text-xs sm:text-sm font-bold text-white tracking-wide drop-shadow line-clamp-1">
+                            {videoTitle}
                           </p>
-                          <p className="text-[10px] sm:text-xs text-accbcf-gold font-medium">
-                            Official Inaugural Keynote Address
+                          <p className="text-[10px] sm:text-xs text-accbcf-gold font-medium line-clamp-1">
+                            {eventName}
                           </p>
                         </div>
                       </div>
@@ -240,8 +260,8 @@ export const FeaturedVideoSection: React.FC<FeaturedVideoSectionProps> = ({ loca
                     className="relative w-full h-full"
                   >
                     <iframe
-                      src={`https://www.youtube-nocookie.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
-                      title={t.title}
+                      src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
+                      title={videoTitle}
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                       allowFullScreen
                       className="absolute inset-0 w-full h-full border-0"
@@ -275,19 +295,19 @@ export const FeaturedVideoSection: React.FC<FeaturedVideoSectionProps> = ({ loca
           className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2 sm:pt-4"
         >
           <Link
-            href={`/${locale}/sectors`}
+            href={`/${locale}/events#video-gallery`}
             className="sheen-sweep w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full text-xs sm:text-sm font-extrabold uppercase tracking-wider bg-accbcf-gold text-accbcf-charcoal hover:bg-accbcf-gold-light hover:shadow-[0_0_25px_rgba(240,180,40,0.6)] transition-all duration-300 transform hover:-translate-y-0.5 shadow-xl"
           >
-            <span>{t.ctaPrimary}</span>
-            <ArrowRight className="w-4 h-4" />
+            <VideoIcon className="w-4 h-4" />
+            <span>{t.exploreAllVideos}</span>
           </Link>
 
           <Link
-            href={`/${locale}/contact`}
+            href={`/${locale}/sectors`}
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-xs sm:text-sm font-bold tracking-wide bg-white/5 hover:bg-white/10 text-white hover:text-accbcf-gold border border-white/20 hover:border-accbcf-gold/50 backdrop-blur-md transition-all duration-200 shadow-xl"
           >
-            <Compass className="w-4 h-4 text-accbcf-gold" />
-            <span>{t.ctaSecondary}</span>
+            <span>{t.ctaPrimary}</span>
+            <ArrowRight className="w-4 h-4" />
           </Link>
         </motion.div>
       </div>
