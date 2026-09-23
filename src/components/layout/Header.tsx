@@ -16,8 +16,6 @@ import {
   Layers,
   Briefcase,
   Globe,
-  FileText,
-  Calendar,
   Award,
 } from 'lucide-react';
 import { LanguageSwitcher } from '../common/LanguageSwitcher';
@@ -129,23 +127,14 @@ export const Header: React.FC<HeaderProps> = ({ locale }) => {
       ],
     },
     {
-      type: 'dropdown',
-      id: 'media',
-      label: t.menuMedia,
-      items: [
-        {
-          href: `/${locale}/news`,
-          label: t.mediaNews,
-          description: t.mediaNewsDesc,
-          icon: FileText,
-        },
-        {
-          href: `/${locale}/events`,
-          label: t.mediaEvents,
-          description: t.mediaEventsDesc,
-          icon: Calendar,
-        },
-      ],
+      type: 'link',
+      href: `/${locale}/events`,
+      label: t.events,
+    },
+    {
+      type: 'link',
+      href: `/${locale}/news`,
+      label: t.news,
     },
     {
       type: 'link',
