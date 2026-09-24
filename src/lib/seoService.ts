@@ -225,8 +225,8 @@ export async function getSiteSeoSettings(locale: Locale = 'en'): Promise<SiteSeo
     const configModule = await import('@/payload.config');
     const payload = await getPayload({ config: configModule.default });
 
-    const cmsSeo = (await payload.findGlobal({
-      slug: 'seoSettings' as any,
+    const cmsSeo = (await (payload as any).findGlobal({
+      slug: 'seoSettings',
       locale,
       fallbackLocale: 'en',
     })) as any;
@@ -351,3 +351,4 @@ export function generateOrganizationJsonLd(config: SiteSeoConfig, locale: Locale
     ],
   };
 }
+
